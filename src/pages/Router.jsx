@@ -8,7 +8,6 @@ import Home from './home/Home';
 import Learn from './learn/Learn';
 import Recipe from './recipe/Recipe';
 import ShoppingList from './shopping-list/ShoppingList';
-// import routerData from './routerData';
 
 const routerData = [
 	{

@@ -1,8 +1,11 @@
-import Home from './pages/home/Home';
+import Login from './components/login/Login';
+import { useUser } from './context/user/UseUser';
+import Router from './pages/Router';
 
 const App = () => {
-	//Router will go here
-	return <Home />;
+	const { user } = useUser();
+
+	return user ? <Router /> : <Login />;
 };
 
 export default App;

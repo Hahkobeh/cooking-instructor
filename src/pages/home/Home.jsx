@@ -1,13 +1,12 @@
-import Card from '@/components/card/Card';
 import NavBar from '@/components/nav-bar/NavBar';
+import './home.module.scss';
 
 const Home = () => {
 	return (
-		<div>
-			<Card />
-			<Card />
+		<body>
+			<h1>Welcome!</h1>
 			<NavBar />
-		</div>
+		</body>
 	);
 };
 

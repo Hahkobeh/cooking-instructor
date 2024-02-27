@@ -1,7 +1,13 @@
+import NavBar from '@/components/nav-bar/NavBar';
 import './account.module.scss';
 
 const Account = () => {
-	return <div>Account</div>;
+	return (
+		<body>
+			Account
+			<NavBar />
+		</body>
+	);
 };
 
 export default Account;

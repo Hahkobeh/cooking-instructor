@@ -6,7 +6,7 @@ const RouteWrapper = () => {
 		<>
 			<header>
 				<div>
-					<p>57%</p>
+					<p>6:31</p>
 					<span className="material-symbols-outlined">mark_email_unread</span>
 					<span className="material-symbols-outlined">sms</span>
 				</div>

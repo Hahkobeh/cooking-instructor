@@ -162,15 +162,16 @@ body {
 }
 
 header {
-	position: fixed;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	align-items: center;
 	width: 100%;
 	background-color: variables.$white;
-	padding: 2px 20px;
+	padding: 0 20px;
 	box-sizing: border-box;
 	border-radius: 10px 10px 0 0;
+	height: 24px;
 
 	p {
 		font-weight: 700;
@@ -180,19 +181,22 @@ header {
 	div {
 		display: flex;
 		flex-direction: row;
+		align-items: center;
 		gap: 3px;
 
 		.material-symbols-outlined {
-			font-size: 1.1rem;
+			font-size: 1.05rem;
+			margin-bottom: 0.5px;
 		}
 	}
 }
 
 main {
-	height: calc(100% - 64px);
+	position: relative;
+	height: calc(100% - 64px - 24px);
 	overflow-y: auto;
 	overflow-x: hidden;
-	padding: 20px;
+	padding: 0 20px 12px;
 	box-sizing: border-box;
 
 	&::-webkit-scrollbar {

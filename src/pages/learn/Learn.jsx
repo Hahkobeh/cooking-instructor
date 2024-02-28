@@ -1,12 +1,10 @@
-import NavBar from '@/components/nav-bar/NavBar';
-import './learn.module.scss';
+// import styles from './learn.module.scss';
 
 const Learn = () => {
 	return (
-		<body>
+		<div>
 			Learn
-			<NavBar />
-		</body>
+		</div>
 	);
 };
 

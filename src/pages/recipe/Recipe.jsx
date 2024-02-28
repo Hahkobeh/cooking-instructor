@@ -1,13 +1,11 @@
 import { Outlet } from 'react-router-dom';
-import './recipe.module.scss';
-import NavBar from '@/components/nav-bar/NavBar';
+// import styles from './recipe.module.scss';
 
 const Recipe = () => {
 	return (
-		<body>
+		<div>
 			<Outlet />
-			<NavBar />
-		</body>
+		</div>
 	);
 };
 

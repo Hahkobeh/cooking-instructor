@@ -1,12 +1,10 @@
-import NavBar from '@/components/nav-bar/NavBar';
-import './account.module.scss';
+// import styles from './account.module.scss';
 
 const Account = () => {
 	return (
-		<body>
+		<div>
 			Account
-			<NavBar />
-		</body>
+		</div>
 	);
 };
 

@@ -1,13 +1,8 @@
 import PropTypes from 'prop-types';
-import DataContextProvider from './data/DataContexProvider';
 import UserContextProvider from './user/UserContextProvider';
 
 const ContextProvider = ({ children }) => {
-	return (
-		<UserContextProvider>
-			<DataContextProvider>{children}</DataContextProvider>
-		</UserContextProvider>
-	);
+	return <UserContextProvider>{children}</UserContextProvider>;
 };
 
 ContextProvider.propTypes = {

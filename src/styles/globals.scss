@@ -161,6 +161,33 @@ body {
 	height: 100%;
 }
 
+header {
+	position: fixed;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	background-color: variables.$white;
+	padding: 2px 20px;
+	box-sizing: border-box;
+	border-radius: 10px 10px 0 0;
+
+	p {
+		font-weight: 700;
+		font-size: 0.8rem;
+	}
+
+	div {
+		display: flex;
+		flex-direction: row;
+		gap: 3px;
+
+		.material-symbols-outlined {
+			font-size: 1.1rem;
+		}
+	}
+}
+
 main {
 	height: calc(100% - 64px);
 	overflow-y: auto;
@@ -175,32 +202,32 @@ main {
 
 h1 {
 	font-weight: 700;
-	font-size: 1.8em;
+	font-size: 1.8rem;
 	margin: 8px 0;
 }
 
 h2 {
 	font-weight: 600;
-	font-size: 1.6em;
+	font-size: 1.6rem;
 	margin: 4px 0;
 }
 
 h3 {
 	font-weight: 600;
-	font-size: 1.2em;
+	font-size: 1.2rem;
 	margin: 4px 0;
 }
 
 h4 {
 	font-weight: 400;
 	font-style: italic;
-	font-size: 1em;
+	font-size: 1rem;
 	margin: 4px 0;
 }
 
 p {
 	font-weight: 400;
-	font-size: 1em;
+	font-size: 1rem;
 	margin: 2px 0;
 	line-height: 1.2;
 }

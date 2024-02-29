@@ -1,0 +1,51 @@
+@use '../../styles/variables.scss';
+
+.toggle-container {
+	display: flex;
+	flex-direction: column; // Stack elements vertically
+	align-items: center; // Center-align the elements
+}
+
+.toggle-switch {
+	display: inline-block;
+	position: relative;
+	width: 60px; // Width of the toggle
+	height: 34px; // Height of the toggle
+	input {
+		opacity: 0;
+		width: 0;
+		height: 0;
+	}
+	.slider {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #ccc; // Off state color
+		transition: 0.4s;
+		border-radius: 34px; // Circular edges
+		&:before {
+			position: absolute;
+			content: '';
+			height: 26px; // Height of the slider
+			width: 26px; // Width of the slider
+			left: 4px;
+			bottom: 4px;
+			background-color: white;
+			transition: 0.4s;
+			border-radius: 50%; // Make it circular
+		}
+	}
+	input:checked + .slider {
+		background-color: variables.$accent; // On state color
+	}
+	input:checked + .slider:before {
+		transform: translateX(26px); // Move slider to the right
+	}
+}
+
+.label-text {
+	font-weight: bold;
+}

@@ -1,0 +1,32 @@
+@use '../../styles/variables.scss';
+
+#shopping-list {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin: 0; // Resets any default margin
+	padding: 0; // Resets any default padding
+}
+
+.header-container {
+	display: flex;
+	align-items: center; // Align items vertically in the center
+	justify-content: space-between; // Pushes the header to the left and toggle to the right
+	padding: 10px; // Add padding as needed
+}
+
+.add-item-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: variables.$accent; // A vibrant color for the button
+	color: #ffffff;
+	text-align: center;
+	padding: 10px 20px;
+	margin-top: 20px;
+	border-radius: 20px; // Fully rounded ends
+	font-size: 16px;
+	font-weight: bold;
+	border: none;
+	cursor: pointer;
+}

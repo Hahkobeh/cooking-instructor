@@ -1,0 +1,43 @@
+@use '../../styles/variables.scss';
+
+.shopping-list-recipe {
+	width: 100%;
+	margin: 10px auto;
+	box-sizing: border-box;
+	box-shadow: variables.$shadow;
+	border-radius: 4px;
+	padding: 15px;
+}
+
+.recipe-title {
+	font-size: 20px;
+	margin-bottom: 12px;
+	padding-bottom: 6px;
+}
+
+.ingredient-item {
+	padding: 10px 0;
+	border-bottom: 1px solid #eee;
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+}
+
+.ingredient-name {
+	font-weight: bold;
+	margin: 8px;
+}
+
+.ingredient-quantity {
+	font-weight: bold;
+	color: variables.$accent;
+}
+
+.checkbox {
+	margin-right: 10px;
+}
+
+.checked-ingredient {
+	text-decoration: line-through;
+	color: #999;
+}

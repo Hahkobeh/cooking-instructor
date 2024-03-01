@@ -6,6 +6,7 @@ import styles from './learn.module.scss';
 
 //TODO: Make cards clickable to go to either a technique or ingredients screen
 //TODO: Make design for technique/ingredients screen
+//TODO: Find good way to add icon image in cards, even when text is long
 
 const Learn = () => {
 	return (

@@ -24,7 +24,14 @@ const ShoppingList = () => {
 					{ name: 'Ingredient 4', quantity: '200ml' },
 				],
 			},
-			// Can add more recipes here
+			{
+				id: 3,
+				name: 'Recipe 3',
+				ingredients: [
+					{ name: 'Ingredient 5', quantity: '3 bunches' },
+					{ name: 'Ingredient 6', quantity: '2 units' },
+				],
+			},
 		];
 
 		setRecipes(initialRecipes);

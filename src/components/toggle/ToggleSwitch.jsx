@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import styles from './ToggleSwitch.module.scss'; // Path to your CSS module
+import styles from './ToggleSwitch.module.scss';
 
-const ToggleSwitch = ({ label }) => {
+const ToggleSwitch = () => {
 	const [isToggled, setIsToggled] = useState(false);
 
+	// Change state if toggle is pressed
 	const toggleSwitch = () => {
 		setIsToggled(!isToggled);
 	};
+
+	// Determine label text based on the toggle state
+	const labelText = isToggled ? 'Mode 2' : 'Mode 1';
 
 	return (
 		<div className={styles['toggle-container']}>
@@ -16,11 +20,11 @@ const ToggleSwitch = ({ label }) => {
 					type="checkbox"
 					checked={isToggled}
 					onChange={toggleSwitch}
-					className={styles.toggleInput}
+					className={styles['hidden-input']}
 				/>
 				<span className={styles.slider}></span>
 			</label>
-			<div className={styles['label-text']}>{label}</div>
+			<div className={styles['label-text']}>{labelText}</div>
 		</div>
 	);
 };

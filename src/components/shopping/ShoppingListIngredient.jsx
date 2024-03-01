@@ -16,7 +16,7 @@ const ShoppingListIngredient = ({ ingredient, onToggle }) => {
 	return (
 		<div className={ingredientClass}>
 			<CircularCheckbox
-				checked={ingredient.checked || false}
+				checked={ingredient.checked || false} // Ensure this prop always has boolean value
 				onChange={handleChange}
 			/>
 			<span className={styles['ingredient-name']}>{ingredient.name}</span>

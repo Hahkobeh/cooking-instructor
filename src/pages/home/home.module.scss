@@ -1,5 +1,15 @@
 @use '../../styles/variables.scss';
 
-body {
-	background-color: red;
+#home {
+	display: flex;
+	flex-direction: column;
+}
+
+.card {
+	width: 100%;
+	margin: 4px auto;
+	box-sizing: border-box;
+	box-shadow: variables.$shadow;
+	border-radius: 10px;
+	padding: 16px;
 }

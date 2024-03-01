@@ -1,0 +1,38 @@
+@use '../../styles/variables.scss';
+
+.navBar {
+	z-index: 1;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 64px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	padding: 4px 8px;
+	box-sizing: border-box;
+	box-shadow: variables.$shadow;
+	background-color: variables.$white;
+	border-radius: 0 0 10px 10px;
+
+	span {
+		font-size: 30px;
+		transition: scale 20ms ease-in-out;
+
+		&:hover {
+			scale: 1.2;
+		}
+	}
+
+	.active {
+		color: variables.$accent;
+		span {
+			scale: 1.2;
+			&.hover {
+				scale: 0;
+			}
+		}
+	}
+}

@@ -5,6 +5,7 @@ const staticData = {
 			title: 'spaghetti',
 		},
 	],
+	shoppingList: []
 };
 
 export default staticData;

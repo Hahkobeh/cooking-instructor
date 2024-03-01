@@ -1,5 +1,5 @@
-import NavBar from '@/components/nav-bar/NavBar';
-import './learn.module.scss';
+// import styles from './learn.module.scss';
+import NavBar from "@/components/nav-bar/NavBar";
 
 const Learn = () => {
 	return (

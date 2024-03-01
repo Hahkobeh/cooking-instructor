@@ -1,12 +1,10 @@
-import NavBar from '@/components/nav-bar/NavBar';
-import './shopping-list.module.scss';
+// import styles from './shopping-list.module.scss';
 
 const ShoppingList = () => {
 	return (
-		<body>
+		<div>
 			ShoppingList
-			<NavBar />
-		</body>
+		</div>
 	);
 };
 

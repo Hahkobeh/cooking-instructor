@@ -1,3 +1,4 @@
+// Import variables from a central variables file.
 @use '../../styles/variables.scss';
 
 .shopping-list-recipe {
@@ -33,11 +34,45 @@
 	color: variables.$accent;
 }
 
-.checkbox {
+// Custom circular checkbox styles.
+.custom-checkbox {
+	display: inline-flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.hidden-checkbox {
+	display: none; // Hide the actual checkbox input.
+}
+
+.checkbox-circle {
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	border: 2px solid #555; // Consider using a variable for border color.
+	display: inline-block;
 	margin-right: 10px;
+	position: relative;
+
+	&:after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) scale(0);
+		transition: transform 0.2s ease;
+		width: 60%;
+		height: 60%;
+		border-radius: 50%;
+		background-color: #555; // Consider using a variable for the fill color.
+	}
+}
+
+.hidden-checkbox:checked + .checkbox-circle:after {
+	transform: translate(-50%, -50%) scale(1); // Expand the inner circle when checked.
 }
 
 .checked-ingredient {
 	text-decoration: line-through;
-	color: #999;
+	color: #999; // Consider using a variable for the checked color.
 }

@@ -1,17 +1,21 @@
 import PropTypes from 'prop-types';
+import CircularCheckbox from '../checkbox/CircularCheckbox';
 import styles from './shopping.module.scss';
 
+// Define the ShoppingListIngredient functional component with destructured props.
 const ShoppingListIngredient = ({ ingredient, onToggle }) => {
+	// Function to handle change events (e.g., when the checkbox is clicked).
 	const handleChange = () => {
-		onToggle({ ...ingredient, checked: !ingredient.checked }); // Ensure to update the checked state
+		// Calls the onToggle function passed as a prop from parent (ShoppingListRecipe), with the current ingredient's state updated (toggled checked state).
+		onToggle({ ...ingredient, checked: !ingredient.checked }); // use '...' spread operator to copy ingredient with all its properties, but
 	};
 
+	// Determines the CSS class based on whether the ingredient is checked, applying different styles
 	const ingredientClass = `${styles['ingredient-item']} ${ingredient.checked ? styles['checked-ingredient'] : ''}`;
 
 	return (
 		<div className={ingredientClass}>
-			<input
-				type="checkbox"
+			<CircularCheckbox
 				checked={ingredient.checked || false}
 				onChange={handleChange}
 			/>
@@ -28,7 +32,7 @@ ShoppingListIngredient.propTypes = {
 		name: PropTypes.string.isRequired,
 		quantity: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 			.isRequired,
-		checked: PropTypes.bool, // checked property may not initially exist
+		checked: PropTypes.bool, // Checked property may not initially exist
 	}).isRequired,
 	onToggle: PropTypes.func.isRequired,
 };

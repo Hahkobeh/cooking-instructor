@@ -3,10 +3,16 @@ import './learn.module.scss';
 
 const Learn = () => {
 	return (
-		<body>
-			Learn
-			<NavBar />
-		</body>
+		<div>
+			<h1>Hello</h1>
+			<body>
+				<ul>
+					<li>
+						<NavBar/>
+					</li>
+				</ul>
+			</body> 
+		</div>
 	);
 };
 

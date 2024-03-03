@@ -12,6 +12,7 @@ const DataContextProvider = ({ children }) => {
 			tags: recipe.tagIds.map((tagId) =>
 				staticData.tags.find((tag) => tag.id === tagId)
 			),
+			path: recipe.title.replace(/\s+/g, '-').toLocaleLowerCase(),
 		}))
 	);
 

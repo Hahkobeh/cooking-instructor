@@ -1,0 +1,38 @@
+@use '../../styles/variables.scss';
+
+.recipeCardList {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.recipeCard {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	gap: 4px;
+	width: 100%;
+	box-sizing: border-box;
+	box-shadow: variables.$shadow;
+	border-radius: 10px;
+	padding: 16px;
+	overflow: hidden;
+	cursor: pointer;
+	transition: scale 40ms ease-in-out;
+
+	&:hover {
+		scale: 1.02;
+	}
+
+	> div {
+		min-width: 0;
+	}
+
+	.image {
+		flex: 1;
+		aspect-ratio: 1;
+		max-width: 60px;
+		border-radius: 50%;
+	}
+}

@@ -3,13 +3,10 @@
 #home {
 	display: flex;
 	flex-direction: column;
+
+	.title {
+		margin-top: 12px;
+		margin-bottom: 4px;
+	}
 }
 
-.card {
-	width: 100%;
-	margin: 4px auto;
-	box-sizing: border-box;
-	box-shadow: variables.$shadow;
-	border-radius: 10px;
-	padding: 16px;
-}

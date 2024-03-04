@@ -1,0 +1,25 @@
+@use '../../styles/variables.scss';
+
+.tagList {
+	display: flex;
+	flex-direction: row;
+	gap: 6px;
+	margin-top: 8px;
+}
+
+.tag {
+	display: flex;
+	flex-direction: row;
+	background-color: variables.$grey;
+	color: variables.$black;
+	border-radius: variables.$border-radius;
+	padding: 2px 6px 2px;
+	gap: 1px;
+
+	span {
+		margin-top: -0.5px;
+		margin-left: -3px;
+		font-size: 0.9rem;
+		font-variation-settings: 'wght' 800;
+	}
+}

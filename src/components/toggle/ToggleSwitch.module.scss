@@ -1,0 +1,58 @@
+@use '../../styles/variables.scss';
+
+.hidden-input {
+	display: none; // hide the actual input
+}
+
+// Container for the toggle and the label
+.toggle-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.toggle-switch {
+	display: inline-block;
+	position: relative; // Allows for positioning of child elements
+	width: 60px;
+	height: 34px;
+	// Represents the visual slider
+	.slider {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #ccc; // Off state color
+		transition: 0.4s;
+		border-radius: 34px; // Circular edges
+		// Pseudo-element which creates the circular knob
+		&:before {
+			position: absolute;
+			content: '';
+			height: 26px; // Height of the slider
+			width: 26px; // Width of the slider
+			left: 4px;
+			bottom: 4px;
+			background-color: white;
+			transition: 0.4s;
+			border-radius: 50%; // Make it circular
+		}
+	}
+	// Changes color of slider
+	input:checked + .slider {
+		background-color: variables.$accent; // On state color
+	}
+	// Moves knob to right
+	input:checked + .slider:before {
+		transform: translateX(26px);
+	}
+}
+
+// Toggle label
+.label-text {
+	font-size: 12px;
+	font-weight: bold;
+	padding-top: 4px;
+}

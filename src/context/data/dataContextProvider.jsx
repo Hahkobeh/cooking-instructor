@@ -1,4 +1,4 @@
-import staticData from '@/staticData';
+import staticData from '../../data/staticData';
 import PropTypes from 'prop-types';
 import { createContext, useState } from 'react';
 

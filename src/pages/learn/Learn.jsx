@@ -4,7 +4,6 @@ import styles from './learn.module.scss';
 //import Card from "@/components/card/Card";
 //import NavBar from "@/components/nav-bar/NavBar";
 
-//TODO: Make cards clickable to go to either a technique or ingredients screen
 //TODO: Make design for technique/ingredients screen
 //TODO: Find good way to add icon image in cards, even when text is long
 
@@ -17,25 +16,25 @@ const Learn = () => {
 			</div>
 			<ul>
 				<li>
-					<Link to={'./home/Home'} style={{textDecoration: 'none'}}>
+					<Link to={'/learn/LearnTechnique'} style={{textDecoration: 'none'}}>
 						<div className={styles.card}>
 							<h3>Sous Vide</h3>
-							<h4>Cook food to perfection - using water</h4>
+							<h4>This one links to LearnTechnique</h4>
 						</div>
 					</Link>
-					<Link to={'./home/Home'} style={{textDecoration: 'none'}}>
+					<Link to={'/learn/LearnTechnique'} style={{textDecoration: 'none'}}>
 						<div className={styles.card}>
 							<h3>Cutting</h3>
 							<h4>Chop chop, but not your fingers...</h4>
 						</div>
 					</Link>
-					<Link to={'./home/Home'} style={{textDecoration: 'none'}}>
+					<Link to={'/learn/LearnTechnique'} style={{textDecoration: 'none'}}>
 						<div className={styles.card}>
 							<h3>Sous Vide</h3>
 							<h4>Cook food to perfection - using water</h4>
 						</div>
 					</Link>
-					<Link to={'./home/Home'} style={{textDecoration: 'none'}}>
+					<Link to={'/learn/LearnTechnique'} style={{textDecoration: 'none'}}>
 						<div className={styles.card}>
 							<h3>Cutting</h3>
 							<h4>Chop chop, but not your fingers...</h4>
@@ -49,25 +48,25 @@ const Learn = () => {
 				</div>
 				<ul>
 					<li>
-						<Link to={'./home/Home'} style={{textDecoration: 'none'}}>
+						<Link to={'/learn/LearnIngredient'} style={{textDecoration: 'none'}}>
 							<div className={styles.card}>
 								<h3>Onions</h3>
-								<h4>Chefs May Cry</h4>
+								<h4>This one links to LearnIngredient</h4>
 							</div>
 						</Link>
-						<Link to={'./home/Home'} style={{textDecoration: 'none'}}>
+						<Link to={'/learn/LearnIngredient'} style={{textDecoration: 'none'}}>
 							<div className={styles.card}>
 								<h3>Tomatoes</h3>
 								<h4>Master the fruitgetable</h4>
 							</div>
 						</Link>
-						<Link to={'./home/Home'} style={{textDecoration: 'none'}}>
+						<Link to={'/learn/LearnIngredient'} style={{textDecoration: 'none'}}>
 							<div className={styles.card}>
 								<h3>Onions</h3>
 								<h4>Chefs May Cry</h4>
 							</div>
 						</Link>
-						<Link to={'./home/Home'} style={{textDecoration: 'none'}}>
+						<Link to={'/learn/LearnIngredient'} style={{textDecoration: 'none'}}>
 							<div className={styles.card}>
 								<h3>Tomatoes</h3>
 								<h4>Master the fruitgetable</h4>

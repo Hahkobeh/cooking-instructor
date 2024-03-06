@@ -1,0 +1,31 @@
+@use '../../styles/variables.scss';
+
+div
+{
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+ ul.a
+ {
+    list-style-type: disc;
+    margin-left: 20px;
+ }
+
+ ol.a
+ {
+    list-style-type: decimal;
+    margin-left: 20px;
+ } 
+
+ :global(ul li)
+ {
+    font-size: 26px;
+    margin-top: 8px;
+ }
+
+ :global(ol li)
+ {
+    font-size: 26px;
+    margin-top: 8px;
+ }

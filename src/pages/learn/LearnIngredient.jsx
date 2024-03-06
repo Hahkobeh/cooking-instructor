@@ -10,15 +10,33 @@ const LearnIngredient = () => {
 			<div className={styles.card}>
 				<div>
 					<h1>Taste</h1>
-					<h2>Sweet (white), sour (yellow)</h2>
+					<div style={{display: 'flex'}}>
+						<div style={{alignItems:'center'}}>
+							<h2>Sweet</h2>
+							<progress className={styles.bar} value={0.5}/>
+						</div> 
+						<div>
+							<h2>Sour</h2>
+							<progress className={styles.bar} value={0.3}/>
+						</div>
+					</div>
 				</div>
 				<div>
 					<h1>Texture</h1>
-					<h2>Crunchy (raw), soft (cooked)</h2>
+					<div style={{display: 'flex'}}>
+						<div style={{alignItems:'center'}}>
+							<h2>Crunch (raw)</h2>
+							<progress className={styles.bar} value={1.0}/>
+						</div> 
+						<div>
+							<h2>Soft (cooked)</h2>
+							<progress className={styles.bar} value={0.6}/>
+						</div>
+					</div>
 				</div>
 				<div>
 					<h1>Usage</h1>
-					<h2>Adds texture and flavor. Major supporter to prop other flavors up</h2>
+					<span className={styles.desc}>Adds texture and flavor. Major supporter to prop other flavors up</span>
 				</div>
 				<div>
 					<h1>Alternatives</h1>

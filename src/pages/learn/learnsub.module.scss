@@ -2,11 +2,11 @@
 
 img
 {
-    height: 80px;
-    width: 80px;
+    height: 90px;
+    width: 90px;
     border-radius: 50%;
     border: 1px solid grey;
-    padding: 10px
+    //padding: 10px
 }
 
 div
@@ -19,6 +19,17 @@ div
 {
     margin-right: 8px;
     //margin-left: 8px;
+}
+
+.bar
+{
+    color: #c39bff;
+    width: 70%;
+}
+
+.desc
+{
+    font-size:20px;
 }
 
 .scrollable
@@ -45,7 +56,7 @@ div
  ol.a
  {
     list-style-type: decimal;
-    margin-left: 20px;
+    margin-left: 28px;
  } 
 
  :global(ul li)

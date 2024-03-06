@@ -37,7 +37,7 @@ const Recipe = () => {
 				</h1>
 				<button
 					type = 'button' 
-					style={{backgroundColor:'white', borderWidth:'0px', height:'40px', fontVariationSettings: favorited ? "'FILL' 1" : "'FILL' 0"}}>
+					style={{backgroundColor:'white', borderWidth:'0px', height:'40px', color:"#a56ff7", fontVariationSettings: favorited ? "'FILL' 1" : "'FILL' 0"}}>
 					<span className="material-symbols-outlined" onClick={handleFavoriteClick}>favorite</span>
 				</button>
 			</div>

@@ -7,6 +7,7 @@ import ShoppingList from './shopping-list/ShoppingList';
 import About from './recipe/sub-views/About';
 import Ingredients from './recipe/sub-views/Ingredients';
 import Steps from './recipe/sub-views/Steps';
+import StepDetail from './recipe/sub-views/StepDetail';
 
 export const routerData = [
 	{
@@ -45,6 +46,10 @@ export const routerData = [
 			{
 				path: '/recipe/:recipeId/steps',
 				element: <Steps />,
+			},
+			{
+				path: '/recipe/:recipeId/steps/:stepId',
+				element: <StepDetail />,
 			},
 			{
 				path: '/recipe/:recipeId/ingredients',

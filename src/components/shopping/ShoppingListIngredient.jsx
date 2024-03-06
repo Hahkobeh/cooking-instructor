@@ -20,8 +20,8 @@ const ShoppingListIngredient = ({ ingredient, onToggle }) => {
 				onChange={handleChange}
 			/>
 			<span className={styles['ingredient-name']}>{ingredient.name}</span>
-			<span className={styles['ingredient-quantity']}>
-				{ingredient.quantity}
+			<span className={styles['ingredient-quantity-unit']}>
+				{`${ingredient.quantity} ${ingredient.unit}`}
 			</span>
 		</div>
 	);
@@ -32,6 +32,7 @@ ShoppingListIngredient.propTypes = {
 		name: PropTypes.string.isRequired,
 		quantity: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 			.isRequired,
+		unit: PropTypes.string.isRequired,
 		checked: PropTypes.bool, // Checked property may not initially exist
 	}).isRequired,
 	onToggle: PropTypes.func.isRequired,

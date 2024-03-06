@@ -101,27 +101,40 @@ const staticData = {
 			username: 'Jacob',
 			password: '123',
 			favorites: [1, 3],
+			dietaryRestrictions: [1],
 		},
 		{
 			username: 'Achraf',
 			password: '123',
 			favorites: [2],
+			dietaryRestrictions: [1],
 		},
 		{
 			username: 'Mo',
 			password: '123',
 			favorites: [2],
+			dietaryRestrictions: [1],
 		},
 		{
 			username: 'Colty',
 			password: '123',
 			favorites: [2],
+			dietaryRestrictions: [1],
 		},
 		{
 			username: 'Aidan',
 			password: '123',
 			favorites: [2],
+			dietaryRestrictions: [1],
 		},
+	],
+	dietaryRestrictions: [
+		{ id: 1, label: 'Vegetarian' },
+		{ id: 2, label: 'Vegan' },
+		{ id: 3, label: 'Gluten-Free' },
+		{ id: 4, label: 'Halal' },
+		{ id: 5, label: 'Kosher' },
+		{ id: 6, label: 'Lactose Intolerant' },
 	],
 };
 

@@ -12,6 +12,10 @@ const staticData = {
 			equipment: ['Pan', 'Spatula', 'Bowl'],
 			skills: ['Chopping', 'Sautéing'],
 			image: 'spaghetti.jpg',
+			ratings: {
+				average: 4.5,
+				total: 120,
+			},
 			ingredients: [
 				{ name: 'Pasta', quantity: '2', unit: 'cups' },
 				{ name: 'Pancetta', quantity: '100', unit: 'g' },
@@ -64,6 +68,10 @@ const staticData = {
 			equipment: ['Pot', 'Knife', 'Cutting board'],
 			skills: ['Boiling', 'Simmering'],
 			image: 'cake.jpg',
+			ratings: {
+				average: 3.5,
+				total: 80,
+			},
 			ingredients: [
 				{ name: 'All-purpose Flour', quantity: '3', unit: 'cups' },
 				{ name: 'Granulated Sugar', quantity: '2', unit: 'cups' },
@@ -75,14 +83,43 @@ const staticData = {
 				{ name: 'Vanilla Extract', quantity: '2', unit: 'tsp' },
 			],
 			steps: [
-				'Step 1: Preheat your oven to 350°F (175°C) and grease your baking pan.',
-				'Step 2: Sift together flour, baking powder, and salt.',
-				'Step 3: Cream the butter and sugar until light and fluffy.',
-				'Step 4: Add eggs one at a time, then mix in the vanilla extract.',
-				'Step 5: Gradually add the dry ingredients alternately with milk, starting and ending with the dry ingredients.',
-				'Step 6: Pour the batter into the prepared pan and bake for 30-35 minutes.',
-				'Step 7: Let the cake cool before applying vanilla buttercream frosting.',
-				'Step 8: Decorate as desired and serve.',
+				{
+					number: 1,
+					description:
+						'Preheat your oven to 350°F (175°C) and grease your baking pan.',
+				},
+				{
+					number: 2,
+					description: 'Sift together flour, baking powder, and salt.',
+				},
+				{
+					number: 3,
+					description: 'Cream the butter and sugar until light and fluffy.',
+				},
+				{
+					number: 4,
+					description:
+						'Add eggs one at a time, then mix in the vanilla extract.',
+				},
+				{
+					number: 5,
+					description:
+						'Gradually add the dry ingredients alternately with milk, starting and ending with the dry ingredients.',
+				},
+				{
+					number: 6,
+					description:
+						'Pour the batter into the prepared pan and bake for 30-35 minutes.',
+				},
+				{
+					number: 7,
+					description:
+						'Let the cake cool before applying vanilla buttercream frosting.',
+				},
+				{
+					number: 8,
+					description: 'Decorate as desired and serve.',
+				},
 			],
 		},
 	],

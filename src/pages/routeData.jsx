@@ -2,6 +2,8 @@ import { Navigate } from 'react-router-dom';
 import Account from './account/Account';
 import Home from './home/Home';
 import Learn from './learn/Learn';
+import LearnTechnique from './learn/LearnTechnique';
+import LearnIngredient from './learn/LearnIngredient';
 import Recipe from './recipe/Recipe';
 import ShoppingList from './shopping-list/ShoppingList';
 import About from './recipe/sub-views/About';
@@ -27,6 +29,16 @@ export const routerData = [
 		element: <Learn />,
 		title: 'Learn',
 		icon: 'school',
+	},
+	{
+		path: '/learn/LearnTechnique',
+		element: <LearnTechnique />,
+		title: 'LearnTechnique',
+	},
+	{
+		path: '/learn/LearnIngredient',
+		element: <LearnIngredient />,
+		title: 'LearnIngredient',
 	},
 	{
 		path: '/account',

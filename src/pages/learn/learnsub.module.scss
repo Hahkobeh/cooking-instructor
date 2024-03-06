@@ -1,6 +1,6 @@
 @use '../../styles/variables.scss';
 
-img
+.thumb
 {
     height: 90px;
     width: 90px;
@@ -9,7 +9,7 @@ img
     //padding: 10px
 }
 
-div
+.divL
 {
     margin-top: 8px;
     margin-bottom: 8px;
@@ -47,25 +47,25 @@ div
 	padding: 16px;
 }
 
- ul.a
+ .unlist
  {
     list-style-type: disc;
     margin-left: 20px;
  }
 
- ol.a
+ .list
  {
     list-style-type: decimal;
     margin-left: 28px;
  } 
 
- :global(ul li)
+ .unlistel
  {
     font-size: 26px;
     margin-top: 8px;
  }
 
- :global(ol li)
+ .listel
  {
     font-size: 26px;
     margin-top: 8px;

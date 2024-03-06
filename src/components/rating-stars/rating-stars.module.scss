@@ -1,0 +1,9 @@
+@use '../../styles/variables.scss';
+.rating-container {
+	font-size: 12px;
+	margin: 4px 0px;
+	display: flex;
+	align-items: center;
+	color: variables.$accent;
+	fill: variables.$accent;
+}

@@ -1,3 +1,4 @@
+import RatingForm from '@/components/rating-form/RatingForm';
 import { useRecipes } from '@/context/data/useRecipes';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from './steps.module.scss';
@@ -7,6 +8,11 @@ const Steps = () => {
 	const { recipeId } = useParams(); // get the recipeId from the URL
 	const recipes = useRecipes(); // get recipes from the context
 	const recipe = recipes.find((r) => r.id.toString() === recipeId);
+
+	const handleRatingSubmit = (newRating) => {
+		// eventually will use to update the recipe rating in state/context
+		console.log(`New rating submitted: ${newRating}`);
+	};
 
 	if (!recipe) {
 		return <div>Recipe not found</div>;
@@ -31,6 +37,8 @@ const Steps = () => {
 					<li key={step.number}>{step.description}</li>
 				))}
 			</ol>
+			<h3>Rate this recipe:</h3>
+			<RatingForm onSubmit={handleRatingSubmit} />
 		</div>
 	);
 };

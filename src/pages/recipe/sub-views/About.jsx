@@ -1,3 +1,4 @@
+import RatingStars from '@/components/rating-stars/RatingStars';
 import { useRecipes } from '@/context/data/useRecipes';
 import { useParams } from 'react-router-dom';
 import styles from './about.module.scss';
@@ -13,6 +14,14 @@ const About = () => {
 
 	return (
 		<div className={styles.about}>
+			<h3>Ratings:</h3>
+			<p>
+				<RatingStars
+					average={recipe.ratings.average}
+					total={recipe.ratings.total}
+				/>
+			</p>
+
 			<h3>Description:</h3>
 			<p>{recipe.about}</p>
 			<h3>Ready in:</h3>

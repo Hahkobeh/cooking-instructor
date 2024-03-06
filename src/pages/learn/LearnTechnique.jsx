@@ -2,9 +2,9 @@ import styles from './learnsub.module.scss';
 
 const LearnTechnique = () => {
 	return (
-		<div>
-            <div style={{display: "flex"}}>
-                <img src="/cutting.jpg"></img>
+		<div className={styles.divL}>
+            <div className={styles.divL} style={{display: "flex"}}>
+                <img className={styles.thumb} src="/cutting.jpg"></img>
                 <h1 style={{marginLeft: '20%', marginTop:"10%"}}><span className='accent'>Cutting</span></h1>
             </div>
             <div className={styles.card}>
@@ -14,34 +14,34 @@ const LearnTechnique = () => {
                 </div>
                 <div>
                     <h1>Tools</h1>
-                    <ul className={styles.a}>
-                        <li>
+                    <ul className={styles.unlist}>
+                        <li className={styles.unlistel}>
                             Knife
                         </li>
-                        <li>
+                        <li className={styles.unlistel}>
                             Cutting board
                         </li>
-                        <li>
+                        <li className={styles.unlistel}>
                             Ingredient of your choice!
                         </li>
                     </ul>
                 </div>
                 <div>
                     <h1>Steps</h1>
-                    <ol className={styles.a}>
-                        <li>
+                    <ol className={styles.list}>
+                        <li className={styles.listel}>
                             Use a claw grip to hold on to the item you want to cut
                         </li>
-                        <li>
+                        <li className={styles.listel}>
                             With your dominant hand, keep the knife next to your knuckles
                         </li>
-                        <li>
+                        <li className={styles.listel}>
                             Move the knife down, lift up when finished making your cut
                         </li>
-                        <li>
+                        <li className={styles.listel}>
                             Move the knife to the next part you want to cut
                         </li>
-                        <li>
+                        <li className={styles.listel}>
                             Repeat steps 1-4 until new desired shape is achieved
                         </li>
                     </ol>

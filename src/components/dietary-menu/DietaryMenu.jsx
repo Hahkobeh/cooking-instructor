@@ -9,7 +9,7 @@ const DietaryMenu = () => {
 		<ul className={styles.dietaryMenu}>
 			{dietaryRestrictions.map((r) => (
 				<li key={r.id}>
-					<h3>{r.label}</h3>
+					<p>{r.label}</p>
 					<ToggleSwitch />
 				</li>
 			))}

@@ -28,28 +28,6 @@ const Home = () => {
 						<TagList tags={recipe.tags} />
 					</RecipeCardList.Card>
 				))}
-				{recipes.map((recipe) => (
-					<RecipeCardList.Card
-						key={recipe.id}
-						recipeId={recipe.id}
-						image={recipe.image}
-					>
-						<h3>{recipe.title}</h3>
-						<h4>{recipe.shortDescription}</h4>
-						<TagList tags={recipe.tags} />
-					</RecipeCardList.Card>
-				))}
-				{recipes.map((recipe) => (
-					<RecipeCardList.Card
-						key={recipe.id}
-						recipeId={recipe.id}
-						image={recipe.image}
-					>
-						<h3>{recipe.title}</h3>
-						<h4>{recipe.shortDescription}</h4>
-						<TagList tags={recipe.tags} />
-					</RecipeCardList.Card>
-				))}
 			</RecipeCardList>
 		</div>
 	);

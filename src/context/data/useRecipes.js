@@ -3,5 +3,6 @@ import { DataContext } from './dataContextProvider';
 
 export const useRecipes = () => {
 	const { recipes } = useContext(DataContext);
-	return recipes;
+	// For debugging purposes otherwise just: recipes
+	return [...recipes, ...recipes, ...recipes];
 };

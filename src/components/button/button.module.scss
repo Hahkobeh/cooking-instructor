@@ -1,7 +1,6 @@
 @use '../../styles/variables.scss';
 
 .button {
-	font-weight: 800;
 	width: 100px;
 	padding: 8px;
 	margin: 8px 0;
@@ -11,17 +10,16 @@
 	border: none;
 	cursor: pointer;
 	transition: scale 50ms ease-in-out;
+	font-weight: 700;
+	color: variables.$black;
+	background-color: variables.$white;
 	&:hover {
 		scale: 1.05;
 	}
 }
 
-.grey {
-	color: variables.$black;
-	background-color: variables.$grey;
-}
-
 .pink {
-	color: variables.$white;
+	font-weight: 700;
+	color: variables.$black;
 	background-color: variables.$accent;
 }

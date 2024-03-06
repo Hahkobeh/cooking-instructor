@@ -1,16 +1,18 @@
 import RecipeCardList from '@/components/recipe-card-list/RecipeCardList';
 import TagList from '@/components/tag-list/TagList';
 import { useRecipes } from '@/context/data/useRecipes';
+import { useUser } from '@/context/user/useUser';
 import styles from './home.module.scss';
 
 const Home = () => {
 	const recipes = useRecipes();
+	const { user } = useUser();
 
 	console.log(recipes[0]);
 	return (
 		<div id={styles.home}>
 			<h1 className={styles.title}>
-				Welcome, <span className="accent">Jacob</span>
+				Welcome, <span className="accent">{user.username}</span>
 			</h1>
 			<h3>Let&apos;s find you something to cook!</h3>
 			<br />

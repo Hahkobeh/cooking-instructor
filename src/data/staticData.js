@@ -93,12 +93,27 @@ const staticData = {
 	],
 	users: [
 		{
-			username: 'jacob',
+			username: 'Jacob',
 			password: '123',
 			favorites: [1, 3],
 		},
 		{
-			username: 'john',
+			username: 'Achraf',
+			password: '123',
+			favorites: [2],
+		},
+		{
+			username: 'Mo',
+			password: '123',
+			favorites: [2],
+		},
+		{
+			username: 'Colty',
+			password: '123',
+			favorites: [2],
+		},
+		{
+			username: 'Aidan',
 			password: '123',
 			favorites: [2],
 		},

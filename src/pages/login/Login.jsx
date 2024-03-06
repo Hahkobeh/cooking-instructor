@@ -9,8 +9,6 @@ import styles from './login.module.scss';
 
 const Login = () => {
 	const [isLogin, setIsLogin] = useState(true);
-	const [username, setUsername] = useState('');
-	const [password, setPassword] = useState('');
 
 	const users = useUsers();
 	const { setUser } = useUser();
@@ -18,11 +16,11 @@ const Login = () => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
-	} = useForm();
+		formState: { isValid, errors, dirtyFields },
+	} = useForm({ defaultValues: { username: '', password: '' } });
 
 	const onSubmit = ({ username, password }) => {
-		if (isLogin) {
+		if (isLogin && isValid) {
 			const foundUser = users.find(
 				(user) => user.username.toLowerCase() === username.toLowerCase()
 			);
@@ -34,6 +32,7 @@ const Login = () => {
 		}
 	};
 
+	console.log(dirtyFields);
 	return (
 		<>
 			<PhoneStatus />
@@ -45,8 +44,10 @@ const Login = () => {
 				<br />
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<input
-						className={'textInput' + (username ? ' hasValue' : '')}
-						onChange={(e) => setUsername(e.target.value)}
+						className={
+							'textInput' + (dirtyFields['username'] ? ' hasValue' : '')
+						}
+						// onChange={func}
 						placeholder="username"
 						{...register('username', { required: true })}
 					/>
@@ -54,8 +55,10 @@ const Login = () => {
 						{errors.username ? 'This field is required' : '‎'}
 					</span>
 					<input
-						className={'textInput' + (password ? ' hasValue' : '')}
-						onChange={(e) => setPassword(e.target.value)}
+						className={
+							'textInput' + (dirtyFields['password'] ? ' hasValue' : '')
+						}
+						// onChange={(e) => setPassword(e.target.value)}
 						placeholder="password"
 						{...register('password', { required: true })}
 					/>

@@ -3,4 +3,22 @@
 .account {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+
+	.picture {
+		margin: auto;
+		margin-top: 16px;
+		font-size: 6rem;
+	}
+
+	h4 {
+		color: variables.$accent;
+		margin: auto;
+		cursor: pointer;
+	}
+
+	.button {
+		margin: auto;
+		margin-top: 16px;
+	}
 }

@@ -1,7 +1,7 @@
 @use '../../styles/variables.scss';
 
 .button {
-	width: 100px;
+	min-width: 100px;
 	padding: 8px;
 	margin: 8px 0;
 	text-align: center;
@@ -9,12 +9,23 @@
 	box-shadow: variables.$shadow;
 	border: none;
 	cursor: pointer;
-	transition: scale 50ms ease-in-out;
+	transition:
+		scale 50ms ease-in-out,
+		background-color 20ms ease-in,
+		tranform 20ms ease-in;
 	font-weight: 700;
 	color: variables.$black;
 	background-color: variables.$white;
 	&:hover {
 		scale: 1.05;
+	}
+
+	&:active {
+		background-color: darken(
+			variables.$accent,
+			10%
+		); // Darken the button color on click
+		transform: scale(95%); // Slightly decrease size when clicked
 	}
 }
 

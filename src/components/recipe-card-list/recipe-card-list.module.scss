@@ -22,7 +22,7 @@
 	transition: scale 40ms ease-in-out;
 
 	&:hover {
-		scale: 1.02;
+		scale: 1.015;
 	}
 
 	> div {
@@ -55,4 +55,7 @@
 	justify-content: left;
 	gap: 12px;
 	width: max-content;
+	a {
+		padding: 8px 12px;
+	}
 }

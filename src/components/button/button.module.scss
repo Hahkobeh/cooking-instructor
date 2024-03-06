@@ -1,0 +1,27 @@
+@use '../../styles/variables.scss';
+
+.button {
+	font-weight: 800;
+	width: 100px;
+	padding: 8px;
+	margin: 8px 0;
+	text-align: center;
+	border-radius: variables.$border-radius;
+	box-shadow: variables.$shadow;
+	border: none;
+	cursor: pointer;
+	transition: scale 50ms ease-in-out;
+	&:hover {
+		scale: 1.05;
+	}
+}
+
+.grey {
+	color: variables.$black;
+	background-color: variables.$grey;
+}
+
+.pink {
+	color: variables.$white;
+	background-color: variables.$accent;
+}

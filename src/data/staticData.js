@@ -91,6 +91,18 @@ const staticData = {
 			icon: 'microwave',
 		},
 	],
+	users: [
+		{
+			username: 'jacob',
+			password: '123',
+			favorites: [1, 3],
+		},
+		{
+			username: 'john',
+			password: '123',
+			favorites: [2],
+		},
+	],
 };
 
 export default staticData;

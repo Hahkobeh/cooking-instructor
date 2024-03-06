@@ -1,8 +1,9 @@
+import Button from '@/components/button/Button';
+import ToggleSwitch from '@/components/toggle/ToggleSwitch';
+import { useRecipes } from '@/context/data/useRecipes';
 import { useState } from 'react';
 import ShoppingListRecipe from '../../components/shopping/ShoppingListRecipe';
-import ToggleSwitch from '@/components/toggle/ToggleSwitch';
 import styles from './shopping-list.module.scss';
-import { useRecipes } from '@/context/data/useRecipes';
 
 const ShoppingList = () => {
 	const recipes = useRecipes();
@@ -34,10 +35,9 @@ const ShoppingList = () => {
 	return (
 		<div id={styles['shopping-list']}>
 			<div className={styles['header-container']}>
-				<h1>Shopping List</h1>
+				<Button className={styles['add-item-button']}>Add Ingredients</Button>
 				<ToggleSwitch label1="Total" label2="Recipe" />
 			</div>
-			<button className={styles['add-item-button']}> + Add To List </button>
 
 			<ShoppingListRecipe
 				recipes={recipesState} // use recipesState here

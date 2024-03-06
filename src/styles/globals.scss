@@ -234,11 +234,11 @@ a {
 	box-shadow: variables.$shadow;
 	border: none;
 	cursor: pointer;
-	transition: scale 50ms ease-in-out;
 
 	&.hasValue {
 		font-weight: 500;
 		color: variables.$black;
+		background-color: variables.$light-grey;
 	}
 }
 

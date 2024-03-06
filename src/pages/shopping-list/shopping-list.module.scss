@@ -1,0 +1,44 @@
+@use '../../styles/variables.scss';
+
+#shopping-list {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin: 0; // Resets margin
+	padding: 0; // Resets padding
+}
+
+.header-container {
+	display: flex;
+	align-items: center; // Align items vertically in the center
+	justify-content: space-between; // Pushes the header to the left and toggle to the right
+	padding: 10px;
+}
+
+.add-item-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: variables.$accent;
+	color: #ffffff;
+	text-align: center;
+	padding: 10px 20px;
+	margin-top: 20px;
+	border-radius: 20px; // Fully rounded ends
+	font-size: 16px;
+	font-weight: bold;
+	border: none;
+	cursor: pointer;
+	transition:
+		background-color 0.3s,
+		transform 0.2s; // Transition for changing color
+
+	// Pseudo-class representing button being pressed
+	&:active {
+		background-color: darken(
+			variables.$accent,
+			10%
+		); // Darken the button color on click
+		transform: scale(95%); // Slightly decrease size when clicked
+	}
+}

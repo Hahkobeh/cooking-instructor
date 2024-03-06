@@ -1,0 +1,49 @@
+@use '../../styles/variables.scss';
+
+// Variables for repeated values
+$border-color: #555;
+$fill-color: #555;
+$circle-size: 20px;
+$circle-border: 2px solid $border-color;
+$transition-duration: 0.2s;
+
+.custom-checkbox {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.hidden-checkbox {
+	display: none; // Hide the actual checkbox
+}
+
+// Outer circle
+.checkbox-circle {
+	height: $circle-size;
+	width: $circle-size;
+	border-radius: 50%;
+	border: $circle-border;
+	display: inline-block;
+	margin-right: 10px;
+	position: relative; // Allows for positioning of child elements
+
+	// Inner circle
+	&:after {
+		content: '';
+		position: absolute;
+		// Move top-left corner to the center of outer circle
+		top: 50%;
+		left: 50%;
+		// Move top-left corner back by half its own width and height to center it
+		transform: translate(-50%, -50%) scale(0); // Hide the inner circle
+		transition: transform $transition-duration ease;
+		width: 60%;
+		height: 60%;
+		border-radius: 50%;
+		background-color: $fill-color;
+	}
+}
+
+// If checkbox is in checked state, change style to make inner circle visible
+.hidden-checkbox:checked + .checkbox-circle:after {
+	transform: translate(-50%, -50%) scale(1); // Expand the inner circle when checked
+}

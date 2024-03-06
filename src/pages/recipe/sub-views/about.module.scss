@@ -1,0 +1,50 @@
+@use '../../../styles/variables.scss';
+
+.about {
+	display: flex;
+	flex-direction: column;
+	background: variables.$white;
+	padding: 20px;
+	border-radius: variables.$border-radius;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	margin: 20px auto;
+
+	h3 {
+		font-size: 20px;
+		font-weight: bold;
+		color: variables.$accent;
+		margin-bottom: 10px;
+		border-bottom: 2px solid #eee;
+		padding-bottom: 5px;
+	}
+
+	p {
+		margin-bottom: 20px;
+	}
+
+	p,
+	li {
+		font-size: 16px;
+		line-height: 1.6;
+		color: variables.$black;
+	}
+
+	ul {
+		list-style: none;
+		padding-bottom: 20px;
+
+		li {
+			padding-left: 20px;
+			position: relative;
+
+			&:before {
+				content: '•';
+				color: variables.$accent;
+				font-weight: bold;
+				display: inline-block;
+				width: 16px;
+				margin-left: -20px; // pull the bullet outside the content, left
+			}
+		}
+	}
+}

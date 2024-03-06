@@ -1,0 +1,18 @@
+@use '../../styles/variables.scss';
+.navBar {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+}
+
+.navItem {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-decoration: none; // removes underline from links
+	font-size: 16px;
+
+	&.active {
+		color: variables.$accent;
+	}
+}

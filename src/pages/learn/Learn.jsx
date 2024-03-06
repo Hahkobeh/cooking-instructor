@@ -19,7 +19,7 @@ const Learn = () => {
 					<Link to={'/learn/LearnTechnique'} style={{textDecoration: 'none'}}>
 						<div className={styles.card}>
 							<h3>Sous Vide</h3>
-							<h4>This one links to LearnTechnique</h4>
+							<h4>Cook food to perfection - using water</h4>
 						</div>
 					</Link>
 					<Link to={'/learn/LearnTechnique'} style={{textDecoration: 'none'}}>
@@ -51,7 +51,7 @@ const Learn = () => {
 						<Link to={'/learn/LearnIngredient'} style={{textDecoration: 'none'}}>
 							<div className={styles.card}>
 								<h3>Onions</h3>
-								<h4>This one links to LearnIngredient</h4>
+								<h4>Chefs May Cry</h4>
 							</div>
 						</Link>
 						<Link to={'/learn/LearnIngredient'} style={{textDecoration: 'none'}}>

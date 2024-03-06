@@ -8,7 +8,6 @@ const Home = () => {
 	const recipes = useRecipes();
 	const { user } = useUser();
 
-	console.log(recipes[0]);
 	return (
 		<div id={styles.home}>
 			<h1 className={styles.title}>
@@ -19,21 +18,33 @@ const Home = () => {
 			<h2>Search bar here</h2>
 			<RecipeCardList>
 				{recipes.map((recipe) => (
-					<RecipeCardList.Card key={recipe.id} image={recipe.image}>
+					<RecipeCardList.Card
+						key={recipe.id}
+						recipeId={recipe.id}
+						image={recipe.image}
+					>
 						<h3>{recipe.title}</h3>
 						<h4>{recipe.shortDescription}</h4>
 						<TagList tags={recipe.tags} />
 					</RecipeCardList.Card>
 				))}
 				{recipes.map((recipe) => (
-					<RecipeCardList.Card key={recipe.id} image={recipe.image}>
+					<RecipeCardList.Card
+						key={recipe.id}
+						recipeId={recipe.id}
+						image={recipe.image}
+					>
 						<h3>{recipe.title}</h3>
 						<h4>{recipe.shortDescription}</h4>
 						<TagList tags={recipe.tags} />
 					</RecipeCardList.Card>
 				))}
 				{recipes.map((recipe) => (
-					<RecipeCardList.Card key={recipe.id} image={recipe.image}>
+					<RecipeCardList.Card
+						key={recipe.id}
+						recipeId={recipe.id}
+						image={recipe.image}
+					>
 						<h3>{recipe.title}</h3>
 						<h4>{recipe.shortDescription}</h4>
 						<TagList tags={recipe.tags} />

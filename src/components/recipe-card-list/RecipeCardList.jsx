@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './recipe-card-list.module.scss';
 
@@ -9,18 +10,20 @@ RecipeCardList.propTypes = {
 	children: PropTypes.node.isRequired,
 };
 
-const RecipeCard = ({ children, image }) => {
+const RecipeCard = ({ children, image, recipeId }) => {
 	return (
-		<div className={styles.recipeCard}>
+		<Link to={`/recipe/${recipeId}/about`} className={styles.recipeCard}>
 			<div>{children}</div>
 			<img src={image} alt="image of food" className={styles.image} />
-		</div>
+		</Link>
 	);
 };
 
 RecipeCard.propTypes = {
 	children: PropTypes.node.isRequired,
 	image: PropTypes.string,
+	recipeId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
 };
 
 RecipeCardList.Card = RecipeCard;

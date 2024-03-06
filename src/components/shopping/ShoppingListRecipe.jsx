@@ -25,7 +25,7 @@ const ShoppingListRecipe = ({ recipes, onIngredientToggle }) => {
 						className={`${styles['recipe-title']} ${dropdownsOpen[recipe.id] ? styles['rotate'] : ''}`}
 						onClick={() => toggleDropdown(recipe.id)}
 					>
-						{recipe.name}
+						{recipe.title}
 					</h3>
 					{dropdownsOpen[recipe.id] && (
 						<ul>
@@ -52,7 +52,7 @@ ShoppingListRecipe.propTypes = {
 	recipes: PropTypes.arrayOf(
 		PropTypes.shape({
 			id: PropTypes.number.isRequired,
-			name: PropTypes.string.isRequired,
+			title: PropTypes.string.isRequired,
 			ingredients: PropTypes.arrayOf(
 				PropTypes.shape({
 					name: PropTypes.string.isRequired,

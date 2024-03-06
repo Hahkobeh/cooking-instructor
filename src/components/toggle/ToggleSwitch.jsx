@@ -30,7 +30,7 @@ const ToggleSwitch = () => {
 };
 
 ToggleSwitch.propTypes = {
-	label: PropTypes.string.isRequired,
+	label: PropTypes.string,
 };
 
 export default ToggleSwitch;

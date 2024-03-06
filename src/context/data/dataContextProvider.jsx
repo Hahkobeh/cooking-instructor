@@ -15,9 +15,12 @@ const DataContextProvider = ({ children }) => {
 			path: recipe.title.replace(/\s+/g, '-').toLocaleLowerCase(),
 		}))
 	);
+	const [users] = useState(
+		staticData.users
+	);
 
 	return (
-		<DataContext.Provider value={{ recipes, tags }}>
+		<DataContext.Provider value={{ recipes, tags, users }}>
 			{children}
 		</DataContext.Provider>
 	);

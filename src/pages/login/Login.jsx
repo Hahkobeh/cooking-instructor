@@ -1,6 +1,8 @@
 import Button from '@/components/button/Button';
+import DietaryMenu from '@/components/dietary-menu/DietaryMenu';
 import PhoneStatus from '@/components/phone-status/PhoneStatus';
-import TextInput from '@/components/text-input/TextInput';
+import { useUsers } from '@/context/data/useUsers';
+import { useUser } from '@/context/user/useUser';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styles from './login.module.scss';
@@ -8,7 +10,10 @@ import styles from './login.module.scss';
 const Login = () => {
 	const [isLogin, setIsLogin] = useState(true);
 	const [username, setUsername] = useState('');
-	// const [password, setPassword] = useState('')
+	const [password, setPassword] = useState('');
+
+	const users = useUsers();
+	const { setUser } = useUser();
 
 	const {
 		register,
@@ -16,25 +21,48 @@ const Login = () => {
 		formState: { errors },
 	} = useForm();
 
-	const onSubmit = (data) => console.log(data);
+	const onSubmit = ({ username, password }) => {
+		if (isLogin) {
+			const foundUser = users.find(
+				(user) => user.username.toLowerCase() === username.toLowerCase()
+			);
+			if (foundUser.password === password) {
+				setUser(foundUser);
+			}
+		} else {
+			console.log('not implemented');
+		}
+	};
 
 	return (
 		<>
 			<PhoneStatus />
 			<main className={styles.login}>
+				<h3>Welcome to</h3>
+				<h1>
+					<span className="accent">Pocket Chef!</span>
+				</h1>
+				<br />
 				<form onSubmit={handleSubmit(onSubmit)}>
-					<TextInput
-						text={username}
-						setText={setUsername}
+					<input
+						className={'textInput' + (username ? ' hasValue' : '')}
+						onChange={(e) => setUsername(e.target.value)}
 						placeholder="username"
 						{...register('username', { required: true })}
 					/>
-					{errors.username && <span>This field is required</span>}
+					<span className="error">
+						{errors.username ? 'This field is required' : '‎'}
+					</span>
 					<input
+						className={'textInput' + (password ? ' hasValue' : '')}
+						onChange={(e) => setPassword(e.target.value)}
 						placeholder="password"
 						{...register('password', { required: true })}
 					/>
-					{errors.password && <span>This field is required</span>}
+					<span className="error">
+						{errors.password ? 'This field is required' : '‎'}
+					</span>
+					{!isLogin && <DietaryMenu />}
 					<div>
 						<Button func={() => setIsLogin(!isLogin)}>
 							{isLogin ? 'Sign Up' : 'Login'}

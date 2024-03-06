@@ -5,7 +5,7 @@ const Button = ({ children, func, accent, submit, ...rest }) => {
 	return (
 		<input
 			className={`${styles.button} ${accent ? styles.pink : styles.grey}`}
-			onClick={() => func()}
+			onClick={func && (() => func())}
 			type={submit ? 'submit' : 'button'}
 			value={children}
 			{...rest}

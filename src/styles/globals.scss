@@ -219,3 +219,25 @@ p {
 a {
 	color: black;
 }
+
+.textInput {
+	font-weight: 300;
+	width: 100%;
+	padding: 8px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border-radius: variables.$border-radius;
+	box-shadow: variables.$shadow;
+	border: none;
+	cursor: pointer;
+	transition: scale 50ms ease-in-out;
+
+	&.hasValue {
+		font-weight: 500;
+		background-color: variables.$accent;
+	}
+}
+
+.error {
+	color: red;
+}

@@ -7,11 +7,21 @@
 	margin: auto;
 
 	form {
+		position: relative;
 		display: flex;
 		flex-direction: column;
-		height: 500px;
-		> input
+		> input {
+			margin-bottom: 24px;
+		}
+
+		> span {
+			position: relative;
+			top: -12px;
+			margin-bottom: -12px;
+		}
+
 		> div {
+			margin-top: 8px;
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;

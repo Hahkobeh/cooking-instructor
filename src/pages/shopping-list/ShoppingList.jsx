@@ -35,7 +35,7 @@ const ShoppingList = () => {
 	return (
 		<div id={styles['shopping-list']}>
 			<div className={styles['header-container']}>
-				<Button className={styles['add-item-button']}>Add Ingredients</Button>
+				<Button accent>Add Ingredients</Button>
 				<ToggleSwitch label1="Total" label2="Recipe" />
 			</div>
 

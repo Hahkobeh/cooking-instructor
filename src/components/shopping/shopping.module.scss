@@ -6,7 +6,7 @@
 	box-sizing: border-box;
 	box-shadow: variables.$shadow;
 	border-radius: variables.$border-radius;
-	padding: 15px;
+	padding: 8px 12px;
 }
 
 .recipe-title {
@@ -31,8 +31,11 @@
 	}
 }
 
+.ingredient-list {
+	margin-top: 8px;
+}
+
 .ingredient-item {
-	padding: 10px 0;
 	border-bottom: 1px solid #eee;
 	display: flex;
 	align-items: center;
@@ -44,13 +47,8 @@
 	margin: 8px;
 }
 
-.ingredient-quantity-unit {
-	font-weight: bold;
-	color: variables.$accent;
-}
-
 // Different text style for checked ingredients
 .checked-ingredient {
 	text-decoration: line-through;
-	color: #999;
+	color: variables.$grey;
 }

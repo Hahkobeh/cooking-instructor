@@ -28,9 +28,9 @@
 
 .accent {
 	font-weight: 700;
-	color: variables.$black;
+	color: variables.$white;
 	background-color: variables.$accent;
 	&:active {
-		background-color: darken(variables.$accent, 10%);
+		background-color: darken(variables.$accent, 10%) !important;
 	}
 }

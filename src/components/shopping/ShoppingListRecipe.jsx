@@ -28,7 +28,7 @@ const ShoppingListRecipe = ({ recipes, onIngredientToggle }) => {
 						{recipe.title}
 					</h3>
 					{dropdownsOpen[recipe.id] && (
-						<ul>
+						<ul className={styles['ingredient-list']}>
 							{/* Iterate over the ingredients of the current recipe, rendering a list item for each */}
 							{recipe.ingredients.map((ingredient, index) => (
 								<li key={index}>

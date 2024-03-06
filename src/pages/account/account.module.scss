@@ -1,0 +1,30 @@
+@use '../../styles/variables.scss';
+
+.account {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	.picture {
+		margin: auto;
+		margin-top: 16px;
+		font-size: 6rem;
+	}
+
+	.pictureSubtitle {
+		color: variables.$accent;
+		margin: auto;
+		cursor: pointer;
+	}
+
+
+	.buttons {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 8px;
+		span {
+			font-size: 1.3rem;
+		}
+	}
+}

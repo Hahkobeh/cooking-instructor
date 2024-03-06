@@ -1,0 +1,26 @@
+@use '../../styles/variables.scss';
+
+.searchBar {
+	display: flex;
+	font-weight: 300;
+	width: 100%;
+	padding: 8px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border-radius: variables.$border-radius;
+	box-shadow: variables.$shadow;
+	border: none;
+	cursor: pointer;
+
+	&.hasValue {
+		font-weight: 500;
+		color: variables.$black;
+		background-color: variables.$light-grey;
+	}
+
+	input {
+		all: unset;
+		flex: 1;
+		padding-left: 4px;
+	}
+}

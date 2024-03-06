@@ -19,10 +19,8 @@ const ShoppingListIngredient = ({ ingredient, onToggle }) => {
 				checked={ingredient.checked || false} // Ensure this prop always has boolean value
 				onChange={handleChange}
 			/>
-			<span className={styles['ingredient-name']}>{ingredient.name}</span>
-			<span className={styles['ingredient-quantity-unit']}>
-				{`${ingredient.quantity} ${ingredient.unit}`}
-			</span>
+			<p className={styles['ingredient-name']}>{ingredient.name}</p>
+			<h4>{`${ingredient.quantity} ${ingredient.unit}`}</h4>
 		</div>
 	);
 };

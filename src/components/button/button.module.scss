@@ -1,0 +1,36 @@
+@use '../../styles/variables.scss';
+
+.button {
+	min-width: 100px;
+	padding: 8px 10px;
+	margin: 8px 0;
+	text-align: center;
+	border-radius: variables.$border-radius;
+	box-shadow: variables.$shadow;
+	border: none;
+	cursor: pointer;
+	transition:
+		scale 50ms ease-in-out,
+		background-color 20ms ease-in,
+		tranform 20ms ease-in;
+	font-weight: 700;
+	color: variables.$black;
+	background-color: variables.$white;
+	&:hover {
+		scale: 1.05;
+	}
+
+	&:active {
+		background-color: darken(variables.$white, 10%);
+		transform: scale(95%);
+	}
+}
+
+.accent {
+	font-weight: 700;
+	color: variables.$white;
+	background-color: variables.$accent;
+	&:active {
+		background-color: darken(variables.$accent, 10%) !important;
+	}
+}

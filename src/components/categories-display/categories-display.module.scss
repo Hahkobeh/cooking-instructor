@@ -1,0 +1,41 @@
+@use '../../styles/variables.scss';
+
+.categories-container {
+	display: flex;
+	flex-direction: row;
+	gap: 20px; // spacing between each category card
+	padding: 20px 2px;
+	overflow-x: auto; // allow for horizontal scrolling
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+
+	&::-webkit-scrollbar {
+		display: none; /* Chrome, Safari, Opera */
+	}
+}
+
+.category-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-width: 80px;
+	padding: 10px;
+	background-color: variables.$white;
+	color: variables.$black;
+	border-radius: variables.$border-radius;
+	text-decoration: none; // remove underline from link (eventually will use as link)
+	box-shadow: variables.$shadow;
+	cursor: pointer;
+	transition: transform 0.3s ease; // transition for hover
+
+	&:hover {
+		transform: scale(1.05); //  increase size on hover
+	}
+
+	.category-name {
+		font-size: 12px;
+		font-weight: bold;
+		text-align: center;
+	}
+}

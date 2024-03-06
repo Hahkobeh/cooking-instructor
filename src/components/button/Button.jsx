@@ -4,7 +4,7 @@ import styles from './button.module.scss';
 const Button = ({ children, func, accent, submit, className, ...rest }) => {
 	return (
 		<input
-			className={`${styles.button} ${accent ? styles.pink : styles.grey} ${className}`}
+			className={`${styles.button} ${accent ? styles.accent : styles.grey} ${className}`}
 			onClick={func && (() => func())}
 			type={submit ? 'submit' : 'button'}
 			value={children}

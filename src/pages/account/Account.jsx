@@ -49,9 +49,14 @@ const Account = () => {
 			<br />
 			<h3>Manage dietary needs</h3>
 			<DietaryMenu />
-			<Button func={logout} className={styles.button}>
-				Log out
-			</Button>
+			<div className={styles.buttons}>
+				<Button className={styles.button}>
+					Watch Tutorial
+				</Button>
+				<Button func={logout} className={styles.button}>
+					Log out
+				</Button>
+			</div>
 		</div>
 	);
 };

@@ -17,8 +17,14 @@
 		cursor: pointer;
 	}
 
-	.button {
-		margin: auto;
-		margin-top: 16px;
+
+	.buttons {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 8px;
+		span {
+			font-size: 1.3rem;
+		}
 	}
 }

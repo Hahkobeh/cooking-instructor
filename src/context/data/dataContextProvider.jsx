@@ -6,6 +6,7 @@ export const DataContext = createContext();
 
 const DataContextProvider = ({ children }) => {
 	const [tags] = useState(staticData.tags);
+	const [categories] = useState(staticData.categories);
 	const [recipes] = useState(
 		staticData.recipes.map((recipe) => ({
 			...recipe,
@@ -19,7 +20,9 @@ const DataContextProvider = ({ children }) => {
 	const [dietaryRestrictions] = useState(staticData.dietaryRestrictions);
 
 	return (
-		<DataContext.Provider value={{ recipes, tags, users, dietaryRestrictions }}>
+		<DataContext.Provider
+			value={{ recipes, tags, categories, users, dietaryRestrictions }}
+		>
 			{children}
 		</DataContext.Provider>
 	);

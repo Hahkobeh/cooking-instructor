@@ -96,6 +96,22 @@ const staticData = {
 		{ id: 7, value: 'barbecue', icon: 'outdoor_grill' },
 		{ id: 8, value: 'fast', icon: 'microwave' },
 	],
+	categories: [
+		{ id: 1, name: 'Italian', icon: 'local_pizza' },
+		{ id: 2, name: 'Desserts', icon: 'cake' },
+		{ id: 3, name: 'Quick Meals', icon: 'schedule' },
+		{ id: 4, name: 'Vegetarian', icon: 'spa' },
+		{ id: 5, name: 'Vegan', icon: 'grass' },
+		{ id: 6, name: 'Gluten-Free', icon: 'no_food' },
+		{ id: 7, name: 'Breakfast', icon: 'free_breakfast' },
+		{ id: 8, name: 'Asian Cuisine', icon: 'rice_bowl' },
+		{ id: 9, name: 'Mexican', icon: 'local_dining' },
+		{ id: 10, name: 'Easy', icon: 'thumb_up' },
+		{ id: 11, name: 'Healthy', icon: 'favorite' },
+		{ id: 13, name: 'Nut-Free', icon: 'no_meals' },
+		{ id: 15, name: 'Low Carb', icon: 'fitness_center' },
+	],
+
 	users: [
 		{
 			username: 'Jacob',

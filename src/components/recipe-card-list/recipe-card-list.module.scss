@@ -13,7 +13,6 @@
 	justify-content: space-between;
 	align-items: center;
 	gap: 4px;
-	width: 100%;
 	box-sizing: border-box;
 	box-shadow: variables.$shadow;
 	border-radius: 10px;
@@ -23,7 +22,7 @@
 	transition: scale 40ms ease-in-out;
 
 	&:hover {
-		scale: 1.02;
+		scale: 1.015;
 	}
 
 	> div {
@@ -35,5 +34,28 @@
 		aspect-ratio: 1;
 		max-width: 60px;
 		border-radius: 50%;
+	}
+}
+.recipeCardListHorizontalWrapper {
+	width: 100%;
+	margin: 0 -20px -20px;
+	padding: 8px 20px 20px;
+	overflow-x: auto;
+
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.recipeCardListHorizontal {
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+	gap: 12px;
+	width: max-content;
+	a {
+		padding: 8px 12px;
 	}
 }

@@ -89,7 +89,8 @@ summary,
 time,
 mark,
 audio,
-video {
+video,
+input {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -137,7 +138,7 @@ table {
 //END OF RESET
 
 html {
-	font-family: variables.$font;
+	font-family: variables.$font !important;
 	background-color: rgb(209, 209, 209);
 	width: 100vw;
 	height: 100vh;
@@ -159,36 +160,6 @@ body {
 #root {
 	width: 100%;
 	height: 100%;
-}
-
-header {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-	background-color: variables.$white;
-	padding: 0 20px;
-	box-sizing: border-box;
-	border-radius: 20px 20px 0 0;
-	height: 24px;
-
-	p {
-		font-weight: 700;
-		font-size: 0.8rem;
-	}
-
-	div {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		gap: 3px;
-
-		.material-symbols-outlined {
-			font-size: 1.05rem;
-			margin-bottom: 0.5px;
-		}
-	}
 }
 
 main {
@@ -245,6 +216,32 @@ p {
 	color: variables.$accent;
 }
 
+.italic {
+	font-style: italic;
+}
+
 a {
 	color: black;
+}
+
+.textInput {
+	font-weight: 300;
+	width: 100%;
+	padding: 8px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border-radius: variables.$border-radius;
+	box-shadow: variables.$shadow;
+	border: none;
+	cursor: pointer;
+
+	&.hasValue {
+		font-weight: 500;
+		color: variables.$black;
+		background-color: variables.$light-grey;
+	}
+}
+
+.error {
+	color: red;
 }

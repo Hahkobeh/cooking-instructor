@@ -1,6 +1,6 @@
-import staticData from '../../data/staticData';
 import PropTypes from 'prop-types';
 import { createContext, useState } from 'react';
+import staticData from '../../data/staticData';
 
 export const DataContext = createContext();
 
@@ -15,9 +15,11 @@ const DataContextProvider = ({ children }) => {
 			path: recipe.title.replace(/\s+/g, '-').toLocaleLowerCase(),
 		}))
 	);
+	const [users] = useState(staticData.users);
+	const [dietaryRestrictions] = useState(staticData.dietaryRestrictions);
 
 	return (
-		<DataContext.Provider value={{ recipes, tags }}>
+		<DataContext.Provider value={{ recipes, tags, users, dietaryRestrictions }}>
 			{children}
 		</DataContext.Provider>
 	);

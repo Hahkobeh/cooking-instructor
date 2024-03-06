@@ -1,9 +1,39 @@
 @use '../../styles/variables.scss';
 
+img
+{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    border: 1px solid grey;
+    padding: 10px
+}
+
 div
 {
     margin-top: 8px;
     margin-bottom: 8px;
+}
+
+.alt
+{
+    margin-right: 8px;
+    //margin-left: 8px;
+}
+
+.scrollable
+{
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.card {
+	width: 100%;
+	margin: 8px auto;
+	box-sizing: border-box;
+	box-shadow: variables.$shadow;
+	border-radius: 10px;
+	padding: 16px;
 }
 
  ul.a

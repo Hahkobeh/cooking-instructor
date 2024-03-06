@@ -1,0 +1,71 @@
+@use '../../../styles/variables.scss';
+
+.ingredients-container {
+	display: flex;
+	flex-direction: column;
+	background: variables.$white;
+	padding: 20px;
+	border-radius: variables.$border-radius;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	margin: 20px auto;
+}
+
+.serving-size-controls {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 20px;
+
+	button {
+		border: none;
+		background-color: variables.$accent;
+		color: variables.$white;
+		font-size: 14px;
+		padding: 5px 10px;
+		cursor: pointer;
+		border-radius: variables.$border-radius;
+
+		&:hover {
+			background-color: darken(variables.$accent, 10%);
+		}
+
+		&:disabled {
+			background-color: lighten(variables.$accent, 20%);
+			cursor: not-allowed;
+		}
+	}
+
+	span {
+		font-size: 16px;
+		font-weight: bold;
+		color: variables.$black;
+		margin: 0 10px;
+	}
+}
+
+.add-to-list-button {
+	align-items: center;
+	justify-content: center;
+	background-color: variables.$accent;
+	color: #ffffff;
+	text-align: center;
+	padding: 10px 20px;
+	margin-top: 20px;
+	border-radius: 20px;
+	font-size: 16px;
+	font-weight: bold;
+	border: none;
+	cursor: pointer;
+	transition:
+		background-color 0.3s,
+		transform 0.2s; // transition for changing color
+
+	// pseudo-class representing button being pressed
+	&:active {
+		background-color: darken(
+			variables.$accent,
+			10%
+		); // darken the button color on click
+		transform: scale(95%); // slightly decrease size when clicked
+	}
+}

@@ -52,6 +52,7 @@ const Ingredients = () => {
 				label2="Alternative"
 				onToggle={handleToggleChange}
 			/>
+
 			<ul>
 				{ingredients.map((ingredient, index) => (
 					<li key={index}>
@@ -62,6 +63,7 @@ const Ingredients = () => {
 					</li>
 				))}
 			</ul>
+			<button className={styles['add-to-list-button']}> + Add To List </button>
 		</div>
 	);
 };

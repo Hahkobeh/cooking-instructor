@@ -12,6 +12,9 @@
 	flex-direction: row;
 	justify-content: left;
 	gap: 16px;
+	> div {
+		flex: 1;
+	}
 }
 
 .thumb {

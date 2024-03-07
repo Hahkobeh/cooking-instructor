@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate, useLocation, Outlet } from 'react-router-dom';
-import { useRecipes } from '@/context/data/useRecipes';
+import RatingStars from '@/components/rating-stars/RatingStars';
 import RecipeNavBar from '@/components/recipe-nav-bar/RecipeNavBar';
+import { useRecipes } from '@/context/data/useRecipes';
+import { useEffect, useState } from 'react';
+import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import styles from './recipe.module.scss';
 //import Button from '@/components/button/Button';
 
@@ -27,26 +28,41 @@ const Recipe = () => {
 
 	const handleFavoriteClick = () => {
 		setFavorited(!favorited);
-	}
+	};
 
 	return (
 		<div id={styles.recipe}>
-			<div style={{display:'flex'}}>
-				<h1 className={styles.title}>
-					<span className="accent">{recipe.title}</span>
-				</h1>
-				<button
-					type = 'button' 
-					style={{backgroundColor:'white', borderWidth:'0px', height:'40px', color:"#a56ff7", fontVariationSettings: favorited ? "'FILL' 1" : "'FILL' 0"}}>
-					<span className="material-symbols-outlined" onClick={handleFavoriteClick}>favorite</span>
-				</button>
-			</div>
 			<RecipeNavBar
 				className={styles.recipeNavBar}
 				recipeId={recipeId}
 				activeTab={activeTab}
 				onTabClick={handleTabClick} // pass the handleTabClick function to the RecipeNavBar component
 			/>
+			<div className={styles.header}>
+				<h2>
+					{recipe.title}
+					<RatingStars
+						average={recipe.ratings.average}
+						total={recipe.ratings.total}
+					/>
+				</h2>
+				<button
+					type="button"
+					style={{
+						backgroundColor: 'white',
+						border: 'none',
+						color: '#a56ff7',
+						fontVariationSettings: favorited ? "'FILL' 1" : "'FILL' 0",
+					}}
+				>
+					<span
+						className="material-symbols-outlined"
+						onClick={handleFavoriteClick}
+					>
+						favorite
+					</span>
+				</button>
+			</div>
 			<Outlet />
 		</div>
 	);

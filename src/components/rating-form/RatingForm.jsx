@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import Button from '../button/Button';
 import styles from './rating-form.module.scss';
 
 const RatingForm = ({ onSubmit }) => {
@@ -30,9 +31,9 @@ const RatingForm = ({ onSubmit }) => {
 					</button>
 				))}
 			</div>
-			<button type="submit" className={styles['submit-button']}>
+			<Button type="submit" onSubmit={null} accent>
 				Rate
-			</button>
+			</Button>
 		</form>
 	);
 };

@@ -1,6 +1,6 @@
 import RatingForm from '@/components/rating-form/RatingForm';
 import { useRecipes } from '@/context/data/useRecipes';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styles from './steps.module.scss';
 
 const Steps = () => {
@@ -34,10 +34,14 @@ const Steps = () => {
 			<ol>
 				{/* render the steps list */}
 				{recipe.steps.map((step) => (
-					<li key={step.number}>{step.description}</li>
+					<li key={step.number}>
+						<p>{step.description}</p>
+					</li>
 				))}
 			</ol>
-			<h3>Rate this recipe:</h3>
+			<h3 style={{ textAlign: 'center', marginBottom: '8px' }}>
+				Rate this recipe:
+			</h3>
 			<RatingForm onSubmit={handleRatingSubmit} />
 		</div>
 	);

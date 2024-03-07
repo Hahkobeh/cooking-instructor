@@ -1,8 +1,8 @@
+import CategoriesDisplay from '@/components/categories-display/CategoriesDisplay';
+import RatingStars from '@/components/rating-stars/RatingStars';
 import RecipeCardList from '@/components/recipe-card-list/RecipeCardList';
 import SearchBar from '@/components/search-bar/SearchBar';
 import TagList from '@/components/tag-list/TagList';
-import CategoriesDisplay from '@/components/categories-display/CategoriesDisplay';
-import RatingStars from '@/components/rating-stars/RatingStars';
 import { useRecipes } from '@/context/data/useRecipes';
 import { useUser } from '@/context/user/useUser';
 import { useState } from 'react';
@@ -30,11 +30,11 @@ const Home = () => {
 					>
 						<h3>{recipe.title}</h3>
 						<h4>{recipe.shortDescription}</h4>
-						<TagList tags={recipe.tags} />
 						<RatingStars
 							average={recipe.ratings.average}
 							total={recipe.ratings.total}
 						/>
+						<TagList tags={recipe.tags} />
 					</RecipeCardList.Card>
 				))}
 			</RecipeCardList>

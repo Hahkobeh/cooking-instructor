@@ -6,21 +6,17 @@
 	background: variables.$white;
 	padding: 20px;
 	border-radius: variables.$border-radius;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	margin: 20px auto;
+	box-shadow: variables.$shadow;
+	margin: 4px auto;
 	max-width: 600px;
 
 	h2 {
 		color: variables.$accent;
 		margin-bottom: 20px;
 	}
+
 	h3 {
-		font-size: 20px;
-		font-weight: bold;
-		color: variables.$accent;
-		margin-bottom: 10px;
-		border-bottom: 2px solid #eee;
-		padding-bottom: 5px;
+		line-height: 0.5;
 	}
 
 	ol {
@@ -29,13 +25,12 @@
 		padding: 0;
 
 		li {
+			display: inline-block;
 			counter-increment: step-counter;
 			margin-bottom: 15px;
-			font-size: 16px;
-			line-height: 1.6;
 
-			&::before {
-				content: 'Step ' counter(step-counter) ': ';
+			::before {
+				content: counter(step-counter) '. ';
 				color: variables.$accent;
 				font-weight: bold;
 			}
@@ -50,8 +45,7 @@
 		color: #ffffff;
 		text-align: center;
 		padding: 10px 20px;
-		margin-top: 20px;
-		border-radius: 20px;
+		border-radius: variables.$border-radius;
 		font-size: 16px;
 		font-weight: bold;
 		border: none;

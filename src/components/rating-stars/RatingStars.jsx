@@ -11,15 +11,19 @@ const RatingStars = ({ average, total }) => {
 			{[...Array(fullStars)].map((_, i) => (
 				<span
 					key={i}
-					className="material-symbols-outlined"
+					className={`${styles.icon} material-symbols-outlined`}
 					style={{ fontVariationSettings: "'FILL' 1" }} // FILL is the name of the font variation
 				>
 					star
 				</span>
 			))}
-			{halfStar && <span className="material-symbols-outlined">star_half</span>}
+			{halfStar && (
+				<span className={`${styles.icon} material-symbols-outlined`}>
+					star_half
+				</span>
+			)}
 			{[...Array(emptyStars)].map((_, i) => (
-				<span key={i} className="material-symbols-outlined">
+				<span key={i} className={`${styles.icon} material-symbols-outlined`}>
 					star
 				</span>
 			))}

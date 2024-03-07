@@ -1,41 +1,43 @@
 @use '../../styles/variables.scss';
 
-.thumb
-{
-    height: 90px;
-    width: 90px;
-    border-radius: 50%;
-    border: 1px solid grey;
-    //padding: 10px
+.header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 }
 
-.divL
-{
-    margin-top: 8px;
-    margin-bottom: 8px;
+.subGroup {
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+	gap: 16px;
 }
 
-.alt
-{
-    margin-right: 8px;
-    //margin-left: 8px;
+.thumb {
+	object-fit: cover;
+	height: 60px;
+	width: 60px;
+	border-radius: 50%;
 }
 
-.bar
-{
-    color: #c39bff;
-    width: 70%;
+.divL {
+	margin-top: 8px;
+	margin-bottom: 8px;
 }
 
-.desc
-{
-    font-size:20px;
+.alt {
+	margin-right: 8px;
+	//margin-left: 8px;
 }
 
-.scrollable
-{
-    overflow-y: hidden;
-    overflow-x: auto;
+.bar {
+	color: #c39bff;
+	width: 100%;
+}
+
+.desc {
+	font-size: 20px;
 }
 
 .card {
@@ -47,26 +49,20 @@
 	padding: 16px;
 }
 
- .unlist
- {
-    list-style-type: disc;
-    margin-left: 20px;
- }
+.unlist {
+	list-style-type: disc;
+	margin-left: 20px;
+}
 
- .list
- {
-    list-style-type: decimal;
-    margin-left: 28px;
- } 
+.list {
+	list-style-type: decimal;
+	margin-left: 28px;
+}
 
- .unlistel
- {
-    font-size: 26px;
-    margin-top: 8px;
- }
+.unlistel {
+	margin-top: 8px;
+}
 
- .listel
- {
-    font-size: 26px;
-    margin-top: 8px;
- }
+.listel {
+	margin-top: 8px;
+}

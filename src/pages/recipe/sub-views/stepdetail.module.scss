@@ -4,8 +4,8 @@
 	background: variables.$white;
 	padding: 20px;
 	border-radius: variables.$border-radius;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	margin: 20px auto;
+	box-shadow: variables.$shadow;
+	margin: 4px auto;
 	max-width: 600px;
 	text-align: center;
 	display: flex;

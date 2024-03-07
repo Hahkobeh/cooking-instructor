@@ -1,11 +1,17 @@
 @use '../../styles/variables.scss';
 
-.title {
-	margin-top: 10px;
-	margin-bottom: 10px;
+.recipeNavBar {
+	padding-top: 4px;
+	padding-bottom: 4px;
 }
 
-.recipeNavBar {
-	padding-top: 25px;
-	padding-bottom: 25px;
+.header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	h2 {
+		margin-bottom: 0;
+	}
 }

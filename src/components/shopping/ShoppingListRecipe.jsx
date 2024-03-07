@@ -29,7 +29,6 @@ const ShoppingListRecipe = ({ recipes, onIngredientToggle }) => {
 						<button
 							// onClick={() => onDeleteRecipe(recipe.id)}
 							className={styles['delete-button']}
-							aria-label="Delete recipe"
 						>
 							<span
 								className="material-symbols-outlined"

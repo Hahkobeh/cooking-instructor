@@ -25,6 +25,26 @@ const staticData = {
 				{ name: 'Salt', quantity: 2, unit: 'pinches' },
 				{ name: 'Black Pepper', quantity: 1, unit: 'tsp' },
 			],
+			// This is just for horizontal prototype, will refactor later
+			ingredients2: [
+				{ name: 'Gluten-Free Pasta', quantity: 2, unit: 'cups' },
+				{
+					name: 'Shiitake Mushrooms',
+					quantity: 100,
+					unit: 'g',
+					substituteFor: 'Pancetta',
+				},
+				{ name: 'Eggs', quantity: 4, unit: 'large' },
+				{
+					name: 'Vegan Parmesan Cheese',
+					quantity: 1,
+					unit: 'cup',
+					substituteFor: 'Parmesan Cheese',
+				},
+				{ name: 'Garlic', quantity: 2, unit: 'cloves' },
+				{ name: 'Salt', quantity: 2, unit: 'pinches' },
+				{ name: 'Black Pepper', quantity: 1, unit: 'tsp' },
+			],
 			steps: [
 				{
 					number: 1,

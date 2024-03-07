@@ -17,13 +17,13 @@ const staticData = {
 				total: 120,
 			},
 			ingredients: [
-				{ name: 'Pasta', quantity: '2', unit: 'cups' },
-				{ name: 'Pancetta', quantity: '100', unit: 'g' },
-				{ name: 'Eggs', quantity: '4', unit: 'large' },
-				{ name: 'Parmesan Cheese', quantity: '1', unit: 'cup' },
-				{ name: 'Garlic', quantity: '2', unit: 'cloves' },
-				{ name: 'Salt', quantity: '2', unit: 'pinches' },
-				{ name: 'Black Pepper', quantity: '1', unit: 'tsp' },
+				{ name: 'Pasta', quantity: 2, unit: 'cups' },
+				{ name: 'Pancetta', quantity: 100, unit: 'g' },
+				{ name: 'Eggs', quantity: 4, unit: 'large' },
+				{ name: 'Parmesan Cheese', quantity: 1, unit: 'cup' },
+				{ name: 'Garlic', quantity: 2, unit: 'cloves' },
+				{ name: 'Salt', quantity: 2, unit: 'pinches' },
+				{ name: 'Black Pepper', quantity: 1, unit: 'tsp' },
 			],
 			steps: [
 				{
@@ -73,14 +73,14 @@ const staticData = {
 				total: 80,
 			},
 			ingredients: [
-				{ name: 'All-purpose Flour', quantity: '3', unit: 'cups' },
-				{ name: 'Granulated Sugar', quantity: '2', unit: 'cups' },
-				{ name: 'Baking Powder', quantity: '1', unit: 'tbsp' },
-				{ name: 'Salt', quantity: '1/2', unit: 'tsp' },
-				{ name: 'Unsalted Butter', quantity: '1', unit: 'cup' },
-				{ name: 'Eggs', quantity: '4', unit: 'large' },
-				{ name: 'Milk', quantity: '1', unit: 'cup' },
-				{ name: 'Vanilla Extract', quantity: '2', unit: 'tsp' },
+				{ name: 'All-purpose Flour', quantity: 3, unit: 'cups' },
+				{ name: 'Granulated Sugar', quantity: 2, unit: 'cups' },
+				{ name: 'Baking Powder', quantity: 1, unit: 'tbsp' },
+				{ name: 'Salt', quantity: 0.5, unit: 'tsp' },
+				{ name: 'Unsalted Butter', quantity: 1, unit: 'cup' },
+				{ name: 'Eggs', quantity: 4, unit: 'large' },
+				{ name: 'Milk', quantity: 1, unit: 'cup' },
+				{ name: 'Vanilla Extract', quantity: 2, unit: 'tsp' },
 			],
 			steps: [
 				{

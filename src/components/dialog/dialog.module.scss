@@ -43,5 +43,9 @@
 	.close {
 		margin-left: auto;
 		cursor: pointer;
+		transition: scale 30ms ease-in-out;
+		&:hover {
+			scale: 1.1;
+		}
 	}
 }

@@ -7,6 +7,7 @@
 	box-shadow: variables.$shadow;
 	border-radius: variables.$border-radius;
 	padding: 8px 12px;
+	position: relative;
 }
 
 .recipe-title {
@@ -28,6 +29,22 @@
 	// When the dropdown is open, rotate the icon
 	&.rotate:after {
 		transform: rotate(-180deg); // Rotates the icon by 180 degrees
+	}
+}
+
+.delete-button {
+	position: absolute; // position the button absolutely
+	top: 50%;
+	right: 30px; //distance from right
+	transform: translateY(-50%); // center the button vertically
+	background: transparent;
+	border: none;
+	cursor: pointer;
+
+	&:hover,
+	&:focus {
+		color: variables.$accent;
+		border-radius: 50%;
 	}
 }
 

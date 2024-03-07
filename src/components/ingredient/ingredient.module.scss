@@ -1,0 +1,18 @@
+@use '../../styles/variables.scss';
+
+.ingredient-item {
+	border-bottom: 1px solid #eee;
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+}
+
+.ingredient-name {
+	font-weight: bold;
+	margin: 8px;
+}
+
+// Different text style for checked ingredients
+.checked-ingredient {
+	color: variables.$accent;
+}

@@ -50,7 +50,6 @@
 	color: #ffffff;
 	text-align: center;
 	padding: 10px 20px;
-	margin-top: 20px;
 	border-radius: variables.$border-radius;
 	font-size: 16px;
 	font-weight: bold;
@@ -68,4 +67,12 @@
 		); // darken the button color on click
 		transform: scale(95%); // slightly decrease size when clicked
 	}
+}
+
+.footer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	margin: 4px 0 8px;
 }

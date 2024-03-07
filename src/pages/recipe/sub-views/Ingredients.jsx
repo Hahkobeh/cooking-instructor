@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useRecipes } from '@/context/data/useRecipes';
 import Ingredient from '@/components/ingredient/Ingredient';
 import ToggleSwitch from '@/components/toggle/ToggleSwitch';
+import { useRecipes } from '@/context/data/useRecipes';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import styles from './ingredient.module.scss';
 
 const Ingredients = () => {
@@ -47,12 +47,16 @@ const Ingredients = () => {
 
 	return (
 		<div className={styles.ingredientsContainer}>
-			<ToggleSwitch
-				label1="Original"
-				label2="Alternative"
-				onToggle={handleToggleChange}
-			/>
-
+			<div className={styles.footer}>
+				<button className={styles['add-to-list-button']}>
+					Add To Shopping List{' '}
+				</button>
+				<ToggleSwitch
+					label1="Original"
+					label2="Alternative"
+					onToggle={handleToggleChange}
+				/>
+			</div>
 			<ul>
 				{ingredients.map((ingredient, index) => (
 					<li key={index}>
@@ -63,7 +67,6 @@ const Ingredients = () => {
 					</li>
 				))}
 			</ul>
-			<button className={styles['add-to-list-button']}>Add To Shopping List </button>
 		</div>
 	);
 };

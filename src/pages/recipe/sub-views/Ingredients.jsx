@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useRecipes } from '@/context/data/useRecipes';
-import ShoppingListIngredient from '../../../components/shopping/ShoppingListIngredient';
+import Ingredient from '@/components/ingredient/Ingredient.jsx';
 import styles from './ingredient.module.scss';
 
 const Ingredients = () => {
@@ -68,7 +68,7 @@ const Ingredients = () => {
 			<ul className={styles.ul}>
 				{adjustedIngredients.map((ingredient, index) => (
 					<li key={index} className={styles.li}>
-						<ShoppingListIngredient
+						<Ingredient
 							ingredient={{ ...ingredient, quantity: ingredient.quantity }}
 							onToggle={() => toggleIngredientChecked(ingredient.name)}
 						/>

@@ -6,7 +6,7 @@ const staticData = {
 			tagIds: [1, 2, 7],
 			shortDescription: 'An unforgettable classic',
 			about:
-				'This is a spaghetti recipe. A delightful dish that is both easy to prepare and delicious.',
+				'This is a spaghetti recipe. A delightful dish that is both easy to prepare and delicious. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut faucibus libero non magna vulputate mollis sed non lacus. Vestibulum tincidunt est sit amet dolor dignissim rhoncus. Etiam tempus condimentum turpis eget facilisis. Ut pulvinar, ex vel lobortis scelerisque, enim sem maximus nisi, id malesuada orci lacus pharetra lacus. Aenean quis est velit. Aenean mauris enim, elementum sit amet nunc ac, consequat volutpat nulla. Praesent efficitur nunc bibendum velit maximus, sed sagittis neque sagittis. Vivamus semper turpis non pharetra pretium.',
 			time: '30 minutes',
 			difficulty: 'Easy',
 			equipment: ['Pan', 'Spatula', 'Bowl'],

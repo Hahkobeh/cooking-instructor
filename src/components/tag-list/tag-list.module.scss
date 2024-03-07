@@ -10,7 +10,8 @@
 .tag {
 	display: flex;
 	flex-direction: row;
-	background-color: variables.$grey;
+	background-color: variables.$light-grey;
+	border: 2px grey solid;
 	color: variables.$black;
 	border-radius: variables.$border-radius;
 	padding: 2px 6px 2px;

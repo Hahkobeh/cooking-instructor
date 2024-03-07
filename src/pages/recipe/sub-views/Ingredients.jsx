@@ -63,7 +63,7 @@ const Ingredients = () => {
 					</li>
 				))}
 			</ul>
-			<button className={styles['add-to-list-button']}> + Add To List </button>
+			<button className={styles['add-to-list-button']}>Add To Shopping List </button>
 		</div>
 	);
 };

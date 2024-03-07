@@ -1,21 +1,9 @@
 @use '../../../styles/variables.scss';
 
 .about {
-	display: flex;
-	flex-direction: column;
-	background: variables.$white;
-	padding: 20px;
-	border-radius: variables.$border-radius;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	margin: 20px auto;
-
-	h3 {
-		font-size: 20px;
-		font-weight: bold;
-		color: variables.$accent;
-		margin-bottom: 10px;
-		border-bottom: 2px solid #eee;
-		padding-bottom: 5px;
+	h4 {
+		margin-top: 0;
+		margin-bottom: 8px;
 	}
 
 	p {

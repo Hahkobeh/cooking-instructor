@@ -3,58 +3,63 @@ import styles from './learnsub.module.scss';
 const LearnIngredient = () => {
 	return (
 		<div>
-            <div style={{display: "flex"}}>
-                <img className={styles.thumb} src='/onion.jpg'></img>
-                <h1 style={{marginLeft: '20%', marginTop:"10%"}}><span className='accent'>Onions</span></h1>
-            </div>
+			<div className={styles.header}>
+				<h1>Onions</h1>
+				<img className={styles.thumb} src="/onion.jpg"></img>
+			</div>
 			<div className={styles.card}>
 				<div>
-					<h1>Taste</h1>
-					<div style={{display: 'flex'}}>
-						<div style={{alignItems:'center'}}>
-							<h2>Sweet</h2>
-							<progress className={styles.bar} value={0.5}/>
-						</div> 
+					<h2>Taste</h2>
+					<div className={styles.subGroup}>
 						<div>
-							<h2>Sour</h2>
-							<progress className={styles.bar} value={0.3}/>
+							<p>Sweet</p>
+							<progress className={styles.bar} value={0.5} />
+						</div>
+						<div>
+							<p>Sour</p>
+							<progress className={styles.bar} value={0.3} />
 						</div>
 					</div>
+					<br />
 				</div>
 				<div>
-					<h1>Texture</h1>
-					<div style={{display: 'flex'}}>
-						<div style={{alignItems:'center'}}>
-							<h2>Crunch (raw)</h2>
-							<progress className={styles.bar} value={1.0}/>
-						</div> 
+					<h2>Texture</h2>
+					<div className={styles.subGroup}>
 						<div>
-							<h2>Soft (cooked)</h2>
-							<progress className={styles.bar} value={0.6}/>
+							<p>Crunch (raw)</p>
+							<progress className={styles.bar} value={1.0} />
+						</div>
+						<div>
+							<p>Soft (cooked)</p>
+							<progress className={styles.bar} value={0.6} />
 						</div>
 					</div>
+					<br />
 				</div>
 				<div>
-					<h1>Usage</h1>
-					<span className={styles.desc}>Adds texture and flavor. Major supporter to prop other flavors up</span>
+					<h2>Usage</h2>
+					<p>
+						Adds texture and flavor. Major supporter to prop other flavors up
+					</p>
+					<br />
 				</div>
 				<div>
-					<h1>Alternatives</h1>
-					<div style={{display: 'flex'}} className={styles.scrollable}>
+					<h2>Alternatives</h2>
+					<div className={styles.subGroup}>
 						<div className={styles.alt}>
-							<img className={styles.thumb} src='/onion.jpg'></img>
-							<h2><span className='accent'>Shallots</span></h2>
-							<h6>Onion w/ milder taste</h6>
+							<img className={styles.thumb} src="/onion.jpg"></img>
+							<h3>Shallots</h3>
+							<p>Onion w/ milder taste</p>
 						</div>
 						<div className={styles.alt}>
-							<img className={styles.thumb} src='/onion.jpg'></img>
-							<h2><span className='accent'>Scallion</span></h2>
-							<h6>Onion w/ milder taste</h6>
+							<img className={styles.thumb} src="/onion.jpg"></img>
+							<h3>Scallion</h3>
+							<p>Onion w/ milder taste</p>
 						</div>
 						<div className={styles.alt}>
-							<img className={styles.thumb} src='/onion.jpg'></img>
-							<h2><span className='accent'>Fennel</span></h2>
-							<h6>Onion w/ sharper taste</h6>
+							<img className={styles.thumb} src="/onion.jpg"></img>
+							<h3>Fennel</h3>
+							<p>Onion w/ sharper taste</p>
 						</div>
 					</div>
 				</div>

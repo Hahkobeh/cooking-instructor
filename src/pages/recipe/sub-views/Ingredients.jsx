@@ -47,7 +47,6 @@ const Ingredients = () => {
 
 	return (
 		<div className={styles.ingredientsContainer}>
-			<h2>Ingredients</h2>
 			<ToggleSwitch
 				label1="Original"
 				label2="Alternative"

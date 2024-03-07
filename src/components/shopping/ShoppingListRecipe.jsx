@@ -26,7 +26,20 @@ const ShoppingListRecipe = ({ recipes, onIngredientToggle }) => {
 						onClick={() => toggleDropdown(recipe.id)}
 					>
 						{recipe.title}
+						<button
+							// onClick={() => onDeleteRecipe(recipe.id)}
+							className={styles['delete-button']}
+							aria-label="Delete recipe"
+						>
+							<span
+								className="material-symbols-outlined"
+								style={{ fontSize: '24px' }}
+							>
+								delete
+							</span>
+						</button>
 					</h3>
+
 					{dropdownsOpen[recipe.id] && (
 						<ul className={styles['ingredient-list']}>
 							{/* Iterate over the ingredients of the current recipe, rendering a list item for each */}

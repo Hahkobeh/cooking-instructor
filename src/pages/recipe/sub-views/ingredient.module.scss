@@ -4,12 +4,49 @@
 	display: flex;
 	flex-direction: column;
 	background: variables.$white;
-	padding: 20px;
-	border-radius: variables.$border-radius;
-	box-shadow: variables.$shadow;
 	margin: 4px auto;
 }
 
+.segmented-control {
+	display: flex;
+	width: 100%;
+	margin-bottom: 20px;
+	border-radius: 30px;
+	overflow: hidden;
+	background-color: variables.$light-grey;
+
+	.segment {
+		flex: 1; // ensures all segments take up equal space
+		font-weight: bold;
+		background-color: transparent;
+		color: variables.$black;
+		padding: 15px 0;
+		font-size: 14px;
+		cursor: pointer;
+		transition:
+			background-color 0.3s,
+			color 0.3s;
+		text-align: center;
+		border: none;
+		position: relative; // needed for pseudo-element positioning
+
+		// add separators using pseudo-elements
+		&:not(:first-child):before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 25%; // vertically center the line
+			bottom: 25%; // control the line's height
+			width: 1px; // width of the separator line
+			background-color: variables.$grey; // color of the separator line
+		}
+	}
+
+	.active {
+		color: variables.$white;
+		background-color: variables.$accent;
+	}
+}
 .serving-size-controls {
 	display: flex;
 	align-items: center;
@@ -44,6 +81,7 @@
 }
 
 .add-to-list-button {
+	display: flex;
 	align-items: center;
 	justify-content: center;
 	background-color: variables.$accent;
@@ -69,7 +107,8 @@
 	}
 }
 
-.footer {
+.button-container {
+	padding-top: 20px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;

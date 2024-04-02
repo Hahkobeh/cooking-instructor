@@ -1,7 +1,15 @@
 @use '../../styles/variables.scss';
 
 .button {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 8px;
+	align-items: center;
+
 	min-width: 100px;
+	min-height: 18px;
+
 	padding: 8px 10px;
 	margin: 8px 0;
 	text-align: center;
@@ -16,6 +24,21 @@
 	font-weight: 700;
 	color: variables.$black;
 	background-color: variables.$white;
+
+	span {
+		scale: 1.1;
+		margin: -4px 0;
+	}
+
+	input {
+		padding: 2px 0;
+		height: 100%;
+		cursor: pointer;
+		font-family: inherit;
+		color: inherit;
+		background-color: transparent;
+	}
+
 	&:hover {
 		scale: 1.05;
 	}

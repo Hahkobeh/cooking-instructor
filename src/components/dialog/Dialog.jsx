@@ -4,11 +4,14 @@ import styles from './dialog.module.scss';
 const Dialog = ({ children, close, title }) => {
 	return (
 		<>
-			<div className={styles.wrapper}></div>
-			<div className={styles.box} onClick={() => close()}>
+			<div className={styles.wrapper} onClick={() => close()}></div>
+			<div className={styles.box}>
 				<div className={styles.header}>
 					<h3>{title}</h3>
-					<span className={`${styles.close} material-symbols-outlined`}>
+					<span
+						className={`${styles.close} material-symbols-outlined`}
+						onClick={() => close()}
+					>
 						close
 					</span>
 				</div>

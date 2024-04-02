@@ -5,6 +5,25 @@
 	flex-direction: column;
 	justify-content: center;
 
+	h3 {
+		padding: 0;
+		margin: 0;
+	}
+
+	.subTitle {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: 16px 0 0px;
+		h4 {
+			color: variables.$accent;
+		}
+	}
+
+	.navigate {
+		margin: 0;
+	}
+
 	.picture {
 		margin: auto;
 		margin-top: 16px;
@@ -17,7 +36,6 @@
 		cursor: pointer;
 	}
 
-
 	.buttons {
 		display: flex;
 		align-items: center;
@@ -26,5 +44,12 @@
 		span {
 			font-size: 1.3rem;
 		}
+	}
+
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: 16px 0 8px;
 	}
 }

@@ -1,15 +1,23 @@
 import PropTypes from 'prop-types';
 import styles from './button.module.scss';
 
-const Button = ({ children, func, accent, submit, className, ...rest }) => {
+const Button = ({
+	children,
+	func,
+	accent,
+	submit,
+	className,
+	icon,
+	...rest
+}) => {
 	return (
-		<input
+		<div
 			className={`${styles.button} ${accent ? styles.accent : styles.grey} ${className}`}
 			onClick={func && (() => func())}
-			type={submit ? 'submit' : 'button'}
-			value={children}
-			{...rest}
-		/>
+		>
+			{icon}
+			<input type={submit ? 'submit' : 'button'} value={children} {...rest} />
+		</div>
 	);
 };
 
@@ -19,6 +27,7 @@ Button.propTypes = {
 	accent: PropTypes.bool,
 	submit: PropTypes.bool,
 	className: PropTypes.string,
+	icon: PropTypes.element,
 };
 
 export default Button;

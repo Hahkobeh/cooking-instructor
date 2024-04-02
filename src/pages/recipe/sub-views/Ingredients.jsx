@@ -1,5 +1,4 @@
 import Ingredient from '@/components/ingredient/Ingredient';
-import ToggleSwitch from '@/components/toggle/ToggleSwitch';
 import { useRecipes } from '@/context/data/useRecipes';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -10,8 +9,7 @@ const Ingredients = () => {
 	const recipes = useRecipes();
 	const recipe = recipes.find((r) => r.id.toString() === recipeId);
 
-	const [useAlternativeIngredients, setUseAlternativeIngredients] =
-		useState(false);
+	const [ingredientType, setIngredientType] = useState('Normal');
 	const [ingredients, setIngredients] = useState([]);
 	const [servingSize, setServingSize] = useState(1); // assuming a starting default serving size
 	const defaultServingSize = 1; // this should match the recipe's intended serving size, we should add this to the recipe data
@@ -20,17 +18,28 @@ const Ingredients = () => {
 
 	useEffect(() => {
 		if (recipe) {
-			const selectedIngredients = useAlternativeIngredients
-				? recipe.ingredients2
-				: recipe.ingredients;
+			let selectedIngredients = [];
+			switch (ingredientType) {
+				case 'Normal':
+					selectedIngredients = recipe.ingredientsNormal || [];
+					break;
+				case 'Vegetarian':
+					selectedIngredients = recipe.ingredientsVegeterian || [];
+					break;
+				case 'Gluten-Free':
+					selectedIngredients = recipe.ingredientsGlutenFree || [];
+					break;
+				default:
+					selectedIngredients = recipe.ingredientsNormal || [];
+			}
 			setIngredients(
 				selectedIngredients.map((ingredient) => ({
 					...ingredient,
-					checked: false, // Initially unchecked
+					checked: false,
 				}))
 			);
 		}
-	}, [recipe, useAlternativeIngredients]);
+	}, [recipe, ingredientType]);
 
 	const toggleIngredientChecked = (name) => {
 		setIngredients(
@@ -40,11 +49,6 @@ const Ingredients = () => {
 					: ingredient
 			)
 		);
-	};
-
-	// handler for switching between original and alternative ingredients
-	const handleToggleChange = () => {
-		setUseAlternativeIngredients(!useAlternativeIngredients);
 	};
 
 	// function to adjust ingredient quantities based on the serving size
@@ -67,17 +71,19 @@ const Ingredients = () => {
 	);
 
 	return (
-		<div className={styles.ingredientsContainer}>
-			<div className={styles.footer}>
-				<button className={styles['add-to-list-button']}>
-					Add To Shopping List{' '}
-				</button>
-				<ToggleSwitch
-					label1="Original"
-					label2="Alternative"
-					onToggle={handleToggleChange}
-				/>
+		<div className={styles['ingredients-container']}>
+			<div className={styles['segmented-control']}>
+				{['Normal', 'Vegetarian', 'Gluten-Free'].map((type) => (
+					<button
+						key={type}
+						className={`${styles.segment} ${ingredientType === type ? styles.active : ''}`}
+						onClick={() => setIngredientType(type)}
+					>
+						{type}
+					</button>
+				))}
 			</div>
+
 			<div className={styles['serving-size-controls']}>
 				<button onClick={() => setServingSize(Math.max(1, servingSize - 1))}>
 					-
@@ -95,6 +101,11 @@ const Ingredients = () => {
 					</li>
 				))}
 			</ul>
+			<div className={styles['button-container']}>
+				<button className={styles['add-to-list-button']}>
+					Add To Shopping List{' '}
+				</button>
+			</div>
 		</div>
 	);
 };

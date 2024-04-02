@@ -16,7 +16,7 @@ const staticData = {
 				average: 4.5,
 				total: 120,
 			},
-			ingredients: [
+			ingredientsNormal: [
 				{ name: 'Pasta', quantity: 2, unit: 'cups' },
 				{ name: 'Pancetta', quantity: 100, unit: 'g' },
 				{ name: 'Eggs', quantity: 4, unit: 'large' },
@@ -25,9 +25,8 @@ const staticData = {
 				{ name: 'Salt', quantity: 2, unit: 'pinches' },
 				{ name: 'Black Pepper', quantity: 1, unit: 'tsp' },
 			],
-			// This is just for horizontal prototype, will refactor later
-			ingredients2: [
-				{ name: 'Gluten-Free Pasta', quantity: 2, unit: 'cups' },
+			ingredientsVegeterian: [
+				{ name: 'Pasta', quantity: 2, unit: 'cups' },
 				{
 					name: 'Shiitake Mushrooms',
 					quantity: 100,
@@ -41,6 +40,15 @@ const staticData = {
 					unit: 'cup',
 					substituteFor: 'Parmesan Cheese',
 				},
+				{ name: 'Garlic', quantity: 2, unit: 'cloves' },
+				{ name: 'Salt', quantity: 2, unit: 'pinches' },
+				{ name: 'Black Pepper', quantity: 1, unit: 'tsp' },
+			],
+			ingredientsGlutenFree: [
+				{ name: 'Gluten-Free Pasta', quantity: 2, unit: 'cups' },
+				{ name: 'Pancetta', quantity: 100, unit: 'g' },
+				{ name: 'Eggs', quantity: 4, unit: 'large' },
+				{ name: 'Parmesan Cheese', quantity: 1, unit: 'cup' },
 				{ name: 'Garlic', quantity: 2, unit: 'cloves' },
 				{ name: 'Salt', quantity: 2, unit: 'pinches' },
 				{ name: 'Black Pepper', quantity: 1, unit: 'tsp' },
@@ -92,7 +100,7 @@ const staticData = {
 				average: 3.5,
 				total: 80,
 			},
-			ingredients: [
+			ingredientsNormal: [
 				{ name: 'All-purpose Flour', quantity: 3, unit: 'cups' },
 				{ name: 'Granulated Sugar', quantity: 2, unit: 'cups' },
 				{ name: 'Baking Powder', quantity: 1, unit: 'tbsp' },
@@ -100,6 +108,31 @@ const staticData = {
 				{ name: 'Unsalted Butter', quantity: 1, unit: 'cup' },
 				{ name: 'Eggs', quantity: 4, unit: 'large' },
 				{ name: 'Milk', quantity: 1, unit: 'cup' },
+				{ name: 'Vanilla Extract', quantity: 2, unit: 'tsp' },
+			],
+			ingredientsGlutenFree: [
+				{ name: 'Gluten-Free Flour Blend', quantity: 3, unit: 'cups' },
+				{ name: 'Granulated Sugar', quantity: 2, unit: 'cups' },
+				{ name: 'Baking Powder', quantity: 1, unit: 'tbsp' },
+				{ name: 'Salt', quantity: 0.5, unit: 'tsp' },
+				{ name: 'Unsalted Butter', quantity: 1, unit: 'cup' },
+				{ name: 'Eggs', quantity: 4, unit: 'large' },
+				{ name: 'Milk', quantity: 1, unit: 'cup' },
+				{ name: 'Vanilla Extract', quantity: 2, unit: 'tsp' },
+			],
+			ingredientsVegeterian: [
+				{ name: 'All-purpose Flour', quantity: 3, unit: 'cups' },
+				{ name: 'Organic Sugar', quantity: 2, unit: 'cups' }, // Ensure it's vegan
+				{ name: 'Baking Powder', quantity: 1, unit: 'tbsp' },
+				{ name: 'Salt', quantity: 0.5, unit: 'tsp' },
+				{ name: 'Vegan Butter', quantity: 1, unit: 'cup' },
+				{
+					name: 'Flaxseed Eggs',
+					quantity: 4,
+					unit: '',
+					note: 'Mix 4 tbsp ground flaxseed with 12 tbsp water',
+				},
+				{ name: 'Almond Milk', quantity: 1, unit: 'cup' },
 				{ name: 'Vanilla Extract', quantity: 2, unit: 'tsp' },
 			],
 			steps: [

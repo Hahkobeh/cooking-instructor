@@ -79,25 +79,27 @@ const ShoppingList = () => {
 				);
 				if (existing) {
 					// Update the total quantity
-					existing.quantity += ingredient.quantity;
+					existing.quantity =
+						parseFloat(existing.quantity) + parseFloat(ingredient.quantity);
 					// Update the checked quantity
 					if (ingredient.checked) {
 						existing.checkedQuantity =
-							existing.checkedQuantity !== undefined
-								? existing.checkedQuantity + ingredient.quantity
-								: ingredient.quantity;
+							(existing.checkedQuantity !== undefined
+								? parseFloat(existing.checkedQuantity)
+								: 0) + parseFloat(ingredient.quantity);
 					}
 				} else {
 					acc.push({
 						...ingredient,
-						// Initialize checkedQuantity for each ingredient based on its checked state
-						checkedQuantity: ingredient.checked ? ingredient.quantity : 0,
+						quantity: parseFloat(ingredient.quantity),
+						checkedQuantity: ingredient.checked
+							? parseFloat(ingredient.quantity)
+							: 0,
 					});
 				}
 				return acc;
 			}, [])
 			.map((ingredient) => ({
-				// Adjust each ingredient to include the quantity as "checked/total"
 				...ingredient,
 				quantity: `${ingredient.checkedQuantity !== undefined ? ingredient.checkedQuantity : 0}/${ingredient.quantity} `,
 			})),

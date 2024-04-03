@@ -9,7 +9,8 @@ import styles from './shopping-list.module.scss';
 const TOTAL_RECIPE_ID = -1;
 
 const ShoppingList = () => {
-	const { getShoppingList, updateShoppingList } = useUser();
+	const { getShoppingList, updateShoppingList, removeRecipeFromShoppingList } =
+		useUser();
 	// state hook for managing the viewByRecipe state. initially set to true for recipe view
 	const [viewByRecipe, setViewByRecipe] = useState(true);
 	// state hook for managing the recipes array. initially set to an empty array.
@@ -105,6 +106,14 @@ const ShoppingList = () => {
 			})),
 	};
 
+	const handleRemoveRecipe = (recipeId) => {
+		removeRecipeFromShoppingList(recipeId);
+		// Update the local state to reflect the change immediately
+		setRecipes((prevRecipes) =>
+			prevRecipes.filter((recipe) => recipe.id !== recipeId)
+		);
+	};
+
 	return (
 		<div id={styles['shopping-list']}>
 			<div className={styles['header-container']}>
@@ -120,6 +129,7 @@ const ShoppingList = () => {
 				<ShoppingListRecipe
 					recipes={recipes}
 					onIngredientToggle={handleIngredientToggle}
+					onDeleteRecipe={handleRemoveRecipe}
 				/>
 			) : (
 				<ShoppingListRecipe

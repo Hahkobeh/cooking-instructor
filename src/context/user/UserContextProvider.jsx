@@ -42,6 +42,14 @@ const UserContextProvider = ({ children }) => {
 		setUser({ ...user, shoppingList: updatedShoppingList });
 	};
 
+	// removes a recipe object from the shopping list
+	const removeRecipeFromShoppingList = (recipeIdToRemove) => {
+		const updatedShoppingList = user.shoppingList.filter(
+			(recipe) => recipe.id !== recipeIdToRemove
+		);
+		setUser({ ...user, shoppingList: updatedShoppingList });
+	};
+
 	return (
 		<UserContext.Provider
 			value={{
@@ -50,6 +58,7 @@ const UserContextProvider = ({ children }) => {
 				getShoppingList,
 				updateShoppingList,
 				addRecipeToShoppingList,
+				removeRecipeFromShoppingList,
 			}}
 		>
 			{children}

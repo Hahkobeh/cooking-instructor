@@ -4,7 +4,11 @@ import ShoppingListIngredient from './ShoppingListIngredient';
 import styles from './shopping.module.scss';
 
 // Define the ShoppingListRecipe functional component with props received from the parent component (ShoppingList)
-const ShoppingListRecipe = ({ recipes, onIngredientToggle }) => {
+const ShoppingListRecipe = ({
+	recipes,
+	onIngredientToggle,
+	onDeleteRecipe,
+}) => {
 	// State to manage dropdown visibility
 	const [dropdownsOpen, setDropdownsOpen] = useState({});
 
@@ -27,7 +31,7 @@ const ShoppingListRecipe = ({ recipes, onIngredientToggle }) => {
 					>
 						{recipe.title}
 						<button
-							// onClick={() => onDeleteRecipe(recipe.id)}
+							onClick={() => onDeleteRecipe(recipe.id)}
 							className={styles['delete-button']}
 						>
 							<span
@@ -76,6 +80,7 @@ ShoppingListRecipe.propTypes = {
 		})
 	).isRequired,
 	onIngredientToggle: PropTypes.func.isRequired,
+	onDeleteRecipe: PropTypes.func, // Add this line
 };
 
 export default ShoppingListRecipe;

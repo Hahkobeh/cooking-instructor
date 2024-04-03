@@ -11,8 +11,19 @@ const UserContextProvider = ({ children }) => {
 		localStorage.setItem('user', JSON.stringify(data));
 	};
 
+	const getShoppingList = () => {
+		return user.shoppingList || [];
+	};
+
+	const updateShoppingList = (newShoppingList) => {
+		const updatedUser = { ...user, shoppingList: newShoppingList };
+		setUser(updatedUser);
+	};
+
 	return (
-		<UserContext.Provider value={{ user, setUser }}>
+		<UserContext.Provider
+			value={{ user, setUser, getShoppingList, updateShoppingList }}
+		>
 			{children}
 		</UserContext.Provider>
 	);

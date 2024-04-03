@@ -207,6 +207,44 @@ const staticData = {
 			username: 'Jacob',
 			password: '123',
 			favorites: [1, 3],
+			shoppingList: [
+				{
+					id: 1,
+					title: 'Spaghetti Carbonara',
+					version: 'normal',
+					ingredients: [
+						{ name: 'Pasta', quantity: 2, unit: 'cups', checked: false },
+						{ name: 'Pancetta', quantity: 100, unit: 'g', checked: false },
+						{ name: 'Eggs', quantity: 4, unit: 'large', checked: false },
+						{
+							name: 'Parmesan Cheese',
+							quantity: 1,
+							unit: 'cup',
+							checked: false,
+						},
+						{ name: 'Garlic', quantity: 2, unit: 'cloves', checked: false },
+						{ name: 'Salt', quantity: 2, unit: 'pinches', checked: false },
+						{ name: 'Black Pepper', quantity: 1, unit: 'tsp', checked: false },
+					],
+				},
+				{
+					id: 0,
+					title: 'Omlette',
+					version: 'normal',
+					ingredients: [
+						{ name: 'Eggs', quantity: 4, unit: 'large', checked: false },
+						{
+							name: 'Parmesan Cheese',
+							quantity: 1,
+							unit: 'cup',
+							checked: false,
+						},
+						{ name: 'Garlic', quantity: 2, unit: 'cloves', checked: false },
+						{ name: 'Salt', quantity: 2, unit: 'pinches', checked: false },
+						{ name: 'Black Pepper', quantity: 1, unit: 'tsp', checked: false },
+					],
+				},
+			],
 			dietaryRestrictions: [1],
 		},
 		{

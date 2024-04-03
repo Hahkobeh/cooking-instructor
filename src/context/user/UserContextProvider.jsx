@@ -11,18 +11,46 @@ const UserContextProvider = ({ children }) => {
 		localStorage.setItem('user', JSON.stringify(data));
 	};
 
+	// returns the shopping list
 	const getShoppingList = () => {
 		return user.shoppingList || [];
 	};
 
+	// updates an ingredient's checked state
 	const updateShoppingList = (newShoppingList) => {
 		const updatedUser = { ...user, shoppingList: newShoppingList };
 		setUser(updatedUser);
 	};
 
+	// adds a recipe object to the shopping list (with only the checked ingredients)
+	const addRecipeToShoppingList = (newRecipe) => {
+		const updatedShoppingList = user.shoppingList ? [...user.shoppingList] : [];
+
+		const recipeIndex = updatedShoppingList.findIndex(
+			(recipe) => recipe.id === newRecipe.id
+		);
+		const recipeExists = recipeIndex !== -1;
+
+		// If it exists just overwrite it
+		if (recipeExists) {
+			updatedShoppingList[recipeIndex] = newRecipe;
+			// Otherwise append it to the list
+		} else {
+			updatedShoppingList.push(newRecipe);
+		}
+
+		setUser({ ...user, shoppingList: updatedShoppingList });
+	};
+
 	return (
 		<UserContext.Provider
-			value={{ user, setUser, getShoppingList, updateShoppingList }}
+			value={{
+				user,
+				setUser,
+				getShoppingList,
+				updateShoppingList,
+				addRecipeToShoppingList,
+			}}
 		>
 			{children}
 		</UserContext.Provider>

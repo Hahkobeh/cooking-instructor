@@ -3,6 +3,7 @@ import ToggleSwitch from '@/components/toggle/ToggleSwitch';
 import { useUser } from '@/context/user/useUser';
 import { useState } from 'react';
 import ShoppingListRecipe from '../../components/shopping/ShoppingListRecipe';
+import TotalIngredientList from '@/components/shopping/TotalIngredientList';
 import styles from './shopping-list.module.scss';
 
 // simulating a fixed ID for the aggregated "total" recipe
@@ -166,7 +167,7 @@ const ShoppingList = () => {
 					>
 						Clear All
 					</Button>
-					<ShoppingListRecipe
+					<TotalIngredientList
 						recipe={totalRecipe}
 						onIngredientToggle={handleIngredientToggle}
 					/>

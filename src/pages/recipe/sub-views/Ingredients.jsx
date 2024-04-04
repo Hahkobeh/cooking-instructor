@@ -76,11 +76,18 @@ const Ingredients = () => {
 		// check if any ingredients have been selected
 		const anySelected = ingredients.some((ingredient) => ingredient.checked);
 
-		// if any ingredients are selected, use those; otherwise, use all ingredients
-		const ingredientsToAdd = anySelected
-			? ingredients.filter((ingredient) => ingredient.checked)
-			: ingredients;
-
+		let ingredientsToAdd;
+		if (!anySelected) {
+			// if no ingredients are selected, mark all as selected for visual feedback
+			ingredientsToAdd = ingredients.map((ingredient) => ({
+				...ingredient,
+				checked: true,
+			}));
+			setIngredients(ingredientsToAdd); // This updates the UI to show all ingredients as checked
+		} else {
+			// use only the already selected ingredients
+			ingredientsToAdd = ingredients.filter((ingredient) => ingredient.checked);
+		}
 		// adjust the quantities of the ingredients based on the serving size
 		const adjustedIngredients = adjustIngredientQuantities(
 			ingredientsToAdd,

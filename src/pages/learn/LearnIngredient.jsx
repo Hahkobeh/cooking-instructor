@@ -1,7 +1,17 @@
 import styles from './learnsub.module.scss';
+import Dialog from '@/components/dialog/Dialog';
+import { useState } from 'react';
 
 const LearnIngredient = () => {
+	const [videoOn, setVideoOn] = useState(false);
+
 	return (
+		<>
+		{videoOn && (
+			<Dialog close={() => setVideoOn(false)} title="Tutorial">
+				<img src="/video-player.png" style={{ width: '300px' }} />
+			</Dialog>
+		)}
 		<div>
 			<div className={styles.header}>
 				<h1>Onions</h1>
@@ -65,6 +75,7 @@ const LearnIngredient = () => {
 				</div>
 			</div>
 		</div>
+		</>
 	);
 };
 

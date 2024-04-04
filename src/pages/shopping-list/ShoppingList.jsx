@@ -106,36 +106,71 @@ const ShoppingList = () => {
 			})),
 	};
 
-	const handleRemoveRecipe = (recipeId) => {
-		removeRecipeFromShoppingList(recipeId);
-		// Update the local state to reflect the change immediately
-		setRecipes((prevRecipes) =>
-			prevRecipes.filter((recipe) => recipe.id !== recipeId)
-		);
+	const handleDeleteAction = (recipeId, ingredientNamesToRemove = []) => {
+		// determine whether we're removing specific ingredients or the entire recipe
+		if (ingredientNamesToRemove.length > 0) {
+			// remove specific ingredients from the recipe
+			const updatedRecipes = recipes.map((recipe) => {
+				if (recipe.id === recipeId) {
+					const filteredIngredients = recipe.ingredients.filter(
+						(ingredient) => !ingredientNamesToRemove.includes(ingredient.name)
+					);
+					return { ...recipe, ingredients: filteredIngredients };
+				}
+				return recipe;
+			});
+			updateShoppingList(updatedRecipes); // update the list
+			setRecipes(updatedRecipes); // update local state
+		} else {
+			// otherwise, remove the entire recipe
+			removeRecipeFromShoppingList(recipeId); // Tupdate the context
+			setRecipes(recipes.filter((recipe) => recipe.id !== recipeId)); // update local state
+		}
+	};
+
+	const handleClearAll = () => {
+		// Clear all recipes from the global state
+		updateShoppingList([]);
+
+		// Clear the local state
+		setRecipes([]);
 	};
 
 	return (
 		<div id={styles['shopping-list']}>
 			<div className={styles['header-container']}>
 				<Button accent>Add Ingredients</Button>
+
 				<ToggleSwitch
-					label1="Recipe"
-					label2="Total"
+					label1="by Recipe"
+					label2="by Ingredient"
 					onToggle={handleToggleSwitchChange}
 				/>
 			</div>
 
 			{viewByRecipe ? (
-				<ShoppingListRecipe
-					recipes={recipes}
-					onIngredientToggle={handleIngredientToggle}
-					onDeleteRecipe={handleRemoveRecipe}
-				/>
+				recipes.map((recipe) => (
+					<ShoppingListRecipe
+						key={recipe.id}
+						recipe={recipe}
+						onIngredientToggle={handleIngredientToggle}
+						onDeleteRecipe={handleDeleteAction}
+					/>
+				))
 			) : (
-				<ShoppingListRecipe
-					recipes={[totalRecipe]}
-					onIngredientToggle={handleIngredientToggle}
-				/>
+				<>
+					<Button
+						accent
+						onClick={handleClearAll}
+						className={styles['clear-all-button']}
+					>
+						Clear All
+					</Button>
+					<ShoppingListRecipe
+						recipe={totalRecipe}
+						onIngredientToggle={handleIngredientToggle}
+					/>
+				</>
 			)}
 		</div>
 	);

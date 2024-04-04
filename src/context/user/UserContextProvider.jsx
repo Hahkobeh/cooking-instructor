@@ -50,6 +50,18 @@ const UserContextProvider = ({ children }) => {
 		setUser({ ...user, shoppingList: updatedShoppingList });
 	};
 
+	// adds a recipe id to a user's favourite list
+	const addFavorite = (recipeId) => {
+		const updatedFavorites = [...user.favorites, recipeId];
+		setUser({ ...user, favorites: updatedFavorites });
+	};
+
+	// adds a recipe id to a user's favourite list
+	const removeFavorite = (recipeId) => {
+		const updatedFavorites = user.favorites.filter((id) => id !== recipeId);
+		setUser({ ...user, favorites: updatedFavorites });
+	};
+
 	return (
 		<UserContext.Provider
 			value={{
@@ -59,6 +71,8 @@ const UserContextProvider = ({ children }) => {
 				updateShoppingList,
 				addRecipeToShoppingList,
 				removeRecipeFromShoppingList,
+				addFavorite,
+				removeFavorite,
 			}}
 		>
 			{children}

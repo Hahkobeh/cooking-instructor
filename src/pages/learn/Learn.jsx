@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './learn.module.scss';
+import { useState } from 'react';
+import SearchBar from '@/components/search-bar/SearchBar';
 //import Home from './home/Home';
 //import Card from "@/components/card/Card";
 //import NavBar from "@/components/nav-bar/NavBar";
@@ -8,9 +10,12 @@ import styles from './learn.module.scss';
 //TODO: Find good way to add icon image in cards, even when text is long
 
 const Learn = () => {
+	const [search, setSearch] = useState('');
+
 	return (
 		<div>
-			<h1>Learn more</h1>
+			<h1 style={{ marginBottom: '10px' }}>Learn more</h1>
+			<SearchBar search={search} setSearch={setSearch} />
 			<div style={{ marginTop: '16px' }}>
 				<h2>Techniques</h2>
 			</div>

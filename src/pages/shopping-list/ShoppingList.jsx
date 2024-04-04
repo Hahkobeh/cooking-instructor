@@ -1,88 +1,177 @@
 import Button from '@/components/button/Button';
 import ToggleSwitch from '@/components/toggle/ToggleSwitch';
-import { useRecipes } from '@/context/data/useRecipes';
+import { useUser } from '@/context/user/useUser';
 import { useState } from 'react';
 import ShoppingListRecipe from '../../components/shopping/ShoppingListRecipe';
-import ShoppingListIngredient from '../../components/shopping/ShoppingListIngredient';
+import TotalIngredientList from '@/components/shopping/TotalIngredientList';
 import styles from './shopping-list.module.scss';
 
-const ShoppingList = () => {
-	const recipes = useRecipes();
+// simulating a fixed ID for the aggregated "total" recipe
+const TOTAL_RECIPE_ID = -1;
 
+const ShoppingList = () => {
+	const { getShoppingList, updateShoppingList, removeRecipeFromShoppingList } =
+		useUser();
 	// state hook for managing the viewByRecipe state. initially set to true for recipe view
 	const [viewByRecipe, setViewByRecipe] = useState(true);
-
 	// state hook for managing the recipes array. initially set to an empty array.
-	const [recipesState, setRecipes] = useState(recipes);
+	const [recipes, setRecipes] = useState(getShoppingList);
 
-	const handleIngredientToggle = (recipeId, toggledIngredient) => {
-		// find the recipe that needs to be updated
-		const updatedRecipes = recipesState.map((recipe) => {
-			if (recipe.id === recipeId) {
-				return {
-					...recipe,
-					ingredients: recipe.ingredients.map((ingredient) => {
-						if (ingredient.name === toggledIngredient.name) {
-							return { ...ingredient, checked: !ingredient.checked };
-						}
-						return ingredient;
-					}),
-				};
-			}
-			return recipe;
-		});
-
-		// update the state with the new array of recipes
-		setRecipes(updatedRecipes);
-	};
 	// state hook for managing the viewByRecipe state. initially set to true.
 	const handleToggleSwitchChange = () => {
 		setViewByRecipe(!viewByRecipe);
 	};
 
-	// flatten ingredients if viewByRecipe is false
-	const flattenedIngredients = recipesState
-		// flatten the ingredients array
-		.flatMap((recipe) => recipe.ingredients)
-		// remove duplicates based on ingredient name
-		.reduce((acc, ingredient) => {
-			const existing = acc.find((item) => item.name === ingredient.name);
-			if (existing) {
-				existing.quantity += ingredient.quantity; //  re-calculating the quantity
-			} else {
-				acc.push({ ...ingredient });
-			}
-			return acc;
-		}, []);
+	const handleIngredientToggle = (recipeId, toggledIngredient) => {
+		// If toggling within a specific recipe, only that recipe's ingredients need updating.
+		if (recipeId !== TOTAL_RECIPE_ID) {
+			const updatedRecipes = recipes.map((recipe) => {
+				if (recipe.id === recipeId) {
+					return {
+						...recipe,
+						ingredients: recipe.ingredients.map((ingredient) => {
+							if (ingredient.name === toggledIngredient.name) {
+								return { ...ingredient, checked: !ingredient.checked };
+							}
+							return ingredient;
+						}),
+					};
+				}
+				return recipe;
+			});
+			// Update the user.shoppingList
+			updateShoppingList(updatedRecipes);
+			// Update the local state
+			setRecipes(updatedRecipes);
+		} else {
+			// If toggling in the Total Recipe, update all instances of the ingredient across all recipes.
+			const updatedRecipes = recipes.map((recipe) => ({
+				...recipe,
+				ingredients: recipe.ingredients.map((ingredient) => {
+					if (ingredient.name === toggledIngredient.name) {
+						// Toggle the checked state for all instances of this ingredient.
+						return { ...ingredient, checked: !toggledIngredient.checked };
+					}
+					return ingredient;
+				}),
+			}));
+
+			// Update the user.shoppingList
+			updateShoppingList(updatedRecipes);
+			// Update the local state
+			setRecipes(updatedRecipes);
+		}
+	};
+
+	// Aggregate ingredients into a total recipe
+	const totalRecipe = {
+		id: TOTAL_RECIPE_ID,
+		title: 'Total Ingredients',
+		ingredients: recipes
+			.flatMap((recipe) =>
+				recipe.ingredients.map((ingredient) => ({
+					...ingredient,
+					recipeId: TOTAL_RECIPE_ID,
+				}))
+			)
+			.reduce((acc, ingredient) => {
+				const existing = acc.find(
+					(item) =>
+						item.name === ingredient.name && item.unit === ingredient.unit
+				);
+				if (existing) {
+					// Update the total quantity
+					existing.quantity =
+						parseFloat(existing.quantity) + parseFloat(ingredient.quantity);
+					// Update the checked quantity
+					if (ingredient.checked) {
+						existing.checkedQuantity =
+							(existing.checkedQuantity !== undefined
+								? parseFloat(existing.checkedQuantity)
+								: 0) + parseFloat(ingredient.quantity);
+					}
+				} else {
+					acc.push({
+						...ingredient,
+						quantity: parseFloat(ingredient.quantity),
+						checkedQuantity: ingredient.checked
+							? parseFloat(ingredient.quantity)
+							: 0,
+					});
+				}
+				return acc;
+			}, [])
+			.map((ingredient) => ({
+				...ingredient,
+				quantity: `${ingredient.checkedQuantity !== undefined ? ingredient.checkedQuantity : 0}/${ingredient.quantity} `,
+			})),
+	};
+
+	const handleDeleteAction = (recipeId, ingredientNamesToRemove = []) => {
+		// determine whether we're removing specific ingredients or the entire recipe
+		if (ingredientNamesToRemove.length > 0) {
+			// remove specific ingredients from the recipe
+			const updatedRecipes = recipes.map((recipe) => {
+				if (recipe.id === recipeId) {
+					const filteredIngredients = recipe.ingredients.filter(
+						(ingredient) => !ingredientNamesToRemove.includes(ingredient.name)
+					);
+					return { ...recipe, ingredients: filteredIngredients };
+				}
+				return recipe;
+			});
+			updateShoppingList(updatedRecipes); // update the list
+			setRecipes(updatedRecipes); // update local state
+		} else {
+			// otherwise, remove the entire recipe
+			removeRecipeFromShoppingList(recipeId); // Tupdate the context
+			setRecipes(recipes.filter((recipe) => recipe.id !== recipeId)); // update local state
+		}
+	};
+
+	const handleClearAll = () => {
+		// Clear all recipes from the global state
+		updateShoppingList([]);
+
+		// Clear the local state
+		setRecipes([]);
+	};
 
 	return (
 		<div id={styles['shopping-list']}>
 			<div className={styles['header-container']}>
 				<Button accent>Add Ingredients</Button>
+
 				<ToggleSwitch
-					label1="Recipe"
-					label2="Total"
+					label1="by Recipe"
+					label2="by Ingredient"
 					onToggle={handleToggleSwitchChange}
 				/>
 			</div>
 
 			{viewByRecipe ? (
-				<ShoppingListRecipe
-					recipes={recipesState}
-					onIngredientToggle={handleIngredientToggle}
-				/>
+				recipes.map((recipe) => (
+					<ShoppingListRecipe
+						key={recipe.id}
+						recipe={recipe}
+						onIngredientToggle={handleIngredientToggle}
+						onDeleteRecipe={handleDeleteAction}
+					/>
+				))
 			) : (
-				<div className={styles['ingredient-list']}>
-					{flattenedIngredients.map((ingredient, index) => (
-						<ShoppingListIngredient
-							key={index}
-							ingredient={ingredient}
-							onToggle={() =>
-								handleIngredientToggle(ingredient.recipeId, ingredient)
-							}
-						/>
-					))}
-				</div>
+				<>
+					<Button
+						accent
+						onClick={handleClearAll}
+						className={styles['clear-all-button']}
+					>
+						Clear All
+					</Button>
+					<TotalIngredientList
+						recipe={totalRecipe}
+						onIngredientToggle={handleIngredientToggle}
+					/>
+				</>
 			)}
 		</div>
 	);

@@ -1,14 +1,16 @@
 import Ingredient from '@/components/ingredient/Ingredient';
-import { useRecipes } from '@/context/data/useRecipes';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useRecipes } from '@/context/data/useRecipes';
+import { useUser } from '@/context/user/useUser';
 import styles from './ingredient.module.scss';
 
 const Ingredients = () => {
 	const { recipeId } = useParams();
 	const recipes = useRecipes();
-	const recipe = recipes.find((r) => r.id.toString() === recipeId);
+	const { addRecipeToShoppingList } = useUser();
 
+	const recipe = recipes.find((r) => r.id.toString() === recipeId);
 	const [ingredientType, setIngredientType] = useState('Normal');
 	const [ingredients, setIngredients] = useState([]);
 	const [servingSize, setServingSize] = useState(1); // assuming a starting default serving size
@@ -70,6 +72,41 @@ const Ingredients = () => {
 		servingSize
 	);
 
+	const handleAddToShoppingList = () => {
+		// check if any ingredients have been selected
+		const anySelected = ingredients.some((ingredient) => ingredient.checked);
+
+		let ingredientsToAdd;
+		if (!anySelected) {
+			// if no ingredients are selected, mark all as selected for visual feedback
+			ingredientsToAdd = ingredients.map((ingredient) => ({
+				...ingredient,
+				checked: true,
+			}));
+			setIngredients(ingredientsToAdd); // This updates the UI to show all ingredients as checked
+		} else {
+			// use only the already selected ingredients
+			ingredientsToAdd = ingredients.filter((ingredient) => ingredient.checked);
+		}
+		// adjust the quantities of the ingredients based on the serving size
+		const adjustedIngredients = adjustIngredientQuantities(
+			ingredientsToAdd,
+			servingSize
+		);
+
+		// prepare recipe object with the ingredients to add
+		const recipeToAdd = {
+			...recipe,
+			ingredients: adjustedIngredients.map((ingredient) => ({
+				...ingredient,
+				checked: false, // reset 'checked' state
+			})),
+		};
+
+		// add the recipe to the shopping list (user.shoppingList)
+		addRecipeToShoppingList(recipeToAdd);
+	};
+
 	return (
 		<div className={styles['ingredients-container']}>
 			<div className={styles['segmented-control']}>
@@ -102,8 +139,11 @@ const Ingredients = () => {
 				))}
 			</ul>
 			<div className={styles['button-container']}>
-				<button className={styles['add-to-list-button']}>
-					Add To Shopping List{' '}
+				<button
+					className={styles['add-to-list-button']}
+					onClick={handleAddToShoppingList}
+				>
+					Add To Shopping List
 				</button>
 			</div>
 		</div>

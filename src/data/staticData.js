@@ -6,7 +6,7 @@ const staticData = {
 			tagIds: [1, 2, 7],
 			shortDescription: 'An unforgettable classic',
 			about:
-				'This is a spaghetti recipe. A delightful dish that is both easy to prepare and delicious. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut faucibus libero non magna vulputate mollis sed non lacus. Vestibulum tincidunt est sit amet dolor dignissim rhoncus. Etiam tempus condimentum turpis eget facilisis. Ut pulvinar, ex vel lobortis scelerisque, enim sem maximus nisi, id malesuada orci lacus pharetra lacus. Aenean quis est velit. Aenean mauris enim, elementum sit amet nunc ac, consequat volutpat nulla. Praesent efficitur nunc bibendum velit maximus, sed sagittis neque sagittis. Vivamus semper turpis non pharetra pretium.',
+				'This is a spaghetti recipe. A delightful dish that is both easy to prepare and delicious. ',
 			time: '30 minutes',
 			difficulty: 'Easy',
 			equipment: ['Pan', 'Spatula', 'Bowl'],
@@ -122,7 +122,7 @@ const staticData = {
 			],
 			ingredientsVegeterian: [
 				{ name: 'All-purpose Flour', quantity: 3, unit: 'cups' },
-				{ name: 'Organic Sugar', quantity: 2, unit: 'cups' }, // Ensure it's vegan
+				{ name: 'Organic Sugar', quantity: 2, unit: 'cups' },
 				{ name: 'Baking Powder', quantity: 1, unit: 'tbsp' },
 				{ name: 'Salt', quantity: 0.5, unit: 'tsp' },
 				{ name: 'Vegan Butter', quantity: 1, unit: 'cup' },
@@ -207,6 +207,7 @@ const staticData = {
 			username: 'Jacob',
 			password: '123',
 			favorites: [1, 3],
+			shoppingList: [],
 			dietaryRestrictions: [1],
 		},
 		{

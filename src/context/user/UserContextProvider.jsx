@@ -1,10 +1,19 @@
 import PropTypes from 'prop-types';
 import { createContext, useState } from 'react';
-
+import staticData from '../../data/staticData';
 export const UserContext = createContext();
 
 const UserContextProvider = ({ children }) => {
 	const [user, _setUser] = useState(JSON.parse(localStorage.getItem('user')));
+	const [recipes] = useState(
+		staticData.recipes.map((recipe) => ({
+			...recipe,
+			tags: recipe.tagIds.map((tagId) =>
+				staticData.tags.find((tag) => tag.id === tagId)
+			),
+			path: recipe.title.replace(/\s+/g, '-').toLocaleLowerCase(),
+		}))
+	);
 
 	const setUser = (data) => {
 		_setUser(data);
@@ -50,9 +59,14 @@ const UserContextProvider = ({ children }) => {
 		setUser({ ...user, shoppingList: updatedShoppingList });
 	};
 
-	// returns the shopping list
+	// helper function that returns all the favorited recipes (as objects)
 	const getFavorites = () => {
-		return user.favorites || [];
+		console.log(recipes);
+		console.log(user.favorites);
+		const favoriteRecipes = recipes.filter((recipe) =>
+			user.favorites.includes(recipe.id)
+		);
+		return favoriteRecipes;
 	};
 
 	// adds a recipe id to a user's favourite list

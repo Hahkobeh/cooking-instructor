@@ -206,7 +206,7 @@ const staticData = {
 		{
 			username: 'Jacob',
 			password: '123',
-			favorites: [1, 3],
+			favorites: [1, 2],
 			shoppingList: [],
 			dietaryRestrictions: [1],
 		},

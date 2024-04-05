@@ -250,7 +250,7 @@ const staticData = {
 			skills: ['Boiling', 'Simmering'],
 			image: 'thai-green-curry.jpg',
 			ratings: {
-				average: 4.6,
+				average: 3.5,
 				total: 105,
 			},
 			ingredientsNormal: [

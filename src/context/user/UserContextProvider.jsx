@@ -50,6 +50,11 @@ const UserContextProvider = ({ children }) => {
 		setUser({ ...user, shoppingList: updatedShoppingList });
 	};
 
+	// returns the shopping list
+	const getFavorites = () => {
+		return user.favorites || [];
+	};
+
 	// adds a recipe id to a user's favourite list
 	const addFavorite = (recipeId) => {
 		const updatedFavorites = [...user.favorites, recipeId];
@@ -71,6 +76,7 @@ const UserContextProvider = ({ children }) => {
 				updateShoppingList,
 				addRecipeToShoppingList,
 				removeRecipeFromShoppingList,
+				getFavorites,
 				addFavorite,
 				removeFavorite,
 			}}

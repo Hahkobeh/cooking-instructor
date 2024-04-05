@@ -35,6 +35,11 @@ const Home = () => {
 			recipe.about.toLowerCase().includes(search.toLowerCase()) ||
 			doesSearchMatchTag(search, tags, recipe)
 	);
+
+	const handleCategorySelect = (categoryName) => {
+		setSearch(categoryName); // Set the search state to the category name
+	};
+
 	console.log('Filtered Recipes', filteredRecipes);
 
 	return (
@@ -44,7 +49,7 @@ const Home = () => {
 			</h1>
 			<h3>Let&apos;s find you something to cook!</h3>
 			<SearchBar search={search} setSearch={setSearch} />
-			<CategoriesDisplay />
+			<CategoriesDisplay onCategorySelect={handleCategorySelect} />
 			<RecipeCardList>
 				{filteredRecipes.map((recipe) => (
 					<RecipeCardList.Card

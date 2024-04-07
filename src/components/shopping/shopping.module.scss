@@ -69,3 +69,11 @@
 	text-decoration: line-through;
 	color: variables.$grey;
 }
+
+.delete-ingredient-button {
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	color: #cc0000;
+	margin-left: auto;
+}

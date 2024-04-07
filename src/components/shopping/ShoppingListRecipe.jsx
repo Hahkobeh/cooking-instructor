@@ -4,7 +4,7 @@ import ShoppingListIngredient from './ShoppingListIngredient';
 import styles from './shopping.module.scss';
 
 // Define the ShoppingListRecipe functional component with props received from the parent component (ShoppingList)
-const ShoppingListRecipe = ({ recipe, onIngredientToggle, onDeleteRecipe }) => {
+const ShoppingListRecipe = ({ recipe, onIngredientToggle, onDelete }) => {
 	// State to manage dropdown visibility
 	const [isDropdownOpen, setIsDropdownOpen] = useState(true);
 
@@ -26,7 +26,7 @@ const ShoppingListRecipe = ({ recipe, onIngredientToggle, onDeleteRecipe }) => {
 								.filter((ingredient) => ingredient.checked)
 								.map((ingredient) => ingredient.name);
 
-							onDeleteRecipe(recipe.id, checkedIngredientNames);
+							onDelete(recipe.id, checkedIngredientNames);
 						}}
 						className={styles['delete-button']}
 					>
@@ -49,6 +49,7 @@ const ShoppingListRecipe = ({ recipe, onIngredientToggle, onDeleteRecipe }) => {
 								<ShoppingListIngredient
 									ingredient={ingredient}
 									onToggle={() => onIngredientToggle(recipe.id, ingredient)}
+									onDelete={() => onDelete(recipe.id, [ingredient.name])}
 								/>
 							</li>
 						))}
@@ -73,7 +74,7 @@ ShoppingListRecipe.propTypes = {
 		).isRequired,
 	}).isRequired,
 	onIngredientToggle: PropTypes.func.isRequired,
-	onDeleteRecipe: PropTypes.func.isRequired,
+	onDelete: PropTypes.func.isRequired,
 };
 
 export default ShoppingListRecipe;

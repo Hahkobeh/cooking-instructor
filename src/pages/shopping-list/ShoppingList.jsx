@@ -155,7 +155,7 @@ const ShoppingList = () => {
 						key={recipe.id}
 						recipe={recipe}
 						onIngredientToggle={handleIngredientToggle}
-						onDeleteRecipe={handleDeleteAction}
+						onDelete={handleDeleteAction}
 					/>
 				))
 			) : (

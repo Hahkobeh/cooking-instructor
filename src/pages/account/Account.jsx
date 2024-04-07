@@ -4,7 +4,7 @@ import DietaryMenu from '@/components/dietary-menu/DietaryMenu';
 import RatingStars from '@/components/rating-stars/RatingStars';
 import RecipeCardList from '@/components/recipe-card-list/RecipeCardList';
 import TagList from '@/components/tag-list/TagList';
-import { useRecipes } from '@/context/data/useRecipes';
+// import { useRecipes } from '@/context/data/useRecipes';
 import { useUser } from '@/context/user/useUser';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -13,8 +13,10 @@ import styles from './account.module.scss';
 const Account = () => {
 	const [videoOn, setVideoOn] = useState(false);
 	const [subPage, setSubPage] = useState(null);
-	const { setUser } = useUser();
-	const recipes = useRecipes();
+	const { setUser, getFavorites } = useUser();
+	// const recipes = useRecipes();
+	const favoriteRecipes = getFavorites();
+	const numFavorites = favoriteRecipes.length;
 	const navigate = useNavigate();
 	const logout = () => {
 		setUser(null);
@@ -28,7 +30,7 @@ const Account = () => {
 					<>
 						<div className={styles.header}>
 							<h2>
-								Recents <span className="italic">(3)</span>
+								Recents <span className="italic">({numFavorites})</span>
 								{/* TODO HARDCODED NUMBER ... */}
 							</h2>
 							<Button
@@ -42,7 +44,7 @@ const Account = () => {
 							</Button>
 						</div>
 						<RecipeCardList>
-							{recipes.map((recipe) => (
+							{favoriteRecipes.map((recipe) => (
 								<RecipeCardList.Card
 									key={recipe.id}
 									recipeId={recipe.id}
@@ -65,7 +67,7 @@ const Account = () => {
 					<>
 						<div className={styles.header}>
 							<h2>
-								Favorites <span className="italic">(3)</span>
+								Favorites <span className="italic">({numFavorites})</span>
 							</h2>
 							<Button
 								className={styles.navigate}
@@ -78,7 +80,7 @@ const Account = () => {
 							</Button>
 						</div>
 						<RecipeCardList>
-							{recipes.map((recipe) => (
+							{favoriteRecipes.map((recipe) => (
 								<RecipeCardList.Card
 									key={recipe.id}
 									recipeId={recipe.id}
@@ -106,7 +108,7 @@ const Account = () => {
 						<br />
 						<div className={styles.subTitle}>
 							<h3>
-								Favorites <span className="italic">(3)</span>
+								Favorites <span className="italic">({numFavorites})</span>
 							</h3>
 							<Button
 								className={styles.navigate}
@@ -117,7 +119,7 @@ const Account = () => {
 						</div>
 						{/* use SHIFT + SCROLL WHEEL to scroll */}
 						<RecipeCardList horizontal>
-							{recipes.map((recipe) => (
+							{favoriteRecipes.map((recipe) => (
 								<RecipeCardList.Card key={recipe.id} recipeId={recipe.id}>
 									<p>{recipe.title}</p>
 									<h5>{recipe.shortDescription}</h5>
@@ -128,7 +130,7 @@ const Account = () => {
 
 						<div className={styles.subTitle}>
 							<h3>
-								Recents <span className="italic">(5)</span>
+								Recents <span className="italic">({numFavorites})</span>
 							</h3>
 							<Button
 								className={styles.navigate}
@@ -138,7 +140,7 @@ const Account = () => {
 							</Button>
 						</div>
 						<RecipeCardList horizontal>
-							{recipes.map((recipe) => (
+							{favoriteRecipes.map((recipe) => (
 								<RecipeCardList.Card key={recipe.id} recipeId={recipe.id}>
 									<p>{recipe.title}</p>
 									<h5>{recipe.shortDescription}</h5>

@@ -42,14 +42,16 @@ const ShoppingListRecipe = ({ recipe, onIngredientToggle, onDeleteRecipe }) => {
 
 			{isDropdownOpen && (
 				<ul className={styles['ingredient-list']}>
-					{recipe.ingredients.map((ingredient, index) => (
-						<li key={index}>
-							<ShoppingListIngredient
-								ingredient={ingredient}
-								onToggle={() => onIngredientToggle(recipe.id, ingredient)}
-							/>
-						</li>
-					))}
+					{recipe.ingredients
+						.sort((a, b) => a.checked - b.checked)
+						.map((ingredient, index) => (
+							<li key={index}>
+								<ShoppingListIngredient
+									ingredient={ingredient}
+									onToggle={() => onIngredientToggle(recipe.id, ingredient)}
+								/>
+							</li>
+						))}
 				</ul>
 			)}
 		</div>

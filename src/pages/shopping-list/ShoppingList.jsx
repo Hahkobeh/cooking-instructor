@@ -140,23 +140,23 @@ const ShoppingList = () => {
 	return (
 		<div id={styles['shopping-list']}>
 			<div className={styles['header-container']}>
-				<Button accent>Add Ingredients</Button>
+				{recipes.length > 0 && (
+					<Button
+						accent
+						onClick={handleClearAll}
+						className={styles['clear-all-button']}
+					>
+						Clear All
+					</Button>
+				)}
 
 				<ToggleSwitch
-					label1="by Recipe"
-					label2="by Ingredient"
+					className={styles['display-mode-toggle']}
+					label1="by ingredient"
+					label2="by recipe"
 					onToggle={handleToggleSwitchChange}
 				/>
 			</div>
-			{recipes.length > 0 && (
-				<Button
-					accent
-					onClick={handleClearAll}
-					className={styles['clear-all-button']}
-				>
-					Clear All
-				</Button>
-			)}
 
 			{viewByRecipe ? (
 				recipes.map(

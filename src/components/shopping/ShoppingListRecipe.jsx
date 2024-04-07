@@ -40,7 +40,7 @@ const ShoppingListRecipe = ({ recipe, onIngredientToggle, onDelete }) => {
 							className="material-symbols-outlined"
 							style={{ fontSize: '24px' }}
 						>
-							do_not_disturb_on
+							delete_forever
 						</span>
 					</button>
 				)}

@@ -36,6 +36,15 @@ const Home = () => {
 			doesSearchMatchTag(search, tags, recipe)
 	);
 
+	const recipeSuggestions = filteredRecipes
+		.slice(0, 3)
+		.map((recipe) => recipe.title);
+
+	const tagSuggestions = tags
+		.filter((tag) => tag.value.toLowerCase().includes(search.toLowerCase()))
+		.map((tag) => tag.value)
+		.slice(0, 2);
+
 	const handleCategorySelect = (categoryName) => {
 		setSearch(categoryName); // Set the search state to the category name
 	};
@@ -48,7 +57,11 @@ const Home = () => {
 				Welcome, <span className="accent">{user.username}</span>
 			</h1>
 			<h3>Let&apos;s find you something to cook!</h3>
-			<SearchBar search={search} setSearch={setSearch} />
+			<SearchBar
+				search={search}
+				setSearch={setSearch}
+				suggestions={[...recipeSuggestions, ...tagSuggestions]}
+			/>
 			<CategoriesDisplay onCategorySelect={handleCategorySelect} />
 			<RecipeCardList>
 				{filteredRecipes.map((recipe) => (

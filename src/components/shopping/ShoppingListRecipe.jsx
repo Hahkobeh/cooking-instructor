@@ -13,20 +13,26 @@ const ShoppingListRecipe = ({ recipe, onIngredientToggle, onDelete }) => {
 
 	return (
 		<div className={styles['shopping-list-recipe']}>
-			<h3
-				className={`${styles['recipe-title']} ${isDropdownOpen ? styles['rotate'] : ''}`}
-				onClick={toggleDropdown}
-			>
-				{recipe.title}
-				{recipe.id != -1 && (
+			<div className={styles['recipe-header']}>
+				{/* Dropdown Icon */}
+				<span
+					className={`material-symbols-outlined ${styles['dropdown-icon']} ${isDropdownOpen ? styles.rotate : ''}`}
+					onClick={toggleDropdown}
+				>
+					expand_more
+				</span>
+
+				{/* Recipe Title */}
+				<h3 className={styles['recipe-title']} onClick={toggleDropdown}>
+					{recipe.title}
+				</h3>
+
+				{/* Delete Button, shown conditionally */}
+				{recipe.id !== -1 && (
 					<button
 						onClick={(event) => {
 							event.stopPropagation();
-							const checkedIngredientNames = recipe.ingredients
-								.filter((ingredient) => ingredient.checked)
-								.map((ingredient) => ingredient.name);
-
-							onDelete(recipe.id, checkedIngredientNames);
+							onDelete(recipe.id);
 						}}
 						className={styles['delete-button']}
 					>
@@ -34,11 +40,11 @@ const ShoppingListRecipe = ({ recipe, onIngredientToggle, onDelete }) => {
 							className="material-symbols-outlined"
 							style={{ fontSize: '24px' }}
 						>
-							delete
+							do_not_disturb_on
 						</span>
 					</button>
 				)}
-			</h3>
+			</div>
 
 			{isDropdownOpen && (
 				<ul className={styles['ingredient-list']}>

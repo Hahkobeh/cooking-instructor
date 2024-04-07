@@ -3,7 +3,6 @@ import ToggleSwitch from '@/components/toggle/ToggleSwitch';
 import { useUser } from '@/context/user/useUser';
 import { useState } from 'react';
 import ShoppingListRecipe from '../../components/shopping/ShoppingListRecipe';
-import TotalIngredientList from '@/components/shopping/TotalIngredientList';
 import styles from './shopping-list.module.scss';
 
 // simulating a fixed ID for the aggregated "total" recipe
@@ -112,7 +111,8 @@ const ShoppingList = () => {
 		if (ingredientNamesToRemove.length > 0) {
 			// remove specific ingredients from the recipe
 			const updatedRecipes = recipes.map((recipe) => {
-				if (recipe.id === recipeId) {
+				if (recipe.id === recipeId || recipeId == TOTAL_RECIPE_ID) {
+					console.log(recipeId);
 					const filteredIngredients = recipe.ingredients.filter(
 						(ingredient) => !ingredientNamesToRemove.includes(ingredient.name)
 					);
@@ -148,29 +148,38 @@ const ShoppingList = () => {
 					onToggle={handleToggleSwitchChange}
 				/>
 			</div>
+			{recipes.length > 0 && (
+				<Button
+					accent
+					onClick={handleClearAll}
+					className={styles['clear-all-button']}
+				>
+					Clear All
+				</Button>
+			)}
 
 			{viewByRecipe ? (
-				recipes.map((recipe) => (
-					<ShoppingListRecipe
-						key={recipe.id}
-						recipe={recipe}
-						onIngredientToggle={handleIngredientToggle}
-						onDelete={handleDeleteAction}
-					/>
-				))
+				recipes.map(
+					(recipe) =>
+						recipe.ingredients.length > 0 && (
+							<ShoppingListRecipe
+								key={recipe.id}
+								recipe={recipe}
+								onIngredientToggle={handleIngredientToggle}
+								onDelete={handleDeleteAction}
+							/>
+						)
+				)
 			) : (
 				<>
-					<Button
-						accent
-						onClick={handleClearAll}
-						className={styles['clear-all-button']}
-					>
-						Clear All
-					</Button>
-					<TotalIngredientList
-						recipe={totalRecipe}
-						onIngredientToggle={handleIngredientToggle}
-					/>
+					{totalRecipe.ingredients.length > 0 && (
+						<ShoppingListRecipe
+							key={TOTAL_RECIPE_ID}
+							recipe={totalRecipe}
+							onIngredientToggle={handleIngredientToggle}
+							onDelete={handleDeleteAction}
+						/>
+					)}
 				</>
 			)}
 		</div>

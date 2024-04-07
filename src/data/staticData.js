@@ -3,7 +3,7 @@ const staticData = {
 		{
 			id: 1,
 			title: 'Spaghetti Carbonara',
-			tagIds: [1, 2, 7],
+			tagIds: [1, 3, 6],
 			shortDescription: 'An unforgettable classic',
 			about:
 				'This is a spaghetti recipe. A delightful dish that is both easy to prepare and delicious. ',
@@ -87,7 +87,7 @@ const staticData = {
 		{
 			id: 2,
 			title: 'Vanilla Dream Cake',
-			tagIds: [1, 4],
+			tagIds: [2, 9],
 			shortDescription: 'A delicious vanilla surprise',
 			about:
 				'This is a vanilla cake recipe. A classic dish that brings comfort and warmth.',
@@ -135,6 +135,7 @@ const staticData = {
 				{ name: 'Almond Milk', quantity: 1, unit: 'cup' },
 				{ name: 'Vanilla Extract', quantity: 2, unit: 'tsp' },
 			],
+
 			steps: [
 				{
 					number: 1,
@@ -175,33 +176,253 @@ const staticData = {
 				},
 			],
 		},
-	],
-	tags: [
-		{ id: 1, value: 'cheap', icon: 'attach_money' },
-		{ id: 2, value: 'italian', icon: 'location_on' },
-		{ id: 3, value: 'chinese', icon: 'location_on' },
-		{ id: 4, value: 'baking', icon: 'oven' },
-		{ id: 5, value: 'stir fry', icon: 'skillet' },
-		{ id: 6, value: 'stew', icon: 'stockpot' },
-		{ id: 7, value: 'barbecue', icon: 'outdoor_grill' },
-		{ id: 8, value: 'fast', icon: 'microwave' },
-	],
-	categories: [
-		{ id: 1, name: 'Italian', icon: 'local_pizza' },
-		{ id: 2, name: 'Desserts', icon: 'cake' },
-		{ id: 3, name: 'Quick Meals', icon: 'schedule' },
-		{ id: 4, name: 'Vegetarian', icon: 'spa' },
-		{ id: 5, name: 'Vegan', icon: 'grass' },
-		{ id: 6, name: 'Gluten-Free', icon: 'no_food' },
-		{ id: 7, name: 'Breakfast', icon: 'free_breakfast' },
-		{ id: 8, name: 'Asian Cuisine', icon: 'rice_bowl' },
-		{ id: 9, name: 'Mexican', icon: 'local_dining' },
-		{ id: 10, name: 'Easy', icon: 'thumb_up' },
-		{ id: 11, name: 'Healthy', icon: 'favorite' },
-		{ id: 13, name: 'Nut-Free', icon: 'no_meals' },
-		{ id: 15, name: 'Low Carb', icon: 'fitness_center' },
+		{
+			id: 3,
+			title: 'Mushroom Risotto',
+			tagIds: [4, 5, 8],
+			shortDescription: 'Creamy and comforting Italian classic',
+			about:
+				'A rich and creamy risotto cooked slowly to perfection, featuring earthy mushrooms and aromatic herbs.',
+			time: '45 minutes',
+			difficulty: 'Medium',
+			equipment: ['Saucepan', 'Wooden Spoon'],
+			skills: ['Stirring', 'Tasting'],
+			image: 'mushroom-risotto.jpg',
+			ratings: {
+				average: 4.8,
+				total: 95,
+			},
+			ingredientsNormal: [
+				{ name: 'Arborio Rice', quantity: 1, unit: 'cup' },
+				{ name: 'Mixed Mushrooms', quantity: 300, unit: 'g' },
+				{ name: 'Vegetable Stock', quantity: 4, unit: 'cups' },
+				{ name: 'White Wine', quantity: 1 / 2, unit: 'cup' },
+				{ name: 'Parmesan Cheese', quantity: 3 / 4, unit: 'cup' },
+				{ name: 'Onion', quantity: 1, unit: '' },
+				{ name: 'Garlic', quantity: 2, unit: 'cloves' },
+				{ name: 'Butter', quantity: 2, unit: 'tbsp' },
+				{ name: 'Olive Oil', quantity: 1, unit: 'tbsp' },
+				{ name: 'Thyme', quantity: 1, unit: 'tsp' },
+			],
+			ingredientsGlutenFree: [
+				{ name: 'GF Arborio Rice', quantity: 1, unit: 'cup' },
+				{ name: 'GF Mixed Mushrooms', quantity: 300, unit: 'g' },
+				{ name: 'GF Vegetable Stock', quantity: 4, unit: 'cups' },
+				{ name: 'GF White Wine', quantity: 1 / 2, unit: 'cup' },
+				{ name: 'GF Parmesan Cheese', quantity: 3 / 4, unit: 'cup' },
+				{ name: 'GF Onion', quantity: 1, unit: '' },
+				{ name: 'GF Garlic', quantity: 2, unit: 'cloves' },
+				{ name: 'GF Butter', quantity: 2, unit: 'tbsp' },
+				{ name: 'GF Olive Oil', quantity: 1, unit: 'tbsp' },
+				{ name: 'GF Thyme', quantity: 1, unit: 'tsp' },
+			],
+			ingredientsVegeterian: [
+				{ name: 'VEG Arborio Rice', quantity: 1, unit: 'cup' },
+				{ name: 'VEG Mixed Mushrooms', quantity: 300, unit: 'g' },
+				{ name: 'VEG Vegetable Stock', quantity: 4, unit: 'cups' },
+				{ name: 'VEG White Wine', quantity: 1 / 2, unit: 'cup' },
+				{ name: 'VEG Parmesan Cheese', quantity: 3 / 4, unit: 'cup' },
+				{ name: 'VEG Onion', quantity: 1, unit: '' },
+				{ name: 'VEG Garlic', quantity: 2, unit: 'cloves' },
+				{ name: 'VEG Butter', quantity: 2, unit: 'tbsp' },
+				{ name: 'VEG Olive Oil', quantity: 1, unit: 'tbsp' },
+				{ name: 'VEG Thyme', quantity: 1, unit: 'tsp' },
+			],
+			steps: [
+				{
+					number: 1,
+					description:
+						'Heat the stock in a separate pot and keep it warm over low heat.',
+				},
+				{
+					number: 2,
+					description:
+						'Sauté onions, garlic, and mushrooms in a saucepan with olive oil and butter until softened.',
+				},
+				{
+					number: 3,
+					description:
+						'Add the rice to the saucepan, stirring until grains are well-coated and translucent.',
+				},
+				{
+					number: 4,
+					description:
+						'Pour in the wine, cooking until the liquid has been absorbed.',
+				},
+				{
+					number: 5,
+					description:
+						'Add the stock one ladle at a time, stirring continuously, until the rice is al dente and creamy.',
+				},
+				{
+					number: 6,
+					description:
+						'Stir in the Parmesan cheese and thyme, then season with salt and pepper to taste. Serve immediately.',
+				},
+			],
+		},
+		{
+			id: 4,
+			title: 'Thai Green Curry',
+			tagIds: [4, 6],
+			shortDescription: 'Spicy and aromatic curry dish',
+			about:
+				'A vibrant and spicy Thai green curry that combines creamy coconut milk with tender chicken, crisp vegetables, and fragrant herbs.',
+			time: '30 minutes',
+			difficulty: 'Easy',
+			equipment: ['Pot'],
+			skills: ['Boiling', 'Simmering'],
+			image: 'thai-green-curry.jpg',
+			ratings: {
+				average: 3.5,
+				total: 105,
+			},
+			ingredientsNormal: [
+				{ name: 'Chicken Breast', quantity: 400, unit: 'g' },
+				{ name: 'Coconut Milk', quantity: 1, unit: 'can' },
+				{ name: 'Green Curry Paste', quantity: 2, unit: 'tbsp' },
+				{ name: 'Bamboo Shoots', quantity: 1 / 2, unit: 'cup' },
+				{ name: 'Bell Pepper', quantity: 1, unit: '' },
+				{ name: 'Thai Basil Leaves', quantity: 1 / 4, unit: 'cup' },
+				{ name: 'Fish Sauce', quantity: 1, unit: 'tbsp' },
+				{ name: 'Brown Sugar', quantity: 1, unit: 'tsp' },
+				{ name: 'Lime', quantity: 1, unit: '' },
+			],
+			ingredientsGlutenFree: [
+				{ name: 'Chicken Breast', quantity: 400, unit: 'g' },
+				{ name: 'Coconut Milk', quantity: 1, unit: 'can' },
+				{ name: 'GF Green Curry Paste', quantity: 2, unit: 'tbsp' },
+				{ name: 'Bamboo Shoots', quantity: 1 / 2, unit: 'cup' },
+				{ name: 'Bell Pepper', quantity: 1, unit: '' },
+				{ name: 'Thai Basil Leaves', quantity: 1 / 4, unit: 'cup' },
+				{ name: 'Fish Sauce', quantity: 1, unit: 'tbsp' },
+				{ name: 'Brown Sugar', quantity: 1, unit: 'tsp' },
+				{ name: 'Lime', quantity: 1, unit: '' },
+			],
+			ingredientsVegeterian: [
+				{ name: 'Tofu Chicken Breast', quantity: 400, unit: 'g' },
+				{ name: 'Coconut Milk', quantity: 1, unit: 'can' },
+				{ name: 'Green Curry Paste', quantity: 2, unit: 'tbsp' },
+				{ name: 'Bamboo Shoots', quantity: 1 / 2, unit: 'cup' },
+				{ name: 'Bell Pepper', quantity: 1, unit: '' },
+				{ name: 'Thai Basil Leaves', quantity: 1 / 4, unit: 'cup' },
+				{ name: 'Vegeterian Fish Sauce', quantity: 1, unit: 'tbsp' },
+				{ name: 'Brown Sugar', quantity: 1, unit: 'tsp' },
+				{ name: 'Lime', quantity: 1, unit: '' },
+			],
+			steps: [
+				{
+					number: 1,
+					description:
+						'Heat the green curry paste in a pot over medium heat, then add coconut milk.',
+				},
+				{
+					number: 2,
+					description: 'Add the chicken and simmer until cooked through.',
+				},
+				{
+					number: 3,
+					description:
+						'Add the bamboo shoots and bell pepper, cooking until tender.',
+				},
+				{
+					number: 4,
+					description:
+						'Stir in the fish sauce, brown sugar, and squeeze in lime juice.',
+				},
+				{
+					number: 5,
+					description:
+						'Garnish with Thai basil leaves before serving with steamed rice.',
+				},
+			],
+		},
+		{
+			id: 5,
+			title: 'Quinoa Salad with Avocado',
+			tagIds: [4, 5, 10],
+			shortDescription: 'Refreshing and nutritious salad',
+			about:
+				'A light and healthy quinoa salad packed with fresh vegetables and topped with slices of creamy avocado.',
+			time: '20 minutes',
+			difficulty: 'Easy',
+			equipment: ['Bowl'],
+			skills: ['Boiling', 'Chopping'],
+			image: 'quinoa-salad.jpg',
+			ratings: {
+				average: 4.9,
+				total: 85,
+			},
+			ingredientsNormal: [
+				{ name: 'Quinoa', quantity: 1, unit: 'cup' },
+				{ name: 'Cucumber', quantity: 1, unit: '' },
+				{ name: 'Cherry Tomatoes', quantity: 1 / 2, unit: 'cup' },
+				{ name: 'Red Onion', quantity: 1 / 4, unit: '' },
+				{ name: 'Avocado', quantity: 1, unit: '' },
+				{ name: 'Lemon', quantity: 1, unit: '' },
+				{ name: 'Olive Oil', quantity: 2, unit: 'tbsp' },
+				{ name: 'Feta Cheese', quantity: 1 / 2, unit: 'cup' },
+				{ name: 'Fresh Parsley', quantity: 1 / 4, unit: 'cup' },
+			],
+			ingredientsGlutenFree: [
+				{ name: 'GF Quinoa', quantity: 1, unit: 'cup' },
+				{ name: 'Cucumber', quantity: 1, unit: '' },
+				{ name: 'Cherry Tomatoes', quantity: 1 / 2, unit: 'cup' },
+				{ name: 'Red Onion', quantity: 1 / 4, unit: '' },
+				{ name: 'Avocado', quantity: 1, unit: '' },
+				{ name: 'Lemon', quantity: 1, unit: '' },
+				{ name: 'Olive Oil', quantity: 2, unit: 'tbsp' },
+				{ name: 'Feta Cheese', quantity: 1 / 2, unit: 'cup' },
+				{ name: 'Fresh Parsley', quantity: 1 / 4, unit: 'cup' },
+			],
+			ingredientsVegeterian: [
+				{ name: 'Quinoa', quantity: 1, unit: 'cup' },
+				{ name: 'Cucumber', quantity: 1, unit: '' },
+				{ name: 'Cherry Tomatoes', quantity: 1 / 2, unit: 'cup' },
+				{ name: 'Red Onion', quantity: 1 / 4, unit: '' },
+				{ name: 'Avocado', quantity: 1, unit: '' },
+				{ name: 'Lemon', quantity: 1, unit: '' },
+				{ name: 'Olive Oil', quantity: 2, unit: 'tbsp' },
+				{ name: 'GF Feta Cheese', quantity: 1 / 2, unit: 'cup' },
+				{ name: 'Fresh Parsley', quantity: 1 / 4, unit: 'cup' },
+			],
+			steps: [
+				{
+					number: 1,
+					description:
+						'Cook quinoa according to package instructions, then let it cool.',
+				},
+				{
+					number: 2,
+					description:
+						'In a large bowl, combine cooled quinoa with chopped cucumber, cherry tomatoes, red onion, and crumbled feta cheese.',
+				},
+				{
+					number: 3,
+					description:
+						'Drizzle with olive oil and squeeze in lemon juice. Toss to combine.',
+				},
+				{
+					number: 4,
+					description:
+						'Serve topped with slices of avocado and a sprinkle of fresh parsley.',
+				},
+			],
+		},
 	],
 
+	tags: [
+		{ id: 1, value: 'cheap', icon: 'attach_money' },
+		{ id: 2, value: 'quick', icon: 'schedule' },
+		{ id: 3, value: 'beginner', icon: 'thumb_up' },
+		{ id: 4, value: 'healthy', icon: 'favorite' },
+		{ id: 5, value: 'vegetarian', icon: 'spa' },
+		{ id: 6, value: 'italian', icon: 'local_pizza' },
+		{ id: 7, value: 'chinese', icon: 'rice_bowl' },
+		{ id: 8, value: 'breakfast', icon: 'free_breakfast' },
+		{ id: 9, value: 'desserts', icon: 'cake' },
+		{ id: 10, value: 'keto', icon: 'fitness_center' },
+	],
 	users: [
 		{
 			username: 'Jacob',

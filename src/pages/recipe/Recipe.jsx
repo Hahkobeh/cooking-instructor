@@ -1,6 +1,7 @@
 import RatingStars from '@/components/rating-stars/RatingStars';
 import RecipeNavBar from '@/components/recipe-nav-bar/RecipeNavBar';
 import { useRecipes } from '@/context/data/useRecipes';
+import { useUser } from '@/context/user/useUser';
 import { useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import styles from './recipe.module.scss';
@@ -13,20 +14,29 @@ const Recipe = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const [activeTab, setActiveTab] = useState('about'); // initial active tab is 'about'
-	const [favorited, setFavorited] = useState('false'); //Initial state set to empty heart icon
+	const [favorited, setFavorited] = useState(false); // initial state set to empty heart icon
+	const { user, addFavorite, removeFavorite } = useUser();
 
 	useEffect(() => {
 		// redirect to /about if the current path is exactly `/recipe/:recipeId`
 		if (location.pathname === `/recipe/${recipeId}`) {
 			navigate(`/recipe/${recipeId}/about`, { replace: true });
 		}
-	}, [recipeId, navigate, location.pathname]);
+		// fetch favorite status and set the state
+		const isFavorited = user.favorites.includes(Number(recipeId));
+		setFavorited(isFavorited);
+	}, [recipeId, navigate, location.pathname, user.favorites]);
 
 	const handleTabClick = (tab) => {
 		setActiveTab(tab);
 	};
 
 	const handleFavoriteClick = () => {
+		if (favorited) {
+			removeFavorite(Number(recipeId));
+		} else {
+			addFavorite(Number(recipeId));
+		}
 		setFavorited(!favorited);
 	};
 

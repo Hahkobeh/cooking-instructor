@@ -10,42 +10,34 @@
 	position: relative;
 }
 
-.recipe-title {
-	cursor: pointer;
-	user-select: none; // Prevents text selection on click
-	position: relative;
-	font-size: 20px;
+.recipe-header {
 	display: flex;
-	flex-direction: row;
+	align-items: center;
 	justify-content: space-between;
+	width: 100%;
+}
 
-	// Icon to show dropdown is expandable
-	&:after {
-		content: 'expand_more'; // 'expand_more' is a Material Icons symbol
-		font-family: 'Material Symbols Outlined';
-		transition: transform 0.3s ease; // Smooth transition for transform
-	}
+.recipe-title {
+	flex-grow: 1; // Allows the title to take up the available space
+	margin: 0 10px; // Adds some margin around the title for spacing
+	cursor: pointer;
+	user-select: none;
+}
 
-	// When the dropdown is open, rotate the icon
-	&.rotate:after {
-		transform: rotate(-180deg); // Rotates the icon by 180 degrees
-	}
+.dropdown-icon {
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+.rotate {
+	transform: rotate(-180deg); // Rotate the dropdown icon when open
 }
 
 .delete-button {
-	position: absolute; // position the button absolutely
-	top: 50%;
-	right: 30px; //distance from right
-	transform: translateY(-50%); // center the button vertically
-	background: transparent;
 	border: none;
+	background: transparent;
 	cursor: pointer;
-
-	&:hover,
-	&:focus {
-		color: variables.$accent;
-		border-radius: 50%;
-	}
+	color: red;
+	margin-left: auto;
 }
 
 .ingredient-list {
@@ -68,4 +60,12 @@
 .checked-ingredient {
 	text-decoration: line-through;
 	color: variables.$grey;
+}
+
+.delete-ingredient-button {
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	color: variables.$black;
+	margin-left: auto;
 }

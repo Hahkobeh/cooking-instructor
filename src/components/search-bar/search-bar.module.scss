@@ -1,11 +1,16 @@
 @use '../../styles/variables.scss';
-
+.searchBarContainer {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
 .searchBar {
 	display: flex;
+	position: relative;
 	font-weight: 300;
 	width: 100%;
 	padding: 8px;
-	margin: 8px 0;
+	margin: 0;
 	box-sizing: border-box;
 	border-radius: variables.$border-radius;
 	box-shadow: variables.$shadow;
@@ -22,5 +27,37 @@
 		all: unset;
 		flex: 1;
 		padding-left: 4px;
+	}
+}
+
+.suggestionsList {
+	list-style: none;
+	padding: 0px;
+	margin: 0px 0;
+	position: absolute;
+	width: 100%;
+	box-sizing: border-box;
+	top: 100%;
+	background-color: variables.$white;
+	border: 1px solid variables.$grey;
+
+	border-radius: 0 0 variables.$border-radius variables.$border-radius;
+	box-shadow: variables.$shadow;
+	z-index: 2; // ensure it's above other content
+
+	li {
+		padding: 15px;
+		cursor: pointer;
+		border-bottom: 1px solid variables.$light-grey; // separate suggestions
+
+		&:last-child {
+			border-bottom: none;
+			border-radius: 0 0 variables.$border-radius variables.$border-radius; // round corners of the last item
+		}
+
+		&:hover,
+		&:focus {
+			background-color: variables.$light-grey;
+		}
 	}
 }

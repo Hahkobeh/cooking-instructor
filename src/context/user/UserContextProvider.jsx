@@ -59,6 +59,40 @@ const UserContextProvider = ({ children }) => {
 		setUser({ ...user, shoppingList: updatedShoppingList });
 	};
 
+	// adds a single ingredient to a shopping list
+	const addIngredientToShoppingList = (recipe, ingredient) => {
+		let shoppingList = getShoppingList();
+		const recipeId = recipe.id;
+		const title = recipe.title;
+		const recipeIndex = shoppingList.findIndex((r) => r.id === recipeId);
+
+		if (recipeIndex !== -1) {
+			// recipe exists in the shopping list
+			const existingIngredientIndex = shoppingList[
+				recipeIndex
+			].ingredients.findIndex((ing) => ing.name === ingredient.name);
+
+			if (existingIngredientIndex !== -1) {
+				// ingredient exists, update it
+				shoppingList[recipeIndex].ingredients[existingIngredientIndex] =
+					ingredient;
+			} else {
+				// ingredient does not exist, add it
+				shoppingList[recipeIndex].ingredients.push(ingredient);
+			}
+		} else {
+			// recipe does not exist, create new recipe entry with this ingredient
+			const newRecipeEntry = {
+				id: recipeId,
+				title: title,
+				ingredients: [ingredient],
+			};
+			shoppingList.push(newRecipeEntry);
+		}
+
+		updateShoppingList(shoppingList);
+	};
+
 	// helper function that returns all the favorited recipes (as objects)
 	const getFavorites = () => {
 		console.log(recipes);
@@ -90,6 +124,7 @@ const UserContextProvider = ({ children }) => {
 				updateShoppingList,
 				addRecipeToShoppingList,
 				removeRecipeFromShoppingList,
+				addIngredientToShoppingList,
 				getFavorites,
 				addFavorite,
 				removeFavorite,

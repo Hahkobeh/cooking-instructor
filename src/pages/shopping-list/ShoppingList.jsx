@@ -16,7 +16,6 @@ const ShoppingList = () => {
 	const [viewByRecipe, setViewByRecipe] = useState(true);
 	// state hook for managing the recipes array. initially set to an empty array.
 	const [recipes, setRecipes] = useState(getShoppingList);
-
 	// state hook for managing the viewByRecipe state. initially set to true.
 	const handleToggleSwitchChange = () => {
 		setViewByRecipe(!viewByRecipe);

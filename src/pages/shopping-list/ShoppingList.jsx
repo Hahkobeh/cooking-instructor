@@ -3,7 +3,6 @@ import ToggleSwitch from '@/components/toggle/ToggleSwitch';
 import { useUser } from '@/context/user/useUser';
 import { useState } from 'react';
 import ShoppingListRecipe from '../../components/shopping/ShoppingListRecipe';
-import TotalIngredientList from '@/components/shopping/TotalIngredientList';
 import styles from './shopping-list.module.scss';
 
 // simulating a fixed ID for the aggregated "total" recipe
@@ -111,7 +110,8 @@ const ShoppingList = () => {
 		if (ingredientNamesToRemove.length > 0) {
 			// remove specific ingredients from the recipe
 			const updatedRecipes = recipes.map((recipe) => {
-				if (recipe.id === recipeId) {
+				if (recipe.id === recipeId || recipeId == TOTAL_RECIPE_ID) {
+					console.log(recipeId);
 					const filteredIngredients = recipe.ingredients.filter(
 						(ingredient) => !ingredientNamesToRemove.includes(ingredient.name)
 					);
@@ -139,26 +139,7 @@ const ShoppingList = () => {
 	return (
 		<div id={styles['shopping-list']}>
 			<div className={styles['header-container']}>
-				<Button accent>Add Ingredients</Button>
-
-				<ToggleSwitch
-					label1="by Recipe"
-					label2="by Ingredient"
-					onToggle={handleToggleSwitchChange}
-				/>
-			</div>
-
-			{viewByRecipe ? (
-				recipes.map((recipe) => (
-					<ShoppingListRecipe
-						key={recipe.id}
-						recipe={recipe}
-						onIngredientToggle={handleIngredientToggle}
-						onDeleteRecipe={handleDeleteAction}
-					/>
-				))
-			) : (
-				<>
+				{recipes.length > 0 && (
 					<Button
 						accent
 						onClick={handleClearAll}
@@ -166,10 +147,38 @@ const ShoppingList = () => {
 					>
 						Clear All
 					</Button>
-					<TotalIngredientList
-						recipe={totalRecipe}
-						onIngredientToggle={handleIngredientToggle}
-					/>
+				)}
+
+				<ToggleSwitch
+					className={styles['display-mode-toggle']}
+					label1="by ingredient"
+					label2="by recipe"
+					onToggle={handleToggleSwitchChange}
+				/>
+			</div>
+
+			{viewByRecipe ? (
+				recipes.map(
+					(recipe) =>
+						recipe.ingredients.length > 0 && (
+							<ShoppingListRecipe
+								key={recipe.id}
+								recipe={recipe}
+								onIngredientToggle={handleIngredientToggle}
+								onDelete={handleDeleteAction}
+							/>
+						)
+				)
+			) : (
+				<>
+					{totalRecipe.ingredients.length > 0 && (
+						<ShoppingListRecipe
+							key={TOTAL_RECIPE_ID}
+							recipe={totalRecipe}
+							onIngredientToggle={handleIngredientToggle}
+							onDelete={handleDeleteAction}
+						/>
+					)}
 				</>
 			)}
 		</div>

@@ -3,11 +3,16 @@ import CircularCheckbox from '../checkbox/CircularCheckbox';
 import styles from './shopping.module.scss';
 
 // Define the ShoppingListIngredient functional component with destructured props.
-const ShoppingListIngredient = ({ ingredient, onToggle }) => {
+const ShoppingListIngredient = ({ ingredient, onToggle, onDelete }) => {
 	// Function to handle change events (e.g., when the checkbox is clicked).
 	const handleChange = () => {
 		// Calls the onToggle function passed as a prop from parent (ShoppingListRecipe), with the current ingredient's state updated (toggled checked state).
 		onToggle({ ...ingredient, checked: !ingredient.checked }); // use '...' spread operator to copy ingredient with all its properties, but
+	};
+
+	const handleDelete = (e) => {
+		e.stopPropagation();
+		onDelete(ingredient);
 	};
 
 	// Determines the CSS class based on whether the ingredient is checked, applying different styles
@@ -21,6 +26,19 @@ const ShoppingListIngredient = ({ ingredient, onToggle }) => {
 			/>
 			<p className={styles['ingredient-name']}>{ingredient.name}</p>
 			<h4>{`${ingredient.quantity} ${ingredient.unit}`}</h4>
+			{ingredient.checked && (
+				<button
+					onClick={handleDelete}
+					className={styles['delete-ingredient-button']}
+				>
+					<span
+						className="material-symbols-outlined"
+						style={{ fontSize: '24px' }}
+					>
+						remove
+					</span>
+				</button>
+			)}
 		</div>
 	);
 };
@@ -34,6 +52,7 @@ ShoppingListIngredient.propTypes = {
 		checked: PropTypes.bool, // Checked property may not initially exist
 	}).isRequired,
 	onToggle: PropTypes.func.isRequired,
+	onDelete: PropTypes.func.isRequired,
 };
 
 export default ShoppingListIngredient;

@@ -480,17 +480,17 @@ const staticData = {
 			[
 				{
 					number: 1,
-					description: "Use a claw grip to hold on to the item you want to cut",
+					description: "Use a # to hold on to the item you want to cut",
 					ref: "claw grip"
 				},
 				{
 					number: 2,
-					description: "With your dominant hand, keep the knife next to your knuckles",
+					description: "With your dominant hand, keep the knife #",
 					ref: "next to your knuckles"
 				},
 				{
 					number: 3,
-					description: "Move the knife down, lift up when finished making your cut",
+					description: "# lift up when finished making your cut",
 					ref: "Move the knife down,"
 				},
 				{

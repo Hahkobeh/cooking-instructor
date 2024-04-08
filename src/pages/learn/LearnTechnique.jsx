@@ -43,15 +43,12 @@ const LearnTechnique = () => {
 						{technique.steps.map((item, index) => (
 						<li key={index} className={styles.listel}>
 							<p>
-								{item.description} 
-								{ 
-									item.ref != "" ? <a className={styles.clickable} onClick={setVideoOn}> VIDEO</a> : <></>
-								}</p>
+								{[...item.description].map((letter,ind) => (
+									letter=="#" ? <a key={ind} className={styles.clickable} onClick={setVideoOn}>{item.ref}</a> : <a key={ind}>{letter}</a>
+								))}
+							</p>
 						</li>
 						))}
-						{/* <li className={styles.listel}>
-							<p>Use a <a className={styles.clickable} onClick={setVideoOn}>claw grip</a> to hold on to the item you want to cut</p>
-						</li> */}
 					</ol>
 				</div>
 			</div>

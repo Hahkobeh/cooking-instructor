@@ -12,6 +12,7 @@ const Ingredients = () => {
 		getShoppingList,
 		addRecipeToShoppingList,
 		addIngredientToShoppingList,
+		removeIngredientFromShoppingList,
 	} = useUser();
 
 	const recipe = recipes.find((r) => r.id.toString() === recipeId);
@@ -113,6 +114,10 @@ const Ingredients = () => {
 		addRecipeToShoppingList(recipeToAdd);
 	};
 
+	const handleRemoveIngredientFromShoppingList = (ingredient) => {
+		removeIngredientFromShoppingList(recipe, ingredient);
+	};
+
 	return (
 		<div className={styles['ingredients-container']}>
 			<div className={styles['segmented-control']}>
@@ -140,6 +145,9 @@ const Ingredients = () => {
 						<Ingredient
 							ingredient={ingredient}
 							onAdd={() => handleAddIngredientToShoppingList(ingredient)}
+							onRemove={() =>
+								handleRemoveIngredientFromShoppingList(ingredient)
+							}
 							inShoppingList={isInShoppingList(ingredient)}
 						/>
 					</li>

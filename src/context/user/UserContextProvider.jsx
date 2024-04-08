@@ -93,6 +93,28 @@ const UserContextProvider = ({ children }) => {
 		updateShoppingList(shoppingList);
 	};
 
+	// removes a single ingredient from the shopping list
+	const removeIngredientFromShoppingList = (recipe, ingredient) => {
+		let shoppingList = getShoppingList();
+		const recipeId = recipe.id;
+		const ingredientName = ingredient.name;
+		const recipeIndex = shoppingList.findIndex((r) => r.id === recipeId);
+
+		if (recipeIndex !== -1) {
+			// recipe exists, filter out the ingredient
+			shoppingList[recipeIndex].ingredients = shoppingList[
+				recipeIndex
+			].ingredients.filter((ing) => ing.name !== ingredientName);
+
+			// if no ingredients left, remove the recipe
+			if (shoppingList[recipeIndex].ingredients.length === 0) {
+				shoppingList = shoppingList.filter((_, index) => index !== recipeIndex);
+			}
+
+			updateShoppingList(shoppingList);
+		}
+	};
+
 	// helper function that returns all the favorited recipes (as objects)
 	const getFavorites = () => {
 		console.log(recipes);
@@ -125,6 +147,7 @@ const UserContextProvider = ({ children }) => {
 				addRecipeToShoppingList,
 				removeRecipeFromShoppingList,
 				addIngredientToShoppingList,
+				removeIngredientFromShoppingList,
 				getFavorites,
 				addFavorite,
 				removeFavorite,

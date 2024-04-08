@@ -1,9 +1,14 @@
 import styles from './learnsub.module.scss';
 import Dialog from '@/components/dialog/Dialog';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useTechniques } from '@/context/data/useTechniques';
 
 const LearnTechnique = () => {
 	const [videoOn, setVideoOn] = useState(false);
+	const routeParams = useParams();
+	const techniques = useTechniques();
+	const technique = techniques.find((i) => i.id.toString() === routeParams.learnId);
 
 	return (
 		<>
@@ -15,47 +20,34 @@ const LearnTechnique = () => {
 		<div className={styles.divL}>
 			<div className={styles.header}>
 				<div>
-					<h1>Cutting</h1>
-					<h4>Easy</h4>
+					<h1>{technique.title}</h1>
+					<h4>{technique.difficulty}</h4>
 				</div>
-				<img className={styles.thumb} src="/cutting.jpg"></img>
+				<img className={styles.thumb} src={technique.image}></img>
 			</div>
 			<div className={styles.card}>
 				<div>
 					<h2>Tools</h2>
 					<ul className={styles.unlist}>
-						<li className={styles.unlistel}>
-							<p>Knife</p>
+						{technique.tools.map((item, index) => (
+						<li key={index} className={styles.unlistel}>
+							<p>{item}</p>
 						</li>
-						<li className={styles.unlistel}>
-							<p>Cutting board</p>
-						</li>
-						<li className={styles.unlistel}>
-							<p>Ingredient of your choice!</p>
-						</li>
+						))}
 					</ul>
 				</div>
 				<br />
 				<div>
 					<h2>Steps</h2>
 					<ol className={styles.list}>
-						<li className={styles.listel}>
+						{technique.steps.map((item, index) => (
+						<li key={index} className={styles.listel}>
+							<p>{item.description}</p>
+						</li>
+						))}
+						{/* <li className={styles.listel}>
 							<p>Use a <a className={styles.clickable} onClick={setVideoOn}>claw grip</a> to hold on to the item you want to cut</p>
-						</li>
-						<li className={styles.listel}>
-							<p>
-								With your dominant hand, keep the knife <a className={styles.clickable} onClick={setVideoOn}>next to your knuckles</a>
-							</p>
-						</li>
-						<li className={styles.listel}>
-							<p><a className={styles.clickable} onClick={setVideoOn}>Move the knife down,</a> lift up when finished making your cut</p>
-						</li>
-						<li className={styles.listel}>
-							<p>Move the knife to the next part you want to cut</p>
-						</li>
-						<li className={styles.listel}>
-							<p>Repeat steps 1-4 until new desired shape is achieved</p>
-						</li>
+						</li> */}
 					</ol>
 				</div>
 			</div>

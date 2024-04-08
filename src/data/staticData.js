@@ -518,17 +518,17 @@ const staticData = {
 				},
 				{
 					title: "Sour",
-					value: 0.2
+					value: 0.3
 				}
 			],
 			texture: [
 				{
 					title: "Crunch (raw)",
-					value: 0.5
+					value: 1.0
 				},
 				{
 					title: "Soft (cooked)",
-					value: 0.2
+					value: 0.6
 				}
 			],
 			image: "/onion.jpg",

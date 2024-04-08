@@ -18,15 +18,38 @@ const Learn = () => {
 	const ingredientsLearn = useIngredientsLearn();
 	//const ingredientsLearn = useIngredientsLearn();
 
+	const filteredTechniques = techniques.filter(
+		(techniques) =>
+			techniques.title.toLowerCase().includes(search.toLowerCase()) ||
+			techniques.shortDescription.toLowerCase().includes(search.toLowerCase())
+			);
+	
+	const filteredIngredients = ingredientsLearn.filter(
+		(ingredients) =>
+			ingredients.title.toLowerCase().includes(search.toLowerCase()) ||
+			ingredients.shortDescription.toLowerCase().includes(search.toLowerCase())
+			);
+
+	const techniqueSuggestions = filteredTechniques
+		.slice(0, 3)
+		.map((technique) => technique.title);
+	
+	const ingredientSuggestions = filteredIngredients
+		.slice(0, 3)
+		.map((ingredient) => ingredient.title);
+
 	return (
 		<div>
 			<h1 style={{ marginBottom: '10px' }}>Learn more</h1>
-			<SearchBar search={search} setSearch={setSearch} />
+			<SearchBar 
+				search={search} 
+				setSearch={setSearch} 
+				suggestions={[...techniqueSuggestions,...ingredientSuggestions]}/>
 			<div style={{ marginTop: '16px' }}>
 				<h2>Techniques</h2>
 			</div>
 			<LearnCardList>
-				{techniques.map((learn) => (
+				{filteredTechniques.map((learn) => (
 					<LearnCardList.Card
 						key={learn.id}
 						learnId={learn.id}
@@ -45,7 +68,7 @@ const Learn = () => {
 					<h2>Ingredients</h2>
 				</div>
 				<LearnCardList>
-				{ingredientsLearn.map((learn) => (
+				{filteredIngredients.map((learn) => (
 					<LearnCardList.Card
 						key={learn.id}
 						learnId={learn.id}

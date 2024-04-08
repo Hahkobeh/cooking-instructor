@@ -1,5 +1,6 @@
 import RatingStars from '@/components/rating-stars/RatingStars';
 import RecipeNavBar from '@/components/recipe-nav-bar/RecipeNavBar';
+import Toast from '@/components/toast/Toast';
 import { useRecipes } from '@/context/data/useRecipes';
 import { useUser } from '@/context/user/useUser';
 import { useEffect, useState } from 'react';
@@ -15,6 +16,7 @@ const Recipe = () => {
 	const location = useLocation();
 	const [activeTab, setActiveTab] = useState('about'); // initial active tab is 'about'
 	const [favorited, setFavorited] = useState(false); // initial state set to empty heart icon
+	const [toast, setToast] = useState({ isVisible: false, message: '' });
 	const { user, addFavorite, removeFavorite } = useUser();
 
 	useEffect(() => {
@@ -34,14 +36,21 @@ const Recipe = () => {
 	const handleFavoriteClick = () => {
 		if (favorited) {
 			removeFavorite(Number(recipeId));
+			setToast({ isVisible: true, message: 'Removed from favorites!' });
 		} else {
 			addFavorite(Number(recipeId));
+			setToast({ isVisible: true, message: 'Added to favorites!' });
 		}
 		setFavorited(!favorited);
 	};
 
 	return (
 		<div id={styles.recipe}>
+			<Toast
+				message={toast.message}
+				isVisible={toast.isVisible}
+				onClose={() => setToast({ ...toast, isVisible: false })}
+			/>
 			<RecipeNavBar
 				className={styles.recipeNavBar}
 				recipeId={recipeId}

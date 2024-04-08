@@ -1,5 +1,6 @@
 import Button from '@/components/button/Button';
 import ToggleSwitch from '@/components/toggle/ToggleSwitch';
+import Toast from '@/components/toast/Toast';
 import { useUser } from '@/context/user/useUser';
 import { useState } from 'react';
 import ShoppingListRecipe from '../../components/shopping/ShoppingListRecipe';
@@ -11,11 +12,11 @@ const TOTAL_RECIPE_ID = -1;
 const ShoppingList = () => {
 	const { getShoppingList, updateShoppingList, removeRecipeFromShoppingList } =
 		useUser();
-	// state hook for managing the viewByRecipe state. initially set to true for recipe view
 	const [viewByRecipe, setViewByRecipe] = useState(true);
-	// state hook for managing the recipes array. initially set to an empty array.
 	const [recipes, setRecipes] = useState(getShoppingList);
-	// state hook for managing the viewByRecipe state. initially set to true.
+	const [showToast, setShowToast] = useState(false);
+	const [toastMessage, setToastMessage] = useState('');
+
 	const handleToggleSwitchChange = () => {
 		setViewByRecipe(!viewByRecipe);
 	};
@@ -121,10 +122,17 @@ const ShoppingList = () => {
 			});
 			updateShoppingList(updatedRecipes); // update the list
 			setRecipes(updatedRecipes); // update local state
+			setToastMessage(`${ingredientNamesToRemove} removed from shopping list`);
+			setShowToast(true); // Show the toast
 		} else {
 			// otherwise, remove the entire recipe
+			const recipeTitle =
+				recipes.find((r) => r.id === recipeId)?.title || 'Recipe';
+
 			removeRecipeFromShoppingList(recipeId); // Tupdate the context
 			setRecipes(recipes.filter((recipe) => recipe.id !== recipeId)); // update local state
+			setToastMessage(`${recipeTitle} removed from shopping list`);
+			setShowToast(true); // Show the toast
 		}
 	};
 
@@ -134,6 +142,8 @@ const ShoppingList = () => {
 
 		// Clear the local state
 		setRecipes([]);
+		setToastMessage(`All ingredients removed from shopping list`);
+		setShowToast(true); // Show the toast
 	};
 
 	return (
@@ -181,6 +191,12 @@ const ShoppingList = () => {
 					)}
 				</>
 			)}
+			<Toast
+				message={toastMessage}
+				isVisible={showToast}
+				onClose={() => setShowToast(false)}
+				duration={3000}
+			/>
 		</div>
 	);
 };

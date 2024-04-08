@@ -1,4 +1,5 @@
 import Ingredient from '@/components/ingredient/Ingredient';
+import Toast from '@/components/toast/Toast';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useRecipes } from '@/context/data/useRecipes';
@@ -21,6 +22,8 @@ const Ingredients = () => {
 	const [ingredients, setIngredients] = useState([]);
 	const [servingSize, setServingSize] = useState(1); // assuming a starting default serving size
 	const defaultServingSize = 1; // this should match the recipe's intended serving size, we should add this to the recipe data
+	const [showToast, setShowToast] = useState(false);
+	const [toastMessage, setToastMessage] = useState('');
 
 	const isInShoppingList = (ingredient) => {
 		const recipeShoppingList = getShoppingList().find(
@@ -91,6 +94,8 @@ const Ingredients = () => {
 
 	const handleAddIngredientToShoppingList = (ingredient) => {
 		addIngredientToShoppingList(recipe, ingredient);
+		setShowToast(true);
+		setToastMessage(`${ingredient.name} added to shopping list`);
 	};
 	const handleAddAllToShoppingList = () => {
 		let ingredientsToAdd;
@@ -117,14 +122,20 @@ const Ingredients = () => {
 
 		// add the recipe to the shopping list (user.shoppingList)
 		addRecipeToShoppingList(recipeToAdd);
+		setShowToast(true);
+		setToastMessage(`All ingredients added to shopping list`);
 	};
 
 	const handleRemoveIngredientFromShoppingList = (ingredient) => {
 		removeIngredientFromShoppingList(recipe, ingredient);
+		setShowToast(true);
+		setToastMessage(`${ingredient.name} removed from shopping list`);
 	};
 
 	const handleRemoveAllFromShoppingList = () => {
 		removeRecipeFromShoppingList(recipe.id);
+		setShowToast(true);
+		setToastMessage('All ingredients removed from shopping list');
 	};
 
 	return (
@@ -178,6 +189,11 @@ const Ingredients = () => {
 						Add all to shopping list
 					</button>
 				)}
+				<Toast
+					message={toastMessage}
+					isVisible={showToast}
+					onClose={() => setShowToast(false)}
+				/>
 			</div>
 		</div>
 	);

@@ -11,6 +11,7 @@ const Ingredients = () => {
 	const {
 		getShoppingList,
 		addRecipeToShoppingList,
+		removeRecipeFromShoppingList,
 		addIngredientToShoppingList,
 		removeIngredientFromShoppingList,
 	} = useUser();
@@ -33,6 +34,10 @@ const Ingredients = () => {
 		}
 		return false;
 	};
+
+	const allInShoppingList = ingredients.every((ingredient) =>
+		isInShoppingList(ingredient)
+	);
 
 	useEffect(() => {
 		if (recipe) {
@@ -118,6 +123,10 @@ const Ingredients = () => {
 		removeIngredientFromShoppingList(recipe, ingredient);
 	};
 
+	const handleRemoveAllFromShoppingList = () => {
+		removeRecipeFromShoppingList(recipe.id);
+	};
+
 	return (
 		<div className={styles['ingredients-container']}>
 			<div className={styles['segmented-control']}>
@@ -154,12 +163,21 @@ const Ingredients = () => {
 				))}
 			</ul>
 			<div className={styles['button-container']}>
-				<button
-					className={styles['add-to-list-button']}
-					onClick={handleAddAllToShoppingList}
-				>
-					Add all to shopping list
-				</button>
+				{allInShoppingList ? (
+					<button
+						className={styles['action-button']}
+						onClick={handleRemoveAllFromShoppingList}
+					>
+						Remove all from shopping list
+					</button>
+				) : (
+					<button
+						className={styles['action-button']}
+						onClick={handleAddAllToShoppingList}
+					>
+						Add all to shopping list
+					</button>
+				)}
 			</div>
 		</div>
 	);

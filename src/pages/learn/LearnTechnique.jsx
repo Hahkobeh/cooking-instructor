@@ -42,7 +42,11 @@ const LearnTechnique = () => {
 					<ol className={styles.list}>
 						{technique.steps.map((item, index) => (
 						<li key={index} className={styles.listel}>
-							<p>{item.description}</p>
+							<p>
+								{item.description} 
+								{ 
+									item.ref != "" ? <a className={styles.clickable} onClick={setVideoOn}> VIDEO</a> : <></>
+								}</p>
 						</li>
 						))}
 						{/* <li className={styles.listel}>

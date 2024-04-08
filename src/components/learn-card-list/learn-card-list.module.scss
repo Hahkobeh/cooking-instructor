@@ -1,0 +1,61 @@
+@use '../../styles/variables.scss';
+
+.learnCardList {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.learnCard {
+	text-decoration: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	gap: 4px;
+	box-sizing: border-box;
+	box-shadow: variables.$shadow;
+	border-radius: 10px;
+	padding: 12px;
+	overflow: hidden;
+	cursor: pointer;
+	transition: scale 40ms ease-in-out;
+
+	&:hover {
+		scale: 1.015;
+	}
+
+	> div {
+		min-width: 0;
+	}
+
+	.image {
+		flex: 1;
+		aspect-ratio: 1;
+		max-width: 60px;
+		border-radius: 50%;
+	}
+}
+.learnCardListHorizontalWrapper {
+	width: 100%;
+	margin: 0 -20px -20px;
+	padding: 8px 20px 20px;
+	overflow-x: auto;
+
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.learnCardListHorizontal {
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+	gap: 12px;
+	width: max-content;
+	a {
+		padding: 8px 12px;
+	}
+}

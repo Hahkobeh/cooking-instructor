@@ -31,12 +31,12 @@ export const routerData = [
 		icon: 'school',
 	},
 	{
-		path: '/learn/LearnTechnique',
+		path: '/learn/LearnTechnique/:learnId',
 		element: <LearnTechnique />,
 		title: 'LearnTechnique',
 	},
 	{
-		path: '/learn/LearnIngredient',
+		path: '/learn/LearnIngredient/:learnId',
 		element: <LearnIngredient />,
 		title: 'LearnIngredient',
 	},

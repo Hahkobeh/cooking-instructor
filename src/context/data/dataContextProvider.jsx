@@ -18,10 +18,12 @@ const DataContextProvider = ({ children }) => {
 	);
 	const [users] = useState(staticData.users);
 	const [dietaryRestrictions] = useState(staticData.dietaryRestrictions);
+	const [techniques] = useState(staticData.techniques);
+	const [ingredientsLearn] = useState(staticData.ingredientsLearn);
 
 	return (
 		<DataContext.Provider
-			value={{ recipes, tags, categories, users, dietaryRestrictions }}
+			value={{ recipes, tags, categories, users, dietaryRestrictions, techniques, ingredientsLearn }}
 		>
 			{children}
 		</DataContext.Provider>

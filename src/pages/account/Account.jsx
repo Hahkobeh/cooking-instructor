@@ -154,7 +154,7 @@ const Account = () => {
 						<DietaryMenu />
 						<div className={styles.buttons}>
 							<Button className={styles.button} func={() => setVideoOn(true)}>
-								Watch tutorial
+								Tutorial mode
 							</Button>
 							<Button func={logout} className={styles.button}>
 								Log out
@@ -169,7 +169,7 @@ const Account = () => {
 		<>
 			{videoOn && (
 				<Dialog close={() => setVideoOn(false)} title="Tutorial">
-					<img src="video-player.png" style={{ width: '300px' }} />
+					<p src="video-player.png" style={{ width: '300px' }}>This feature is in development</p>
 				</Dialog>
 			)}
 			<div className={styles.account}>{page()}</div>

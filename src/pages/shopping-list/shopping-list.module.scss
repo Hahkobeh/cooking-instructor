@@ -9,6 +9,11 @@
 .header-container {
 	display: flex;
 	align-items: center; // Align items vertically in the center
-	justify-content: space-between; // Pushes the header to the left and toggle to the right
+	justify-content: flex-end; // Pushes the header to the left and toggle to the right
 	padding: 10px 0 0;
+}
+
+.clear-all-button {
+	margin-right: auto;
+	font-size: 14px;
 }

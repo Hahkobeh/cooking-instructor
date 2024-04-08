@@ -468,6 +468,94 @@ const staticData = {
 		{ id: 5, label: 'Kosher' },
 		{ id: 6, label: 'Lactose Intolerant' },
 	],
+	techniques: [
+		{
+			id: 1, 
+			title: "Cutting", 
+			shortDescription: "Chop chop, but not your fingers...", 
+			difficulty: "Easy", 
+			tools: ["Knife", "Cutting board", "Ingredient of your choice!"],
+			image: "/cutting.jpg",
+			steps:
+			[
+				{
+					number: 1,
+					description: "Use a #REF to hold on to the item you want to cut",
+					ref: "claw grip"
+				},
+				{
+					number: 2,
+					description: "With your dominant hand, keep the knife #REF",
+					ref: "next to your knuckles"
+				},
+				{
+					number: 3,
+					description: "#REF lift up when finished making your cut",
+					ref: "Move the knife down,"
+				},
+				{
+					number: 4,
+					description: "Move the knife to the next part you want to cut",
+					ref: ""
+				},
+				{
+					number: 5,
+					description: "Repeat steps 1-4 until new desired shape is achieved",
+					ref: ""
+				}
+			]
+		}
+	],
+	ingredientsLearn: [
+		{
+			id: 1, 
+			title: "Onion", 
+			shortDescription: "Chefs May Cry",  
+			taste: [
+				{
+					title: "Sweet",
+					value: 0.5
+				},
+				{
+					title: "Sour",
+					value: 0.2
+				}
+			],
+			texture: [
+				{
+					title: "Crunch (raw)",
+					value: 0.5
+				},
+				{
+					title: "Soft (cooked)",
+					value: 0.2
+				}
+			],
+			image: "/onion.jpg",
+			usage: "Adds texture and flavor. Major supporter to prop other flavors up.",
+			alts:
+			[
+				{
+					number: 1,
+					name: "Shallots",
+					shortDescription: "Onions w/ milder taste",
+					image: "/onion.jpg"
+				},
+				{
+					number: 2,
+					name: "Scallion",
+					shortDescription: "Onions w/ milder taste",
+					image: "/onion.jpg"
+				},
+				{
+					number: 3,
+					name: "Fennel",
+					shortDescription: "Onions w/ sharper taste",
+					image: "/onion.jpg"
+				}
+			]
+		}
+	]
 };
 
 export default staticData;

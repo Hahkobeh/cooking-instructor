@@ -15,6 +15,22 @@ const Home = () => {
 	const { user } = useUser();
 	const tags = useTags();
 
+	const suggestedRecipes = recipes.filter((recipe) =>
+		user.dietaryRestrictions.some((restriction) =>
+			recipe.dietaryRestrictions.includes(restriction)
+		)
+	);
+
+	const recipesToDisplay = () => {
+		if (search) {
+			return filteredRecipes;
+		} else if (user.dietaryRestrictions.length > 0) {
+			return suggestedRecipes;
+		} else {
+			return recipes;
+		}
+	};
+
 	const doesSearchMatchTag = (searchText, tags, recipe) => {
 		// convert search text to lowercase for case-insensitive comparison
 		const searchLower = searchText.toLowerCase();
@@ -49,8 +65,6 @@ const Home = () => {
 		setSearch(categoryName); // Set the search state to the category name
 	};
 
-	console.log('Filtered Recipes', filteredRecipes);
-
 	return (
 		<div id={styles.home}>
 			<h1 className={styles.title}>
@@ -63,8 +77,11 @@ const Home = () => {
 				suggestions={[...recipeSuggestions, ...tagSuggestions]}
 			/>
 			<CategoriesDisplay onCategorySelect={handleCategorySelect} />
+			{search === '' && user.dietaryRestrictions.length > 0 && (
+				<h2>Recommended for You</h2>
+			)}
 			<RecipeCardList>
-				{filteredRecipes.map((recipe) => (
+				{recipesToDisplay().map((recipe) => (
 					<RecipeCardList.Card
 						key={recipe.id}
 						recipeId={recipe.id}

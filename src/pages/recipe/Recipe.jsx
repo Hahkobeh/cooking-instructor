@@ -67,10 +67,8 @@ const Recipe = () => {
 				</h2>
 				<button
 					type="button"
+					className={styles.favorite}
 					style={{
-						backgroundColor: 'white',
-						border: 'none',
-						color: '#a56ff7',
 						fontVariationSettings: favorited ? "'FILL' 1" : "'FILL' 0",
 					}}
 				>

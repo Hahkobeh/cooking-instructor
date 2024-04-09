@@ -1,5 +1,6 @@
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import Button from '@/components/button/Button';
 import { useRecipes } from '@/context/data/useRecipes';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import styles from './stepdetail.module.scss';
 
 const StepDetail = () => {
@@ -22,40 +23,40 @@ const StepDetail = () => {
 
 	return (
 		<div className={styles.stepDetail}>
-			<div className={styles.imageNavigationWrapper}>
-				{/* render the previous button only if the current step is greater than 1 */}
-				{currentStep > 1 && (
-					<Link
-						to={`/recipe/${recipeId}/steps/${currentStep - 1}`}
-						className={`${styles.navButton} ${styles.prevButton}`}
-					>
-						<span className="material-symbols-outlined">arrow_back_ios</span>
-					</Link>
-				)}
-				{/* render the step image or a default image if the step does not have an image */}
-				<img
-					src={step.image || '/step.jpg'}
-					alt={`Step ${currentStep}`}
-					className={styles.stepImage}
-				/>
-				{/* render the next button only if the current step is less than the total steps */}
-				{currentStep < recipe.steps.length && (
-					<Link
-						to={`/recipe/${recipeId}/steps/${currentStep + 1}`}
-						className={`${styles.navButton} ${styles.nextButton}`}
-					>
-						<span className="material-symbols-outlined">arrow_forward_ios</span>
-					</Link>
-				)}
+			<div className={styles['button-wrapper']}>
+				<Button accent func={handleBackToSteps}>
+					See All Steps
+				</Button>
 			</div>
+			<img
+				src={step.image || '/step.jpg'}
+				alt={`Step ${currentStep}`}
+				className={styles.stepImage}
+			/>
 			<div className={styles.stepHeader}>
 				<h2>Step {currentStep}</h2>
 				<p>{step.description}</p>
 			</div>
-			{/* render the back button */}
-			<button className={styles.backButton} onClick={handleBackToSteps}>
-				Back to Steps
-			</button>
+			<div className={styles.stepNav}>
+				<Link
+					to={`/recipe/${recipeId}/steps/${currentStep - 1}`}
+					className={
+						styles.navButton + ' ' + (currentStep > 1 ? '' : styles.disabled)
+					}
+				>
+					<span className="material-symbols-outlined">arrow_back</span>
+				</Link>
+				<Link
+					to={`/recipe/${recipeId}/steps/${currentStep + 1}`}
+					className={
+						styles.navButton +
+						' ' +
+						(currentStep < recipe.steps.length ? '' : styles.disabled)
+					}
+				>
+					<span className="material-symbols-outlined">arrow_forward</span>
+				</Link>
+			</div>
 		</div>
 	);
 };

@@ -137,6 +137,19 @@ const UserContextProvider = ({ children }) => {
 		setUser({ ...user, favorites: updatedFavorites });
 	};
 
+	// function to get the recent recipes as objects
+	const getRecents = () => {
+		const recentRecipes = recipes.filter((recipe) =>
+			user.recents.includes(recipe.id)
+		);
+		return recentRecipes;
+	};
+	// adds a recipe to the recents list
+	const addRecent = (recipeId) => {
+		const updatedRecents = new Set([recipeId, ...user.recents]); // ensure uniqueness and recency
+		setUser({ ...user, recents: Array.from(updatedRecents).slice(0, 10) }); // limit to the most recent 10 items
+	};
+
 	return (
 		<UserContext.Provider
 			value={{
@@ -151,6 +164,8 @@ const UserContextProvider = ({ children }) => {
 				getFavorites,
 				addFavorite,
 				removeFavorite,
+				getRecents,
+				addRecent,
 			}}
 		>
 			{children}

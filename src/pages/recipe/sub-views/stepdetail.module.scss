@@ -1,77 +1,74 @@
 @use '../../../styles/variables.scss';
 
 .stepDetail {
-	background: variables.$white;
-	padding: 20px;
-	border-radius: variables.$border-radius;
-	box-shadow: variables.$shadow;
-	margin: 4px auto;
-	max-width: 600px;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-.imageNavigationWrapper {
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 20px; // space between image and text
-}
-
 .stepImage {
+	margin-top: 2em;
 	width: 90%;
 	height: auto;
 	border-radius: variables.$border-radius;
 }
 
-.navButton,
-.prevButton,
-.nextButton {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
+.navButton {
 	background-color: transparent;
 	color: variables.$accent;
-	border-radius: 50%;
 	cursor: pointer;
-}
-
-.prevButton {
-	left: calc(0% - 10px); // outside positioning left
-}
-
-.nextButton {
-	right: calc(0% - 10px); // outside positioning right
 }
 
 .stepHeader {
+	margin-top: 16px;
 	h2 {
 		color: variables.$accent;
 		font-size: 20px;
-		margin-bottom: 10px;
+		margin-bottom: 8px;
 	}
+	margin-bottom: auto;
+}
 
-	p {
-		font-size: 16px;
+.stepNav {
+	position: absolute;
+	bottom: 64px;
+	left: 0;
+	right: 0;
+	display: flex;
+	flex-direction: row;
+	gap: 32px;
+	justify-content: center;
+
+	.navButton {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 120px;
+		height: 120px;
 		color: variables.$black;
+		background-color: variables.$white;
+		box-shadow: variables.$shadow;
+		border-radius: variables.$border-radius;
+		text-decoration: none;
+
+		span {
+			scale: 2;
+			user-select: none;
+		}
+
+		&:hover {
+			scale: 1.05;
+		}
+
+		&:active {
+			background-color: darken(variables.$white, 10%);
+			transform: scale(95%);
+		}
 	}
 }
 
-.backButton {
-	margin-top: 20px;
-	padding: 10px 20px;
-	background-color: variables.$accent;
-	color: variables.$white;
-	border: none;
-	border-radius: variables.$border-radius;
-	cursor: pointer;
-	text-decoration: none;
-	font-size: 16px;
-
-	&:hover {
-		background-color: darken(variables.$accent, 10%);
-	}
+.disabled {
+	pointer-events: none;
+	opacity: 0.3;
 }

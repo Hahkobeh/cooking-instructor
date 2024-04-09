@@ -1,9 +1,9 @@
 import Ingredient from '@/components/ingredient/Ingredient';
 import Toast from '@/components/toast/Toast';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { useRecipes } from '@/context/data/useRecipes';
 import { useUser } from '@/context/user/useUser';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import styles from './ingredient.module.scss';
 
 const Ingredients = () => {
@@ -153,7 +153,7 @@ const Ingredients = () => {
 			</div>
 
 			<div className={styles['serving-size-controls']}>
-				<button onClick={() => setServingSize(Math.max(1, servingSize - 1))}>
+				<button onClick={() => setServingSize(Math.max(1, servingSize - 1))} disabled={servingSize == 1}>
 					-
 				</button>
 				<span>Serving Size: {servingSize}</span>

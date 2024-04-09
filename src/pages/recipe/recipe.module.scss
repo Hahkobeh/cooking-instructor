@@ -15,3 +15,14 @@
 		margin-bottom: 0;
 	}
 }
+
+.favorite {
+	background-color: white;
+	border: none;
+	color: #a56ff7;
+	transition: scale 20ms ease-in-out;
+
+	&:hover {
+		scale: 1.1;
+	}
+}

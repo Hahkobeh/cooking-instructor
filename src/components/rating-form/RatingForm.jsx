@@ -31,7 +31,7 @@ const RatingForm = ({ onSubmit }) => {
 					</button>
 				))}
 			</div>
-			<Button type="submit" onSubmit={null} accent>
+			<Button type="submit" onSubmit={null} accent >
 				Rate
 			</Button>
 		</form>

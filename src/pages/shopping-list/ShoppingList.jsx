@@ -1,6 +1,7 @@
 import Button from '@/components/button/Button';
 import ToggleSwitch from '@/components/toggle/ToggleSwitch';
 import Toast from '@/components/toast/Toast';
+import ConfirmationModal from '@/components/confirmation-modal/ConfirmationModal';
 import { useUser } from '@/context/user/useUser';
 import { useState } from 'react';
 import ShoppingListRecipe from '../../components/shopping/ShoppingListRecipe';
@@ -16,6 +17,7 @@ const ShoppingList = () => {
 	const [recipes, setRecipes] = useState(getShoppingList);
 	const [showToast, setShowToast] = useState(false);
 	const [toastMessage, setToastMessage] = useState('');
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const handleToggleSwitchChange = () => {
 		setViewByRecipe(!viewByRecipe);
@@ -136,6 +138,14 @@ const ShoppingList = () => {
 		}
 	};
 
+	const handleClearAllConfirm = () => {
+		setIsModalOpen(true);
+	};
+
+	const closeModal = () => {
+		setIsModalOpen(false);
+	};
+
 	const handleClearAll = () => {
 		// Clear all recipes from the global state
 		updateShoppingList([]);
@@ -144,6 +154,7 @@ const ShoppingList = () => {
 		setRecipes([]);
 		setToastMessage(`All ingredients removed from shopping list`);
 		setShowToast(true); // Show the toast
+		setIsModalOpen(false);
 	};
 
 	return (
@@ -152,12 +163,19 @@ const ShoppingList = () => {
 				{recipes.length > 0 && (
 					<Button
 						accent
-						onClick={handleClearAll}
+						onClick={handleClearAllConfirm}
 						className={styles['clear-all-button']}
 					>
 						Clear All
 					</Button>
 				)}
+
+				<ConfirmationModal
+					isOpen={isModalOpen}
+					onClose={closeModal}
+					onConfirm={handleClearAll}
+					message="Are you sure you want to clear all items?"
+				/>
 
 				<ToggleSwitch
 					className={styles['display-mode-toggle']}

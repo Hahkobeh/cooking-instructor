@@ -13,10 +13,12 @@ import styles from './account.module.scss';
 const Account = () => {
 	const [videoOn, setVideoOn] = useState(false);
 	const [subPage, setSubPage] = useState(null);
-	const { setUser, getFavorites } = useUser();
+	const { setUser, getFavorites, getRecents } = useUser();
 	// const recipes = useRecipes();
 	const favoriteRecipes = getFavorites();
 	const numFavorites = favoriteRecipes.length;
+	const recentRecipes = getRecents();
+	const numRecents = recentRecipes.length;
 	const navigate = useNavigate();
 	const logout = () => {
 		setUser(null);
@@ -30,7 +32,7 @@ const Account = () => {
 					<>
 						<div className={styles.header}>
 							<h2>
-								Recents <span className="italic">({numFavorites})</span>
+								Recents <span className="italic">({numRecents})</span>
 								{/* TODO HARDCODED NUMBER ... */}
 							</h2>
 							<Button
@@ -44,7 +46,7 @@ const Account = () => {
 							</Button>
 						</div>
 						<RecipeCardList>
-							{favoriteRecipes.map((recipe) => (
+							{recentRecipes.map((recipe) => (
 								<RecipeCardList.Card
 									key={recipe.id}
 									recipeId={recipe.id}
@@ -130,7 +132,7 @@ const Account = () => {
 
 						<div className={styles.subTitle}>
 							<h3>
-								Recents <span className="italic">({numFavorites})</span>
+								Recents <span className="italic">({numRecents})</span>
 							</h3>
 							<Button
 								className={styles.navigate}
@@ -140,7 +142,7 @@ const Account = () => {
 							</Button>
 						</div>
 						<RecipeCardList horizontal>
-							{favoriteRecipes.map((recipe) => (
+							{recentRecipes.map((recipe) => (
 								<RecipeCardList.Card key={recipe.id} recipeId={recipe.id}>
 									<p>{recipe.title}</p>
 									<h5>{recipe.shortDescription}</h5>
@@ -169,7 +171,9 @@ const Account = () => {
 		<>
 			{videoOn && (
 				<Dialog close={() => setVideoOn(false)} title="Tutorial">
-					<p src="video-player.png" style={{ width: '300px' }}>This feature is in development</p>
+					<p src="video-player.png" style={{ width: '300px' }}>
+						This feature is in development
+					</p>
 				</Dialog>
 			)}
 			<div className={styles.account}>{page()}</div>

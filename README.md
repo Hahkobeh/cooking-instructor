@@ -41,6 +41,18 @@ Run development Environment
 npm run dev
 ```
 
+Create an account using the register functionality or use an existing account.
+
+A sample account to use: 
+```
+Username: Jacob
+Password: 123
+```
+
 ### Potential debug
 
-This application makes use of localStorage, so if an issue arrises you may need to clear your cache for this website
+If you register a new user or change an existing user's information, the log out functionality will work and you will be able to log back in with the same username, password, and data. But if you refresh the page any new user data will be wiped.
+
+
+
+This application makes use of localStorage, so if an issue arrises you may need to clear your cache for this website.

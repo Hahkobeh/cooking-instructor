@@ -1,5 +1,5 @@
 //import { Link } from 'react-router-dom';
-//import styles from './learn.module.scss';
+import styles from './learn.module.scss';
 import { useState } from 'react';
 import SearchBar from '@/components/search-bar/SearchBar';
 import { useTechniques } from '@/context/data/useTechniques';
@@ -45,9 +45,10 @@ const Learn = () => {
 				search={search} 
 				setSearch={setSearch} 
 				suggestions={[...techniqueSuggestions,...ingredientSuggestions]}/>
-			<div style={{ marginTop: '16px' }}>
+			
+			{filteredTechniques.length > 0 && (<div style={{ marginTop: '16px' }}>
 				<h2>Techniques</h2>
-			</div>
+			</div>)}
 			<LearnCardList>
 				{filteredTechniques.map((learn) => (
 					<LearnCardList.Card
@@ -64,9 +65,9 @@ const Learn = () => {
 			<div
 				style={{ marginTop: '30px', borderWidth: '50px', borderColor: 'red' }}
 			>
-				<div style={{ marginTop: '16px' }}>
+				{filteredIngredients.length > 0 && (<div style={{ marginTop: '16px' }}>
 					<h2>Ingredients</h2>
-				</div>
+				</div>)}
 				<LearnCardList>
 				{filteredIngredients.map((learn) => (
 					<LearnCardList.Card
@@ -80,6 +81,8 @@ const Learn = () => {
 					</LearnCardList.Card>
 				))}
 			</LearnCardList>
+			{(filteredIngredients.length + filteredTechniques.length < 1 && 
+			<h4 className={styles['empty']}>No matching results</h4>)}
 			</div>
 		</div>
 	);

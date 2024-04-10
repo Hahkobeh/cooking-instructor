@@ -84,6 +84,10 @@ const Account = () => {
 								</RecipeCardList.Card>
 							))}
 						</RecipeCardList>
+
+						{recentRecipes.length < 1 && (
+							<h4 className={styles['empty']}>No recent recipes. View a recipe and we&#39;ll remember it for you!</h4>
+						)}
 					</>
 				);
 			case 'favorites':
@@ -120,6 +124,9 @@ const Account = () => {
 								</RecipeCardList.Card>
 							))}
 						</RecipeCardList>
+						{favoriteRecipes.length < 1 && (
+							<h4 className={styles['empty']}>No favorite recipes. If you find one you love, remember to use the heart to save it!</h4>
+						)}
 					</>
 				);
 			default:
@@ -150,6 +157,9 @@ const Account = () => {
 								</RecipeCardList.Card>
 							))}
 						</RecipeCardList>
+						{favoriteRecipes.length < 1 && (
+							<h4 className={styles['emptyDefault']}>No favorite recipes. If you find one you love, remember to use the heart to save it!</h4>
+						)}
 						<br />
 
 						<div className={styles.subTitle}>
@@ -171,6 +181,9 @@ const Account = () => {
 								</RecipeCardList.Card>
 							))}
 						</RecipeCardList>
+						{recentRecipes.length < 1 && (
+							<h4 className={styles['emptyDefault']}>No recent recipes. View a recipe and we&#39;ll remember it for you!</h4>
+						)}
 						<br />
 						<div className={styles.subTitle}>
 							<h3>Manage dietary needs</h3>

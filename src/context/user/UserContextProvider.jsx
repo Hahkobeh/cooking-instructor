@@ -138,7 +138,7 @@ const UserContextProvider = ({ children }) => {
 	// function to get the recent recipes as objects
 	const getRecents = () => {
 		const recentRecipes = recipes.filter((recipe) =>
-			user.recents ? user.recents.includes(recipe.id) : []
+			user.recents.includes(recipe.id)
 		);
 		return recentRecipes;
 	};
@@ -149,6 +149,20 @@ const UserContextProvider = ({ children }) => {
 			...(user.recents ? user.recents : []),
 		]); // ensure uniqueness and recency
 		setUser({ ...user, recents: Array.from(updatedRecents).slice(0, 10) }); // limit to the most recent 10 items
+	};
+	// gets a user active recipe
+	const getActiveRecipe = () => {
+		return user.activeRecipe;
+	};
+
+	// sets a user's active recipe
+	const setActiveRecipe = (recipeId, tab) => {
+		setUser({ ...user, activeRecipe: { id: recipeId, tab: tab } });
+	};
+
+	// clears a user's active recipe
+	const clearActiveRecipe = () => {
+		setUser({ ...user, activeRecipe: { id: null, tab: null } });
 	};
 
 	return (
@@ -167,6 +181,9 @@ const UserContextProvider = ({ children }) => {
 				removeFavorite,
 				getRecents,
 				addRecent,
+				getActiveRecipe,
+				setActiveRecipe,
+				clearActiveRecipe,
 			}}
 		>
 			{children}

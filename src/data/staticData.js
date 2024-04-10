@@ -436,6 +436,7 @@ const staticData = {
 			recents: [],
 			shoppingList: [],
 			dietaryRestrictions: [1],
+			activeRecipe: null,
 		},
 		{
 			username: 'Achraf',
@@ -444,6 +445,7 @@ const staticData = {
 			recents: [],
 			shoppingList: [],
 			dietaryRestrictions: [1],
+			activeRecipe: null,
 		},
 		{
 			username: 'Mo',
@@ -452,6 +454,7 @@ const staticData = {
 			recents: [],
 			shoppingList: [],
 			dietaryRestrictions: [1],
+			activeRecipe: null,
 		},
 		{
 			username: 'Colty',
@@ -460,6 +463,7 @@ const staticData = {
 			recents: [],
 			shoppingList: [],
 			dietaryRestrictions: [1],
+			activeRecipe: null,
 		},
 		{
 			username: 'Aidan',
@@ -468,6 +472,7 @@ const staticData = {
 			recents: [],
 			shoppingList: [],
 			dietaryRestrictions: [1],
+			activeRecipe: null,
 		},
 	],
 	dietaryRestrictions: [

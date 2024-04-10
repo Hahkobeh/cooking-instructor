@@ -16,7 +16,6 @@ const Recipe = () => {
 		user,
 		addFavorite,
 		removeFavorite,
-		addRecent,
 		setActiveRecipe,
 		getActiveRecipe,
 		clearActiveRecipe,
@@ -31,7 +30,6 @@ const Recipe = () => {
 
 	useEffect(() => {
 		setActiveRecipe(Number(recipeId), activeTab);
-		addRecent(Number(recipeId));
 		// redirect to /about if the current path is exactly `/recipe/:recipeId`
 		if (location.pathname === `/recipe/${recipeId}`) {
 			navigate(`/recipe/${recipeId}/${activeTab}`, { replace: true });

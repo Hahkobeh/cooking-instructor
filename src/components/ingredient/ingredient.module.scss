@@ -12,7 +12,16 @@
 	margin: 8px;
 }
 
-// Different text style for checked ingredients
-.checked-ingredient {
-	color: variables.$accent;
+.addButton {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	color: variables.$green;
+}
+
+.removeButton {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	color: variables.$red;
 }

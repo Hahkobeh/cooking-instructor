@@ -3,7 +3,7 @@ const staticData = {
 		{
 			id: 1,
 			title: 'Spaghetti Carbonara',
-			tagIds: [1, 3, 6],
+			tagIds: [1, 2, 6],
 			shortDescription: 'An unforgettable classic',
 			about:
 				'This is a spaghetti recipe. A delightful dish that is both easy to prepare and delicious. ',
@@ -16,6 +16,7 @@ const staticData = {
 				average: 4.5,
 				total: 120,
 			},
+			dietaryRestrictions: [2],
 			ingredientsNormal: [
 				{ name: 'Pasta', quantity: 2, unit: 'cups' },
 				{ name: 'Pancetta', quantity: 100, unit: 'g' },
@@ -100,6 +101,7 @@ const staticData = {
 				average: 3.5,
 				total: 80,
 			},
+			dietaryRestrictions: [2],
 			ingredientsNormal: [
 				{ name: 'All-purpose Flour', quantity: 3, unit: 'cups' },
 				{ name: 'Granulated Sugar', quantity: 2, unit: 'cups' },
@@ -192,6 +194,7 @@ const staticData = {
 				average: 4.8,
 				total: 95,
 			},
+			dietaryRestrictions: [1],
 			ingredientsNormal: [
 				{ name: 'Arborio Rice', quantity: 1, unit: 'cup' },
 				{ name: 'Mixed Mushrooms', quantity: 300, unit: 'g' },
@@ -264,7 +267,7 @@ const staticData = {
 		{
 			id: 4,
 			title: 'Thai Green Curry',
-			tagIds: [4, 6],
+			tagIds: [4, 5, 6],
 			shortDescription: 'Spicy and aromatic curry dish',
 			about:
 				'A vibrant and spicy Thai green curry that combines creamy coconut milk with tender chicken, crisp vegetables, and fragrant herbs.',
@@ -277,6 +280,7 @@ const staticData = {
 				average: 3.5,
 				total: 105,
 			},
+			dietaryRestrictions: [1],
 			ingredientsNormal: [
 				{ name: 'Chicken Breast', quantity: 400, unit: 'g' },
 				{ name: 'Coconut Milk', quantity: 1, unit: 'can' },
@@ -353,6 +357,7 @@ const staticData = {
 				average: 4.9,
 				total: 85,
 			},
+			dietaryRestrictions: [1],
 			ingredientsNormal: [
 				{ name: 'Quinoa', quantity: 1, unit: 'cup' },
 				{ name: 'Cucumber', quantity: 1, unit: '' },
@@ -428,6 +433,7 @@ const staticData = {
 			username: 'Jacob',
 			password: '123',
 			favorites: [1, 2],
+			recents: [],
 			shoppingList: [],
 			dietaryRestrictions: [1],
 		},
@@ -435,6 +441,7 @@ const staticData = {
 			username: 'Achraf',
 			password: '123',
 			favorites: [2],
+			recents: [],
 			shoppingList: [],
 			dietaryRestrictions: [1],
 		},
@@ -442,6 +449,7 @@ const staticData = {
 			username: 'Mo',
 			password: '123',
 			favorites: [2],
+			recents: [],
 			shoppingList: [],
 			dietaryRestrictions: [1],
 		},
@@ -449,6 +457,7 @@ const staticData = {
 			username: 'Colty',
 			password: '123',
 			favorites: [2],
+			recents: [],
 			shoppingList: [],
 			dietaryRestrictions: [1],
 		},
@@ -456,6 +465,7 @@ const staticData = {
 			username: 'Aidan',
 			password: '123',
 			favorites: [2],
+			recents: [],
 			shoppingList: [],
 			dietaryRestrictions: [1],
 		},
@@ -470,92 +480,91 @@ const staticData = {
 	],
 	techniques: [
 		{
-			id: 1, 
-			title: "Cutting", 
-			shortDescription: "Chop chop, but not your fingers...", 
-			difficulty: "Easy", 
-			tools: ["Knife", "Cutting board", "Ingredient of your choice!"],
-			image: "/cutting.jpg",
-			steps:
-			[
+			id: 1,
+			title: 'Cutting',
+			shortDescription: 'Chop chop, but not your fingers...',
+			difficulty: 'Easy',
+			tools: ['Knife', 'Cutting board', 'Ingredient of your choice!'],
+			image: '/cutting.jpg',
+			steps: [
 				{
 					number: 1,
-					description: "Use a # to hold on to the item you want to cut",
-					ref: "claw grip"
+					description: 'Use a # to hold on to the item you want to cut',
+					ref: 'claw grip',
 				},
 				{
 					number: 2,
-					description: "With your dominant hand, keep the knife #",
-					ref: "next to your knuckles"
+					description: 'With your dominant hand, keep the knife #',
+					ref: 'next to your knuckles',
 				},
 				{
 					number: 3,
-					description: "# lift up when finished making your cut",
-					ref: "Move the knife down,"
+					description: '# lift up when finished making your cut',
+					ref: 'Move the knife down,',
 				},
 				{
 					number: 4,
-					description: "Move the knife to the next part you want to cut",
-					ref: ""
+					description: 'Move the knife to the next part you want to cut',
+					ref: '',
 				},
 				{
 					number: 5,
-					description: "Repeat steps 1-4 until new desired shape is achieved",
-					ref: ""
-				}
-			]
-		}
+					description: 'Repeat steps 1-4 until new desired shape is achieved',
+					ref: '',
+				},
+			],
+		},
 	],
 	ingredientsLearn: [
 		{
-			id: 1, 
-			title: "Onion", 
-			shortDescription: "Chefs May Cry",  
+			id: 1,
+			title: 'Onion',
+			shortDescription: 'Chefs May Cry',
 			taste: [
 				{
-					title: "Sweet",
-					value: 0.5
+					title: 'Sweet',
+					value: 0.5,
 				},
 				{
-					title: "Sour",
-					value: 0.3
-				}
+					title: 'Sour',
+					value: 0.3,
+				},
 			],
 			texture: [
 				{
-					title: "Crunch (raw)",
-					value: 1.0
+					title: 'Crunch (raw)',
+					value: 1.0,
 				},
 				{
-					title: "Soft (cooked)",
-					value: 0.6
-				}
+					title: 'Soft (cooked)',
+					value: 0.6,
+				},
 			],
-			image: "/onion.jpg",
-			usage: "Adds texture and flavor. Major supporter to prop other flavors up.",
-			alts:
-			[
+			image: '/onion.jpg',
+			usage:
+				'Adds texture and flavor. Major supporter to prop other flavors up.',
+			alts: [
 				{
 					number: 1,
-					name: "Shallots",
-					shortDescription: "Onions w/ milder taste",
-					image: "/onion.jpg"
+					name: 'Shallots',
+					shortDescription: 'Onions w/ milder taste',
+					image: '/onion.jpg',
 				},
 				{
 					number: 2,
-					name: "Scallion",
-					shortDescription: "Onions w/ milder taste",
-					image: "/onion.jpg"
+					name: 'Scallion',
+					shortDescription: 'Onions w/ milder taste',
+					image: '/onion.jpg',
 				},
 				{
 					number: 3,
-					name: "Fennel",
-					shortDescription: "Onions w/ sharper taste",
-					image: "/onion.jpg"
-				}
-			]
-		}
-	]
+					name: 'Fennel',
+					shortDescription: 'Onions w/ sharper taste',
+					image: '/onion.jpg',
+				},
+			],
+		},
+	],
 };
 
 export default staticData;

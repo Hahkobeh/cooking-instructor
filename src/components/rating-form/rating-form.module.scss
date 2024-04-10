@@ -8,7 +8,7 @@
 
 .rating-stars {
 	display: flex;
-	margin-bottom: 0px;
+	margin-bottom: -8px;
 
 	button {
 		background: none;
@@ -31,16 +31,3 @@
 	}
 }
 
-.submit-button {
-	padding: 8px 16px;
-	border-radius: 4px;
-	border: none;
-	background-color: variables.$accent;
-	color: white;
-	cursor: pointer;
-
-	&:hover,
-	&:focus {
-		background-color: darken(variables.$accent, 10%);
-	}
-}

@@ -1,5 +1,7 @@
 import Button from '@/components/button/Button';
 import ToggleSwitch from '@/components/toggle/ToggleSwitch';
+import Toast from '@/components/toast/Toast';
+import ConfirmationModal from '@/components/confirmation-modal/ConfirmationModal';
 import { useUser } from '@/context/user/useUser';
 import { useState } from 'react';
 import ShoppingListRecipe from '../../components/shopping/ShoppingListRecipe';
@@ -11,12 +13,12 @@ const TOTAL_RECIPE_ID = -1;
 const ShoppingList = () => {
 	const { getShoppingList, updateShoppingList, removeRecipeFromShoppingList } =
 		useUser();
-	// state hook for managing the viewByRecipe state. initially set to true for recipe view
 	const [viewByRecipe, setViewByRecipe] = useState(true);
-	// state hook for managing the recipes array. initially set to an empty array.
 	const [recipes, setRecipes] = useState(getShoppingList);
+	const [showToast, setShowToast] = useState(false);
+	const [toastMessage, setToastMessage] = useState('');
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
-	// state hook for managing the viewByRecipe state. initially set to true.
 	const handleToggleSwitchChange = () => {
 		setViewByRecipe(!viewByRecipe);
 	};
@@ -122,11 +124,26 @@ const ShoppingList = () => {
 			});
 			updateShoppingList(updatedRecipes); // update the list
 			setRecipes(updatedRecipes); // update local state
+			setToastMessage(`${ingredientNamesToRemove} removed from shopping list`);
+			setShowToast(true); // Show the toast
 		} else {
 			// otherwise, remove the entire recipe
+			const recipeTitle =
+				recipes.find((r) => r.id === recipeId)?.title || 'Recipe';
+
 			removeRecipeFromShoppingList(recipeId); // Tupdate the context
 			setRecipes(recipes.filter((recipe) => recipe.id !== recipeId)); // update local state
+			setToastMessage(`${recipeTitle} removed from shopping list`);
+			setShowToast(true); // Show the toast
 		}
+	};
+
+	const handleClearAllConfirm = () => {
+		setIsModalOpen(true);
+	};
+
+	const closeModal = () => {
+		setIsModalOpen(false);
 	};
 
 	const handleClearAll = () => {
@@ -135,6 +152,9 @@ const ShoppingList = () => {
 
 		// Clear the local state
 		setRecipes([]);
+		setToastMessage(`All ingredients removed from shopping list`);
+		setShowToast(true); // Show the toast
+		setIsModalOpen(false);
 	};
 
 	return (
@@ -143,12 +163,19 @@ const ShoppingList = () => {
 				{recipes.length > 0 && (
 					<Button
 						accent
-						onClick={handleClearAll}
+						onClick={handleClearAllConfirm}
 						className={styles['clear-all-button']}
 					>
 						Clear All
 					</Button>
 				)}
+
+				<ConfirmationModal
+					isOpen={isModalOpen}
+					onClose={closeModal}
+					onConfirm={handleClearAll}
+					message="Are you sure you want to clear all items?"
+				/>
 
 				<ToggleSwitch
 					className={styles['display-mode-toggle']}
@@ -188,6 +215,12 @@ const ShoppingList = () => {
 				<h4 className={styles['empty']}>Shopping list empty. Pick a recipe and start adding items!</h4>
 			)
 		}
+			<Toast
+				message={toastMessage}
+				isVisible={showToast}
+				onClose={() => setShowToast(false)}
+				duration={3000}
+			/>
 		</div>
 	);
 };

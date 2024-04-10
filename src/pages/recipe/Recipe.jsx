@@ -1,5 +1,6 @@
 import RatingStars from '@/components/rating-stars/RatingStars';
 import RecipeNavBar from '@/components/recipe-nav-bar/RecipeNavBar';
+import Toast from '@/components/toast/Toast';
 import { useRecipes } from '@/context/data/useRecipes';
 import { useUser } from '@/context/user/useUser';
 import { useEffect, useState } from 'react';
@@ -15,9 +16,12 @@ const Recipe = () => {
 	const location = useLocation();
 	const [activeTab, setActiveTab] = useState('about'); // initial active tab is 'about'
 	const [favorited, setFavorited] = useState(false); // initial state set to empty heart icon
-	const { user, addFavorite, removeFavorite } = useUser();
+	const [toast, setToast] = useState({ isVisible: false, message: '' });
+	const { user, addFavorite, removeFavorite, addRecent } = useUser();
 
 	useEffect(() => {
+		addRecent(Number(recipeId));
+		console.log(user.recents);
 		// redirect to /about if the current path is exactly `/recipe/:recipeId`
 		if (location.pathname === `/recipe/${recipeId}`) {
 			navigate(`/recipe/${recipeId}/about`, { replace: true });
@@ -34,14 +38,21 @@ const Recipe = () => {
 	const handleFavoriteClick = () => {
 		if (favorited) {
 			removeFavorite(Number(recipeId));
+			setToast({ isVisible: true, message: 'Removed from favorites!' });
 		} else {
 			addFavorite(Number(recipeId));
+			setToast({ isVisible: true, message: 'Added to favorites!' });
 		}
 		setFavorited(!favorited);
 	};
 
 	return (
 		<div id={styles.recipe}>
+			<Toast
+				message={toast.message}
+				isVisible={toast.isVisible}
+				onClose={() => setToast({ ...toast, isVisible: false })}
+			/>
 			<RecipeNavBar
 				className={styles.recipeNavBar}
 				recipeId={recipeId}
@@ -58,10 +69,8 @@ const Recipe = () => {
 				</h2>
 				<button
 					type="button"
+					className={styles.favorite}
 					style={{
-						backgroundColor: 'white',
-						border: 'none',
-						color: '#a56ff7',
 						fontVariationSettings: favorited ? "'FILL' 1" : "'FILL' 0",
 					}}
 				>

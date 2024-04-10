@@ -412,6 +412,157 @@ const staticData = {
 					description:
 						'Serve topped with slices of avocado and a sprinkle of fresh parsley.',
 				},
+				
+			],
+		},
+		{
+			id: 6,
+			title: 'Grilled Cheese Sandwich',
+			tagIds: [2, 3, 8],
+			shortDescription: 'Staple American Breakfast',
+			about:
+				'A dish that is quick and easy to make, and very customizable allowing it to suit the tastes of the chef that makes it.',
+			time: '20 minutes',
+			difficulty: 'Easy',
+			equipment: ['Pan'],
+			skills: ['Grilling'],
+			image: 'grilledcheese.jpg',
+			ratings: {
+				average: 4.7,
+				total: 500,
+			},
+			dietaryRestrictions: [1],
+			ingredientsNormal: [
+				{ name: 'White Bread', quantity: 2, unit: 'slices' },
+				{ name: 'Butter', quantity: 3 / 2, unit: 'tbsp' },
+				{ name: 'American Cheese', quantity: 2, unit: 'slices' },
+				
+			],
+			ingredientsGlutenFree: [
+				{ name: 'GF Bread', quantity: 2, unit: 'slices' },
+				{ name: 'Almond Oil', quantity: 3 / 2, unit: 'tbsp' },
+				{ name: 'Cheddar Cheese', quantity: 2, unit: 'slices' },
+			],
+			ingredientsVegeterian: [
+				{ name: 'White Bread', quantity: 2, unit: 'slices' },
+				{ name: 'Butter', quantity: 3 / 2, unit: 'tbsp' },
+				{ name: 'American Cheese', quantity: 2, unit: 'slices' },
+			],
+			steps: [
+				{
+					number: 1,
+					description:
+						'Place your slices of cheese between your slices of bread',
+				},
+				{
+					number: 2,
+					description:
+						'Butter the outside of your slices of bread',
+				},
+				{
+					number: 3,
+					description:
+						'Place a pan over medium heat, once warmed place your sandwich into the pan',
+				},
+				{
+					number: 4,
+					description:
+						'Once crisp on the bottom, flip the sandwich and continue to cook until the cheese has melted',
+				},
+				
+			],
+		},
+		{
+			id: 7,
+			title: 'Shakshuka',
+			tagIds: [4, 5 ,8],
+			shortDescription: 'A hearty and heartwarming breakfast to start your mornings with.',
+			about:
+				'Originating from the Middle East, shakshuka is a one-pot dish that is packed with flavor and nutrients to start the day off right',
+			time: '30 minutes',
+			difficulty: 'Medium',
+			equipment: ['Pan','Knife','Cutting board'],
+			skills: ['Sauteeing', 'Poaching', 'Chopping'],
+			image: 'shakshuka.jpg',
+			ratings: {
+				average: 4.0,
+				total: 20,
+			},
+			dietaryRestrictions: [1,3],
+			ingredientsNormal: [
+				{ name: 'Yellow Onion', quantity: 1, unit: '' },
+				{ name: 'Green Peppers', quantity: 2, unit: '' },
+				{ name: 'Garlic Cloves', quantity: 2, unit: '' },
+				{ name: 'Ground Coriander', quantity: 1, unit: 'tsp' },
+				{ name: 'Sweet Paprika', quantity: 1, unit: 'tsp' },
+				{ name: 'Ground Cumin', quantity: 1/2, unit: 'tsp' },
+				{ name: 'Medium Tomatoes', quantity: 6, unit: 'tbsp' },
+				{ name: 'Tomato Sauce', quantity: 1 / 2, unit: 'cup' },
+				{ name: 'Fresh Parsley', quantity: 1 / 4, unit: 'cup' },
+				{ name: 'Fresh Mint', quantity: 1 / 4, unit: 'cup' },
+				{ name: 'Eggs', quantity: 6, unit: '' },
+				
+			],
+			ingredientsGlutenFree: [
+				{ name: 'Yellow Onion', quantity: 1, unit: '' },
+				{ name: 'Green Peppers', quantity: 2, unit: '' },
+				{ name: 'Garlic Cloves', quantity: 2, unit: '' },
+				{ name: 'Ground Coriander', quantity: 1, unit: 'tsp' },
+				{ name: 'Sweet Paprika', quantity: 1, unit: 'tsp' },
+				{ name: 'Ground Cumin', quantity: 1/2, unit: 'tsp' },
+				{ name: 'Medium Tomatoes', quantity: 6, unit: 'tbsp' },
+				{ name: 'Tomato Sauce', quantity: 1 / 2, unit: 'cup' },
+				{ name: 'Fresh Parsley', quantity: 1 / 4, unit: 'cup' },
+				{ name: 'Fresh Mint', quantity: 1 / 4, unit: 'cup' },
+				{ name: 'Eggs', quantity: 6, unit: '' },
+				
+			],
+			ingredientsVegeterian: [
+				{ name: 'Yellow Onion', quantity: 1, unit: '' },
+				{ name: 'Green Peppers', quantity: 2, unit: '' },
+				{ name: 'Garlic Cloves', quantity: 2, unit: '' },
+				{ name: 'Ground Coriander', quantity: 1, unit: 'tsp' },
+				{ name: 'Sweet Paprika', quantity: 1, unit: 'tsp' },
+				{ name: 'Ground Cumin', quantity: 1/2, unit: 'tsp' },
+				{ name: 'Medium Tomatoes', quantity: 6, unit: 'tbsp' },
+				{ name: 'Tomato Sauce', quantity: 1 / 2, unit: 'cup' },
+				{ name: 'Fresh Parsley', quantity: 1 / 4, unit: 'cup' },
+				{ name: 'Fresh Mint', quantity: 1 / 4, unit: 'cup' },
+				{ name: 'Eggs', quantity: 6, unit: '' },
+				
+			],
+			steps: [
+				{
+					number: 1,
+					description:
+						'Heat olive oil in your pan while you chop your vegetables',
+				},
+				{
+					number: 2,
+					description:
+						'Add your vegetables with garlic, spices, and salt and pepper to taste to the pan. Cook until the veggies have softened',
+				},
+				{
+					number: 3,
+					description:
+						'Add tomatoes and tomato sauce, let simmer for 15 minutes. Afterwards, uncover and cook for ~4 more minutes',
+				},
+				{
+					number: 4,
+					description:
+						'Make 6 wells in your mixture, and crack an egg into each well',
+				},
+				{
+					number: 5,
+					description:
+						'Reduce the heat to low, cover and let cook until the egg whites have set',
+				},
+				{
+					number: 6,
+					description:
+						'Uncover and add your parsley and mint and serve while hot',
+				},
+				
 			],
 		},
 	],
@@ -534,6 +685,66 @@ const staticData = {
 				},
 			],
 		},
+		{
+			id: 2,
+			title: 'Grating',
+			shortDescription: 'Never find preparing cheese grating again',
+			difficulty: 'Easy',
+			tools: ['Grater', 'Soft food item'],
+			image: '/grating.jpg',
+			steps: [
+				{
+					number: 1,
+					description: 'Hold your # so that it does not move off the table',
+					ref: 'grater',
+				},
+				{
+					number: 2,
+					description: 'Hold the item that you want to grate # against the grater',
+					ref: 'at an angle',
+				},
+				{
+					number: 3,
+					description: 'Move the item up/down # while pushing it against the grater ',
+					ref: 'against the grain',
+				},
+				{
+					number: 4,
+					description: 'Repeat steps 1-3 until you have the desired amount of the item',
+					ref: '',
+				},
+			],
+		},
+		{
+			id: 3,
+			title: 'Boiling',
+			shortDescription: 'Never reach your own boiling point again',
+			difficulty: 'Easy',
+			tools: ['Pot', 'Stove', 'Water'],
+			image: '/boiling.jpg',
+			steps: [
+				{
+					number: 1,
+					description: '# with as much water as you want to boil',
+					ref: 'Fill your pot',
+				},
+				{
+					number: 2,
+					description: 'Place the pot on the stove and turn the heat up to high',
+					ref: '',
+				},
+				{
+					number: 3,
+					description: 'If your pot has a lid, put it on at this point',
+					ref: '',
+				},
+				{
+					number: 4,
+					description: 'Wait 8-10 minutes, or until you see # in your water',
+					ref: 'lots of bubbles',
+				},
+			],
+		},
 	],
 	ingredientsLearn: [
 		{
@@ -568,19 +779,67 @@ const staticData = {
 					number: 1,
 					name: 'Shallots',
 					shortDescription: 'Onions w/ milder taste',
-					image: '/onion.jpg',
+					image: '/shallots.jpg',
 				},
 				{
 					number: 2,
 					name: 'Scallion',
 					shortDescription: 'Onions w/ milder taste',
-					image: '/onion.jpg',
+					image: '/scallions.jpg',
 				},
 				{
 					number: 3,
 					name: 'Fennel',
 					shortDescription: 'Onions w/ sharper taste',
-					image: '/onion.jpg',
+					image: '/fennel.jpg',
+				},
+			],
+		},
+		{
+			id: 2,
+			title: 'Potato',
+			shortDescription: 'Most staple ingredient in any kitchen',
+			taste: [
+				{
+					title: 'Starchy',
+					value: 1.0,
+				},
+				{
+					title: 'Sweet',
+					value: 0.1,
+				},
+			],
+			texture: [
+				{
+					title: 'Creamy (cooked)',
+					value: 0.7,
+				},
+				{
+					title: 'Firm (uncooked)',
+					value: 0.6,
+				},
+			],
+			image: '/potato.png',
+			usage:
+				'Can be used as either sides or the main part of a dish. Very versatile and provides different experiences any way it is cooked',
+			alts: [
+				{
+					number: 1,
+					name: 'Radish',
+					shortDescription: 'Low-carb replacement',
+					image: '/radish.jpg',
+				},
+				{
+					number: 2,
+					name: 'Cauliflower',
+					shortDescription: 'Similar texture when cooked',
+					image: '/cauliflower.jpg',
+				},
+				{
+					number: 3,
+					name: 'Daikon',
+					shortDescription: 'More mild',
+					image: '/daikon.jpg',
 				},
 			],
 		},

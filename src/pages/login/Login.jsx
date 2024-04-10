@@ -10,32 +10,49 @@ import styles from './login.module.scss';
 
 const Login = () => {
 	const [isLogin, setIsLogin] = useState(true);
+	const [dietaryValue, setDietaryValue] = useState([false, false, false]);
 
 	const [wip, setWIP] = useState(false);
 
-	const users = useUsers();
+	const { users, setUsers } = useUsers();
 	const { setUser } = useUser();
 
 	const {
 		register,
 		handleSubmit,
 		formState: { isValid, errors, dirtyFields },
+		getValues,
 	} = useForm({ defaultValues: { username: '', password: '' } });
 
 	const onSubmit = ({ username, password }) => {
-		if (isLogin && isValid) {
-			const foundUser = users.find(
-				(user) => user.username.toLowerCase() === username.toLowerCase()
-			);
-			if (foundUser.password === password) {
-				setUser(foundUser);
+		if (isLogin) {
+			if (isValid) {
+				const foundUser = users.find(
+					(user) => user.username.toLowerCase() === username.toLowerCase()
+				);
+				if (foundUser.password === password) {
+					setUser(foundUser);
+				}
 			}
 		} else {
-			console.log('not implemented');
+			if (isValid) {
+				const newUser = {
+					username: username,
+					password: password,
+					favorites: [],
+					recents: [],
+					shoppingList: [],
+					dietaryRestrictions: dietaryValue
+						.map((value, i) => (value ? i + 1 : null))
+						.filter((v) => v !== null),
+					newUserFlag: true,
+				};
+				setUsers([...users, newUser]);
+				setUser(newUser);
+			}
 		}
 	};
 
-	console.log(dirtyFields);
 	return (
 		<>
 			{wip && (
@@ -66,20 +83,26 @@ const Login = () => {
 						className={
 							'textInput' + (dirtyFields['password'] ? ' hasValue' : '')
 						}
-						// onChange={(e) => setPassword(e.target.value)}
 						placeholder="password"
+						type="password"
 						{...register('password', { required: true })}
 					/>
 					<span className="error">
 						{errors.password ? 'This field is required' : '‎'}
 					</span>
 					{isLogin && <h4 onClick={() => setWIP(true)}>Forgot password?</h4>}
-					{!isLogin && <DietaryMenu />}
+					{!isLogin && (
+						<DietaryMenu value={dietaryValue} setValue={setDietaryValue} />
+					)}
 					<div>
 						<Button func={() => setIsLogin(!isLogin)}>
 							{isLogin ? 'Sign Up' : 'Login'}
 						</Button>
-						<Button accent submit>
+						<Button
+							accent
+							submit
+							disabled={!getValues('password') || !getValues('username')}
+						>
 							{isLogin ? 'Login' : 'Register'}
 						</Button>
 					</div>

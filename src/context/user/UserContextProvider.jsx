@@ -17,7 +17,7 @@ const UserContextProvider = ({ children }) => {
 
 	const setUser = (data) => {
 		_setUser(data);
-		localStorage.setItem('user', JSON.stringify(data));
+		if (!data?.newUserFlag) localStorage.setItem('user', JSON.stringify(data));
 	};
 
 	// returns the shopping list
@@ -144,7 +144,10 @@ const UserContextProvider = ({ children }) => {
 	};
 	// adds a recipe to the recents list
 	const addRecent = (recipeId) => {
-		const updatedRecents = new Set([recipeId, ...(user.recents ? user.recents : [])]); // ensure uniqueness and recency
+		const updatedRecents = new Set([
+			recipeId,
+			...(user.recents ? user.recents : []),
+		]); // ensure uniqueness and recency
 		setUser({ ...user, recents: Array.from(updatedRecents).slice(0, 10) }); // limit to the most recent 10 items
 	};
 

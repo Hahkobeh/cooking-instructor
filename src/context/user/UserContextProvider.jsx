@@ -142,7 +142,7 @@ const UserContextProvider = ({ children }) => {
 		);
 		return recentRecipes;
 	};
-	// adds a recipe to the recents list
+	// adds a recipe to the recents list (no longer being used)
 	const addRecent = (recipeId) => {
 		const updatedRecents = new Set([recipeId, ...user.recents]); // ensure uniqueness and recency
 		setUser({ ...user, recents: Array.from(updatedRecents).slice(0, 10) }); // limit to the most recent 10 items
@@ -154,7 +154,12 @@ const UserContextProvider = ({ children }) => {
 
 	// sets a user's active recipe
 	const setActiveRecipe = (recipeId, tab) => {
-		setUser({ ...user, activeRecipe: { id: recipeId, tab: tab } });
+		const updatedRecents = new Set([recipeId, ...user.recents]); // ensure uniqueness and recency
+		setUser({
+			...user,
+			recents: Array.from(updatedRecents).slice(0, 10),
+			activeRecipe: { id: recipeId, tab: tab },
+		}); // limit to the most recent 10 items
 	};
 
 	// clears a user's active recipe

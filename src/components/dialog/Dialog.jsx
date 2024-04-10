@@ -23,7 +23,7 @@ const Dialog = ({ children, close, title }) => {
 
 Dialog.propTypes = {
 	children: PropTypes.string.isRequired,
-	close: PropTypes.bool,
+	close: PropTypes.func,
 	title: PropTypes.string,
 };
 

@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import styles from './ToggleSwitch.module.scss';
 
-const ToggleSwitch = ({ label1, label2, onToggle }) => {
-	const [isToggled, setIsToggled] = useState(false);
+const ToggleSwitch = ({ label1, label2, onToggle, initialValue }) => {
+	const [isToggled, setIsToggled] = useState(initialValue ?? false);
 
 	// Change state if toggle is pressed
 	const toggleSwitch = () => {
@@ -36,6 +36,7 @@ ToggleSwitch.propTypes = {
 	label1: PropTypes.string,
 	label2: PropTypes.string,
 	onToggle: PropTypes.func,
+	initialValue: PropTypes.bool,
 };
 
 export default ToggleSwitch;

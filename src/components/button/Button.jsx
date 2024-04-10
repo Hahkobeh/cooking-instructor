@@ -8,11 +8,12 @@ const Button = ({
 	submit,
 	className,
 	icon,
+	disabled,
 	...rest
 }) => {
 	return (
 		<div
-			className={`${styles.button} ${accent ? styles.accent : styles.grey} ${className}`}
+			className={`${styles.button} ${accent ? styles.accent : styles.grey} ${className} ${disabled ? styles.disabled : ''}`}
 			onClick={func && (() => func())}
 		>
 			{icon}
@@ -28,6 +29,7 @@ Button.propTypes = {
 	submit: PropTypes.bool,
 	className: PropTypes.string,
 	icon: PropTypes.element,
+	disabled: PropTypes.bool
 };
 
 export default Button;

@@ -16,14 +16,14 @@ const DataContextProvider = ({ children }) => {
 			path: recipe.title.replace(/\s+/g, '-').toLocaleLowerCase(),
 		}))
 	);
-	const [users] = useState(staticData.users);
+	const [users, setUsers] = useState(staticData.users);
 	const [dietaryRestrictions] = useState(staticData.dietaryRestrictions);
 	const [techniques] = useState(staticData.techniques);
 	const [ingredientsLearn] = useState(staticData.ingredientsLearn);
 
 	return (
 		<DataContext.Provider
-			value={{ recipes, tags, categories, users, dietaryRestrictions, techniques, ingredientsLearn }}
+			value={{ recipes, tags, categories, users, setUsers, dietaryRestrictions, techniques, ingredientsLearn }}
 		>
 			{children}
 		</DataContext.Provider>

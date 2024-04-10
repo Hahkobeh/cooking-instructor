@@ -643,11 +643,8 @@ const staticData = {
 	],
 	dietaryRestrictions: [
 		{ id: 1, label: 'Vegetarian' },
-		{ id: 2, label: 'Vegan' },
-		{ id: 3, label: 'Gluten-Free' },
-		{ id: 4, label: 'Halal' },
-		{ id: 5, label: 'Kosher' },
-		{ id: 6, label: 'Lactose Intolerant' },
+		{ id: 2, label: 'Gluten-Free' },
+		{ id: 3, label: 'Lactose Intolerant' },
 	],
 	techniques: [
 		{

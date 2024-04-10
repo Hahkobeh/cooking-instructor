@@ -4,7 +4,7 @@ import DietaryMenu from '@/components/dietary-menu/DietaryMenu';
 import RatingStars from '@/components/rating-stars/RatingStars';
 import RecipeCardList from '@/components/recipe-card-list/RecipeCardList';
 import TagList from '@/components/tag-list/TagList';
-// import { useRecipes } from '@/context/data/useRecipes';
+import { useUsers } from '@/context/data/useUsers';
 import { useUser } from '@/context/user/useUser';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -13,14 +13,37 @@ import styles from './account.module.scss';
 const Account = () => {
 	const [videoOn, setVideoOn] = useState(false);
 	const [subPage, setSubPage] = useState(null);
-	const { setUser, getFavorites, getRecents } = useUser();
-	// const recipes = useRecipes();
+	const { user, setUser, getFavorites, getRecents } = useUser();
+	const { users, setUsers } = useUsers();
 	const favoriteRecipes = getFavorites();
 	const numFavorites = favoriteRecipes.length;
 	const recentRecipes = getRecents();
 	const numRecents = recentRecipes.length;
 	const navigate = useNavigate();
+
+	let booleanDietary = Array(3).fill(false);
+
+	user.dietaryRestrictions.forEach((i) => {
+		booleanDietary[i - 1] = true;
+	});
+
+	const setDietary = (newDietaryRestrictions) => {
+		let temp = user;
+		temp.dietaryRestrictions = newDietaryRestrictions
+			.map((value, i) => (value ? i + 1 : null))
+			.filter((v) => v !== null);
+		console.log(temp);
+		setUser(temp);
+	};
+
 	const logout = () => {
+		const updatedUsers = users.map((u) => {
+			if (u.username === user.username) {
+				return user;
+			}
+			return u;
+		});
+		setUsers(updatedUsers);
 		setUser(null);
 		navigate('/');
 	};
@@ -33,7 +56,6 @@ const Account = () => {
 						<div className={styles.header}>
 							<h2>
 								Recents <span className="italic">({numRecents})</span>
-								{/* TODO HARDCODED NUMBER ... */}
 							</h2>
 							<Button
 								className={styles.navigate}
@@ -166,7 +188,7 @@ const Account = () => {
 						<div className={styles.subTitle}>
 							<h3>Manage dietary needs</h3>
 						</div>
-						<DietaryMenu />
+						<DietaryMenu value={booleanDietary} setValue={setDietary} />
 						<div className={styles.buttons}>
 							<Button className={styles.button} func={() => setVideoOn(true)}>
 								Tutorial mode

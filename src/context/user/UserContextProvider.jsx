@@ -117,8 +117,6 @@ const UserContextProvider = ({ children }) => {
 
 	// helper function that returns all the favorited recipes (as objects)
 	const getFavorites = () => {
-		console.log(recipes);
-		console.log(user.favorites);
 		const favoriteRecipes = recipes.filter((recipe) =>
 			user.favorites.includes(recipe.id)
 		);
@@ -140,13 +138,13 @@ const UserContextProvider = ({ children }) => {
 	// function to get the recent recipes as objects
 	const getRecents = () => {
 		const recentRecipes = recipes.filter((recipe) =>
-			user.recents.includes(recipe.id)
+			user.recents ? user.recents.includes(recipe.id) : []
 		);
 		return recentRecipes;
 	};
 	// adds a recipe to the recents list
 	const addRecent = (recipeId) => {
-		const updatedRecents = new Set([recipeId, ...user.recents]); // ensure uniqueness and recency
+		const updatedRecents = new Set([recipeId, ...(user.recents ? user.recents : [])]); // ensure uniqueness and recency
 		setUser({ ...user, recents: Array.from(updatedRecents).slice(0, 10) }); // limit to the most recent 10 items
 	};
 

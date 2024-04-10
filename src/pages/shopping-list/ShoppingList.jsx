@@ -157,7 +157,7 @@ const ShoppingList = () => {
 					onToggle={handleToggleSwitchChange}
 				/>
 			</div>
-
+			
 			{viewByRecipe ? (
 				recipes.map(
 					(recipe) =>
@@ -182,6 +182,12 @@ const ShoppingList = () => {
 					)}
 				</>
 			)}
+
+		{
+			recipes.length < 1 && (
+				<h4 className={styles['empty']}>Shopping list empty. Pick a recipe and start adding items!</h4>
+			)
+		}
 		</div>
 	);
 };

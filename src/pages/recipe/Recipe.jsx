@@ -26,14 +26,12 @@ const Recipe = () => {
 	const location = useLocation();
 
 	const [activeTab, setActiveTab] = useState(getActiveRecipe().tab || 'about'); // if no active tab, then just go to /about
-	console.log('local active tab: ', activeTab);
-
 	const [favorited, setFavorited] = useState(false); // initial state set to empty heart icon
 	const [toast, setToast] = useState({ isVisible: false, message: '' });
 
 	useEffect(() => {
-		addRecent(Number(recipeId));
 		setActiveRecipe(Number(recipeId), activeTab);
+		addRecent(Number(recipeId));
 		// redirect to /about if the current path is exactly `/recipe/:recipeId`
 		if (location.pathname === `/recipe/${recipeId}`) {
 			navigate(`/recipe/${recipeId}/${activeTab}`, { replace: true });

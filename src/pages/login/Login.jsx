@@ -1,4 +1,5 @@
 import Button from '@/components/button/Button';
+import Dialog from '@/components/dialog/Dialog';
 import DietaryMenu from '@/components/dietary-menu/DietaryMenu';
 import PhoneStatus from '@/components/phone-status/PhoneStatus';
 import { useUsers } from '@/context/data/useUsers';
@@ -9,6 +10,8 @@ import styles from './login.module.scss';
 
 const Login = () => {
 	const [isLogin, setIsLogin] = useState(true);
+
+	const [wip, setWIP] = useState(false);
 
 	const users = useUsers();
 	const { setUser } = useUser();
@@ -35,6 +38,11 @@ const Login = () => {
 	console.log(dirtyFields);
 	return (
 		<>
+			{wip && (
+				<Dialog close={() => setWIP(false)}>
+					This feature is in development
+				</Dialog>
+			)}
 			<PhoneStatus />
 			<main className={styles.login}>
 				<h3>Welcome to</h3>
@@ -65,6 +73,7 @@ const Login = () => {
 					<span className="error">
 						{errors.password ? 'This field is required' : '‎'}
 					</span>
+					{isLogin && <h4 onClick={() => setWIP(true)}>Forgot password?</h4>}
 					{!isLogin && <DietaryMenu />}
 					<div>
 						<Button func={() => setIsLogin(!isLogin)}>

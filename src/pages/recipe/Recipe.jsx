@@ -59,7 +59,7 @@ const Recipe = () => {
 
 	const handleReturnClick = () => {
 		clearActiveRecipe();
-		navigate(-1);
+		navigate('/home');
 	};
 
 	return (

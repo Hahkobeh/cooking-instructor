@@ -1,5 +1,6 @@
 import RatingStars from '@/components/rating-stars/RatingStars';
 import RecipeNavBar from '@/components/recipe-nav-bar/RecipeNavBar';
+import Button from '@/components/button/Button';
 import Toast from '@/components/toast/Toast';
 import { useRecipes } from '@/context/data/useRecipes';
 import { useUser } from '@/context/user/useUser';
@@ -11,20 +12,31 @@ import styles from './recipe.module.scss';
 const Recipe = () => {
 	const { recipeId } = useParams();
 	const recipes = useRecipes();
+	const {
+		user,
+		addFavorite,
+		removeFavorite,
+		addRecent,
+		setActiveRecipe,
+		getActiveRecipe,
+		clearActiveRecipe,
+	} = useUser();
 	const recipe = recipes.find((r) => r.id.toString() === recipeId);
 	const navigate = useNavigate();
 	const location = useLocation();
-	const [activeTab, setActiveTab] = useState('about'); // initial active tab is 'about'
+
+	const [activeTab, setActiveTab] = useState(getActiveRecipe().tab || 'about'); // if no active tab, then just go to /about
+	console.log('local active tab: ', activeTab);
+
 	const [favorited, setFavorited] = useState(false); // initial state set to empty heart icon
 	const [toast, setToast] = useState({ isVisible: false, message: '' });
-	const { user, addFavorite, removeFavorite, addRecent } = useUser();
 
 	useEffect(() => {
 		addRecent(Number(recipeId));
-		console.log(user.recents);
+		setActiveRecipe(Number(recipeId), activeTab);
 		// redirect to /about if the current path is exactly `/recipe/:recipeId`
 		if (location.pathname === `/recipe/${recipeId}`) {
-			navigate(`/recipe/${recipeId}/about`, { replace: true });
+			navigate(`/recipe/${recipeId}/${activeTab}`, { replace: true });
 		}
 		// fetch favorite status and set the state
 		const isFavorited = user.favorites.includes(Number(recipeId));
@@ -32,7 +44,8 @@ const Recipe = () => {
 	}, [recipeId, navigate, location.pathname, user.favorites]);
 
 	const handleTabClick = (tab) => {
-		setActiveTab(tab);
+		setActiveTab(tab); // update local state
+		setActiveRecipe(Number(recipeId), tab); // update global state (context)
 	};
 
 	const handleFavoriteClick = () => {
@@ -46,6 +59,11 @@ const Recipe = () => {
 		setFavorited(!favorited);
 	};
 
+	const handleReturnClick = () => {
+		clearActiveRecipe();
+		navigate(-1);
+	};
+
 	return (
 		<div id={styles.recipe}>
 			<Toast
@@ -53,6 +71,15 @@ const Recipe = () => {
 				isVisible={toast.isVisible}
 				onClose={() => setToast({ ...toast, isVisible: false })}
 			/>
+			<div className={styles.returnButtonWrapper}>
+				<Button
+					className={styles.returnButton}
+					icon={<span className="material-symbols-outlined">arrow_back</span>}
+					onClick={() => handleReturnClick()}
+				>
+					Return
+				</Button>
+			</div>
 			<RecipeNavBar
 				className={styles.recipeNavBar}
 				recipeId={recipeId}

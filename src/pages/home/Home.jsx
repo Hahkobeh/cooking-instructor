@@ -6,14 +6,24 @@ import TagList from '@/components/tag-list/TagList';
 import { useRecipes } from '@/context/data/useRecipes';
 import { useTags } from '@/context/data/useTags';
 import { useUser } from '@/context/user/useUser';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import styles from './home.module.scss';
 
 const Home = () => {
 	const [search, setSearch] = useState('');
 	const recipes = useRecipes();
-	const { user } = useUser();
+	const { user, getActiveRecipe } = useUser();
 	const tags = useTags();
+	const activeRecipeId = getActiveRecipe().id;
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (activeRecipeId) {
+			navigate(`/recipe/${activeRecipeId}`, { replace: true });
+		}
+	}, [activeRecipeId, navigate]);
 
 	const suggestedRecipes = recipes.filter((recipe) =>
 		user.dietaryRestrictions.some((restriction) =>
@@ -67,39 +77,42 @@ const Home = () => {
 
 	return (
 		<div id={styles.home}>
-			<h1 className={styles.title}>
-				Welcome, <span className="accent">{user.username}</span>
-			</h1>
-			<h3>Let&apos;s find you something to cook!</h3>
-			<SearchBar
-				search={search}
-				setSearch={setSearch}
-				suggestions={[...recipeSuggestions, ...tagSuggestions]}
-			/>
-			<CategoriesDisplay onCategorySelect={handleCategorySelect} />
-			{search === '' && user.dietaryRestrictions.length > 0 && (
-				<h2>Recommended for You</h2>
-			)}
-			<RecipeCardList>
-				{recipesToDisplay().map((recipe) => (
-					<RecipeCardList.Card
-						key={recipe.id}
-						recipeId={recipe.id}
-						image={recipe.image}
-					>
-						<h3>{recipe.title}</h3>
-						<h4>{recipe.shortDescription}</h4>
-						<RatingStars
-							average={recipe.ratings.average}
-							total={recipe.ratings.total}
-						/>
-						<TagList tags={recipe.tags} />
-					</RecipeCardList.Card>
-				))}
-			</RecipeCardList>
-
-			{recipesToDisplay().length < 1 && (
-				<h4 className={styles['empty']}>No matching results.</h4>
+			{!activeRecipeId && (
+				<>
+					<h1 className={styles.title}>
+						Welcome, <span className="accent">{user.username}</span>
+					</h1>
+					<h3>Let&apos;s find you something to cook!</h3>
+					<SearchBar
+						search={search}
+						setSearch={setSearch}
+						suggestions={[...recipeSuggestions, ...tagSuggestions]}
+					/>
+					<CategoriesDisplay onCategorySelect={handleCategorySelect} />
+					{search === '' && user.dietaryRestrictions.length > 0 && (
+						<h2>Recommended for You</h2>
+					)}
+					<RecipeCardList>
+						{recipesToDisplay().map((recipe) => (
+							<RecipeCardList.Card
+								key={recipe.id}
+								recipeId={recipe.id}
+								image={recipe.image}
+							>
+								<h3>{recipe.title}</h3>
+								<h4>{recipe.shortDescription}</h4>
+								<RatingStars
+									average={recipe.ratings.average}
+									total={recipe.ratings.total}
+								/>
+								<TagList tags={recipe.tags} />
+							</RecipeCardList.Card>
+						))}
+					</RecipeCardList>
+				{recipesToDisplay().length < 1 && (
+					<h4 className={styles['empty']}>No matching results.</h4>
+				)}
+				</>
 			)}
 		</div>
 	);

@@ -156,13 +156,13 @@ const UserContextProvider = ({ children }) => {
 	};
 
 	// sets a user's active recipe
-	const setActiveRecipe = (recipeId) => {
-		setUser({ ...user, activeRecipe: recipeId });
+	const setActiveRecipe = (recipeId, tab) => {
+		setUser({ ...user, activeRecipe: { id: recipeId, tab: tab } });
 	};
 
 	// clears a user's active recipe
 	const clearActiveRecipe = () => {
-		setUser({ ...user, activeRecipe: null });
+		setUser({ ...user, activeRecipe: { id: null, tab: null } });
 	};
 
 	return (

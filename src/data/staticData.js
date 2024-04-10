@@ -514,6 +514,66 @@ const staticData = {
 				},
 			],
 		},
+		{
+			id: 2,
+			title: 'Grating',
+			shortDescription: 'Never find preparing cheese grating again',
+			difficulty: 'Easy',
+			tools: ['Grater', 'Soft food item'],
+			image: '/cutting.jpg',
+			steps: [
+				{
+					number: 1,
+					description: 'Hold your # so that it does not move off the table',
+					ref: 'grater',
+				},
+				{
+					number: 2,
+					description: 'Hold the item that you want to grate # against the grater',
+					ref: 'at an angle',
+				},
+				{
+					number: 3,
+					description: 'Move the item up/down # while pushing it against the grater ',
+					ref: 'against the grain',
+				},
+				{
+					number: 4,
+					description: 'Repeat steps 1-3 until you have the desired amount of the item',
+					ref: '',
+				},
+			],
+		},
+		{
+			id: 3,
+			title: 'Boiling',
+			shortDescription: 'Never reach your own boiling point again',
+			difficulty: 'Easy',
+			tools: ['Pot', 'Stove', 'Water'],
+			image: '/cutting.jpg',
+			steps: [
+				{
+					number: 1,
+					description: '# with as much water as you want to boil',
+					ref: 'Fill your pot',
+				},
+				{
+					number: 2,
+					description: 'Place the pot on the stove and turn the heat up to high',
+					ref: '',
+				},
+				{
+					number: 3,
+					description: 'If your pot has a lid, put it on at this point',
+					ref: '',
+				},
+				{
+					number: 4,
+					description: 'Wait 8-10 minutes, or until you see # in your water',
+					ref: 'lots of bubbles',
+				},
+			],
+		},
 	],
 	ingredientsLearn: [
 		{
@@ -560,6 +620,54 @@ const staticData = {
 					number: 3,
 					name: 'Fennel',
 					shortDescription: 'Onions w/ sharper taste',
+					image: '/onion.jpg',
+				},
+			],
+		},
+		{
+			id: 2,
+			title: 'Potato',
+			shortDescription: 'Most staple ingredient in any kitchen',
+			taste: [
+				{
+					title: 'Starchy',
+					value: 1.0,
+				},
+				{
+					title: 'Sweet',
+					value: 0.1,
+				},
+			],
+			texture: [
+				{
+					title: 'Creamy (cooked)',
+					value: 0.7,
+				},
+				{
+					title: 'Firm (uncooked)',
+					value: 0.6,
+				},
+			],
+			image: '/onion.jpg',
+			usage:
+				'Can be used as either sides or the main part of a dish. Very versatile and provides different experiences any way it is cooked',
+			alts: [
+				{
+					number: 1,
+					name: 'Radish',
+					shortDescription: 'Low-carb replacement',
+					image: '/onion.jpg',
+				},
+				{
+					number: 2,
+					name: 'Cauliflower',
+					shortDescription: 'Similar texture when cooked',
+					image: '/onion.jpg',
+				},
+				{
+					number: 3,
+					name: 'Daikon',
+					shortDescription: 'More mild',
 					image: '/onion.jpg',
 				},
 			],

@@ -109,9 +109,9 @@ const Home = () => {
 							</RecipeCardList.Card>
 						))}
 					</RecipeCardList>
-          {recipesToDisplay().length < 1 && (
-				    <h4 className={styles['empty']}>No matching results.</h4>
-			    )}
+				{recipesToDisplay().length < 1 && (
+					<h4 className={styles['empty']}>No matching results.</h4>
+				)}
 				</>
 			)}
 		</div>

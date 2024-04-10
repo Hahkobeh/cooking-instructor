@@ -46,6 +46,10 @@ const Login = () => {
 						.map((value, i) => (value ? i + 1 : null))
 						.filter((v) => v !== null),
 					newUserFlag: true,
+					activeRecipe: {
+						id: null,
+						tab: null,
+					},
 				};
 				setUsers([...users, newUser]);
 				setUser(newUser);
